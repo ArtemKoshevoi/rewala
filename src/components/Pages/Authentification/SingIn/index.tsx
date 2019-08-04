@@ -1,6 +1,6 @@
 import React from "react"
 import { Container } from "@material-ui/core";
-import SingInForm from "../../../shared/Forms/SingInForm";
+import SingInForm from "../../../../shared/Forms/SingInForm";
 import {gql} from "apollo-boost";
 import {ApolloConsumer, Mutation} from "react-apollo";
 
@@ -18,7 +18,7 @@ class singIn extends React.Component {
 }
 `;
     return (
-      <Container>
+      <Container maxWidth={"xs"}>
         <ApolloConsumer>
           {client => (
             <Mutation
