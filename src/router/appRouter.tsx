@@ -13,10 +13,10 @@ const appRouter: React.FC = () => {
       <Container maxWidth={"md"}>
         <div>
           <NavTabs/>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/singup/" component={SingUp} />
-          <Route path="/resetpassword/" component={ResetPassword} />
-          <Route path="/singin" component={SingIn} />
+          <Route exact path="/" component={Homepage}/>
+          <Route path="/singup/" component={SingUp}/>
+          <Route path="/resetpassword/" component={ResetPassword}/>
+          <Route path="/singin" component={SingIn}/>
         </div>
       </Container>
     </Router>

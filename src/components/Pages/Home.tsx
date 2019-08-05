@@ -1,8 +1,8 @@
 import React from "react"
 
-class homepage extends React.Component{
+class homepage extends React.Component {
   render(): React.ReactNode {
-    return(
+    return (
       <h2>Home page</h2>
     )
   }

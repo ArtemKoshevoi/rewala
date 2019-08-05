@@ -5,7 +5,6 @@ import ApolloClient from "apollo-boost";
 
 import {ApolloProvider} from "react-apollo";
 
-//Connecting our site to the GraphQl API
 const client = new ApolloClient({
   uri: "https://rewala-api.2mc.team/graphql",
   headers: {
@@ -16,7 +15,7 @@ const client = new ApolloClient({
 const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
-      <AppRouter />
+      <AppRouter/>
     </ApolloProvider>
   );
 };
