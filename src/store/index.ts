@@ -13,8 +13,8 @@ const rootReducer = combineReducers({
 
 const epicMiddleware = createEpicMiddleware();
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleware)));
+const index = createStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleware)));
 
 epicMiddleware.run(rootEpic);
 
-export default store
+export default index
