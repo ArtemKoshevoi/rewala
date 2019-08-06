@@ -1,5 +1,5 @@
 import React from 'react';
-import SingIn from "../components/Pages/Authentification/SingIn";
+import { LoginScreen } from "../components/Pages/Authentification/SingIn";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import SingUp from "../components/Pages/Authentification/SingUp";
 import ResetPassword from "../components/Pages/Authentification/ResetPassword";
@@ -16,7 +16,7 @@ const appRouter: React.FC = () => {
           <Route exact path="/" component={Homepage}/>
           <Route path="/singup/" component={SingUp}/>
           <Route path="/resetpassword/" component={ResetPassword}/>
-          <Route path="/singin" component={SingIn}/>
+          <Route path="/singin" component={LoginScreen}/>
         </div>
       </Container>
     </Router>

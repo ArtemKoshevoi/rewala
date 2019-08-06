@@ -1,18 +1,23 @@
-import React from "react"
+import React, {FunctionComponent} from "react"
 import {Button, Container} from "@material-ui/core";
 import {Field, reduxForm} from "redux-form";
 import {renderTextField} from "./style";
+import {CustomAction, LoginFormValues} from "../../../../shared/Interfaces";
+import {Action, compose, Dispatch} from "redux";
 import {string} from "prop-types";
+import {Actions} from "../../../../store/auth/actions";
+import {connect} from "react-redux";
+import {RouteComponentProps} from "react-router";
 
-interface LoginFormValues {
-  Email: string,
-  Password: string;
-}
 
-const LogInScreen = ({ handleSubmit, submitting, pristine }: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  login: (loginFormValues: { Email: string, Password: string }) => dispatch(Actions.login(loginFormValues))
+});
+
+
+const Screen = ({ handleSubmit, submitting, pristine, login }: any) => {
   const onSubmit =  ({Email, Password}: LoginFormValues) => {
-    console.log(Email);
-    console.log(Password);
+    login({Email, Password})
   };
 
   return (
@@ -44,9 +49,18 @@ const LogInScreen = ({ handleSubmit, submitting, pristine }: any) => {
   )
 };
 
-export default reduxForm({
+export const LoginScreen: any = compose(
+  reduxForm({
   form: 'singIn',
-})(LogInScreen);
+}),connect(null, mapDispatchToProps))(Screen);
+
+// export const LoginScreen = compose(
+//   reduxForm<LoginFormData>({
+//     form: 'login',
+//     initialValues: { code: deviceService.getUserCountryData().cca2, number: undefined },
+//   }),
+//   connect(mapStateToProps, mapDispatchToProps),
+// )(Screen);
 
 
 

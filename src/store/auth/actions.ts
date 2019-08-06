@@ -1,4 +1,5 @@
 import {action, ActionType} from 'typesafe-actions';
+import {LoginFormValues} from "../../shared/Interfaces";
 
 export enum ActionTypes {
   LOGIN = 'LOGIN',
@@ -7,7 +8,7 @@ export enum ActionTypes {
 }
 
 export const Actions = {
-  login: (payload: number) => action(ActionTypes.LOGIN, payload),
+  login: (payload: LoginFormValues) => action(ActionTypes.LOGIN, payload),
   loginSucceded: (token?: string) => action(ActionTypes.LOGIN_SUCCEDED, token),
   loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
 };
