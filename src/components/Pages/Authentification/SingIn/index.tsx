@@ -1,24 +1,31 @@
 import React, {FunctionComponent} from "react"
 import {Button, Container} from "@material-ui/core";
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, InjectedArrayProps} from "redux-form";
 import {renderTextField} from "./style";
 import {CustomAction, LoginFormValues} from "../../../../shared/Interfaces";
 import {Action, compose, Dispatch} from "redux";
-import {string} from "prop-types";
 import {Actions} from "../../../../store/auth/actions";
 import {connect} from "react-redux";
-import {RouteComponentProps} from "react-router";
+import {RootState} from "../../../../store";
+import {getState} from "../../../../store/auth/selectors";
 
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: (loginFormValues: { Email: string, Password: string }) => dispatch(Actions.login(loginFormValues))
+const mapStateToProps = (state: RootState) => ({
+  requestState: getState(state),
 });
 
 
-const Screen = ({ handleSubmit, submitting, pristine, login }: any) => {
-  const onSubmit =  ({Email, Password}: LoginFormValues) => {
-    login({Email, Password})
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues))
+});
+
+
+const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
+  const onSubmit = (values: LoginFormValues) => {
+    console.log(values);
+    login({values})
   };
+  console.log(requestState);
 
   return (
     <Container maxWidth={"xs"}>
@@ -51,22 +58,13 @@ const Screen = ({ handleSubmit, submitting, pristine, login }: any) => {
 
 export const LoginScreen: any = compose(
   reduxForm({
-  form: 'singIn',
-}),connect(null, mapDispatchToProps))(Screen);
-
-// export const LoginScreen = compose(
-//   reduxForm<LoginFormData>({
-//     form: 'login',
-//     initialValues: { code: deviceService.getUserCountryData().cca2, number: undefined },
-//   }),
-//   connect(mapStateToProps, mapDispatchToProps),
-// )(Screen);
-
+    form: 'singIn',
+  }), connect(mapStateToProps, mapDispatchToProps))(Screen);
 
 
 /*import React from "react"
 import {Container} from "@material-ui/core";
-import SingInForm from "../../../../shared/Forms/SingInForm";
+import SingInForm from "../../../../shared/forms/SingInForm";
 import {gql} from "apollo-boost";
 import {ApolloConsumer, Mutation} from "react-apollo";
 

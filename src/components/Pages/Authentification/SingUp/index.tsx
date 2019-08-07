@@ -1,6 +1,6 @@
 import React from "react"
 import {Container} from "@material-ui/core";
-import SingUpForm from "../../../../shared/Forms/SingUpForm";
+import SingUpForm from "../../../../shared/forms/SingUpForm";
 import {gql} from "apollo-boost";
 import {ApolloConsumer, Mutation} from "react-apollo";
 

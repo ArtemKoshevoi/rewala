@@ -5,6 +5,7 @@ export enum ActionTypes {
   LOGIN = 'LOGIN',
   LOGIN_SUCCEDED = 'LOGIN_SUCCEDED',
   LOGIN_FAILED = 'LOGIN_FAILED',
+  LOGIN_CANCELED = 'LOGIN_CANCELED'
 }
 
 export const Actions = {

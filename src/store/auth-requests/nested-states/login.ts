@@ -10,11 +10,11 @@ const {
     reducer,
     ActionTypes,
     Actions,
-} = asyncActionHandlerFactory<{ number: string, prefix: string }, any, Error>('LOGIN_REQUEST');
+} = asyncActionHandlerFactory<{ email: string, password: string }, any, Error>('LOGIN_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
     actions$,
-    (payload) => authRequestsService.sendVerificationCode(payload),
+    (payload) => authRequestsService.login(payload),
 );
 
 export { epic, reducer, Actions, ActionTypes };
