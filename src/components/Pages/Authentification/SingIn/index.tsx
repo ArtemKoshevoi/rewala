@@ -16,16 +16,17 @@ const mapStateToProps = (state: RootState) => ({
 
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues))
+  login: (loginFormValues: { Email: string, Password: string }) => dispatch(Actions.login(loginFormValues))
 });
 
-
 const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
-  const onSubmit = (values: LoginFormValues) => {
-    console.log(values);
-    login({values})
+  const onSubmit = ({Email, Password}: LoginFormValues) => {
+    const email: string = Email;
+    const password: string = Password;
+    console.log(email, password);
+    login({email, password})
   };
-  console.log(requestState);
+  console.log(requestState.loginRequest.data);
 
   return (
     <Container maxWidth={"xs"}>
@@ -60,64 +61,6 @@ export const LoginScreen: any = compose(
   reduxForm({
     form: 'singIn',
   }), connect(mapStateToProps, mapDispatchToProps))(Screen);
-
-
-/*import React from "react"
-import {Container} from "@material-ui/core";
-import SingInForm from "../../../../shared/forms/SingInForm";
-import {gql} from "apollo-boost";
-import {ApolloConsumer, Mutation} from "react-apollo";
-
-
-class singIn extends React.Component {
-
-  render(): React.ReactNode {
-
-    const LOG_IN = gql`
-      mutation logIn($userLogin: LoginInput) {
-       login(input: $userLogin) {
-        email
-        authToken
-        status
-  }
-}
-`;
-
-    return (
-      <Container maxWidth={"xs"}>
-        <ApolloConsumer>
-          {client => (
-            <Mutation
-              mutation={LOG_IN}
-              onCompleted={({login}: any) => {
-                localStorage.setItem('token', login.authToken);
-                client.writeData({data: {isLoggedIn: true}});
-              }}
-            >
-              {(login: any, {loading, error}: any) => {
-                if (loading) return <p>Loading...</p>;
-                if (error) return <p>An error occurred</p>;
-
-                return <SingInForm onSubmit={(e: any) => {
-                  login({
-                    variables: {
-                      userLogin: {
-                        email: e.Email,
-                        password: e.Password
-                      }
-                    }
-                  });
-                }}/>;
-              }}
-            </Mutation>
-          )}
-        </ApolloConsumer>
-      </Container>
-    );
-  }
-}
-
-export default singIn*/
 
 
 
