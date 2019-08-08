@@ -2,31 +2,35 @@ import React, {FunctionComponent} from "react"
 import {Button, Container} from "@material-ui/core";
 import {Field, reduxForm, InjectedArrayProps} from "redux-form";
 import {renderTextField} from "./style";
-import {CustomAction, LoginFormValues} from "../../../../shared/Interfaces";
 import {Action, compose, Dispatch} from "redux";
 import {Actions} from "../../../../store/auth/actions";
 import {connect} from "react-redux";
 import {RootState} from "../../../../store";
 import {getState} from "../../../../store/auth/selectors";
 
+interface LoginFormValuesUpperCase {
+  Email: string,
+  Password: string
+}
 
-const mapStateToProps = (state: RootState) => ({
-  requestState: getState(state),
-});
-
+const mapStateToProps = (state: RootState) => {
+  const { loginRequest } = getState(state);
+  return { requestState: loginRequest.data }
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: (loginFormValues: { Email: string, Password: string }) => dispatch(Actions.login(loginFormValues))
+  login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
 });
 
 const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
-  const onSubmit = ({Email, Password}: LoginFormValues) => {
+  const onSubmit = ({Email, Password}: LoginFormValuesUpperCase) => {
     const email: string = Email;
     const password: string = Password;
-    console.log(email, password);
     login({email, password})
   };
-  console.log(requestState.loginRequest.data);
+  if (requestState !== null) {
+    localStorage.setItem('token', requestState.data.login.authToken)
+  }
 
   return (
     <Container maxWidth={"xs"}>

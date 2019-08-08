@@ -2,7 +2,7 @@ import {combineEpics, createEpicMiddleware} from "redux-observable";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {reducer as reduxFormReducer} from 'redux-form';
-import {loginCanceledEpic, loginEpic, loginFaildEpic, loginSuccededEpic} from "./auth/epics";
+import { loginEpic } from "./auth/epics";
 import {StateType} from "typesafe-actions";
 
 import {
@@ -14,9 +14,6 @@ import {
 const rootEpic = combineEpics(
   ...authRequestEpics,
   loginEpic,
-  loginSuccededEpic,
-  loginFaildEpic,
-  loginCanceledEpic
 );
 
 export type RootState = StateType<typeof rootReducer>;

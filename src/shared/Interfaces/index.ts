@@ -6,7 +6,7 @@ export interface CustomAction extends Action {
 }
 
 export interface LoginFormValues {
-  Email: string,
-  Password: string;
+  email: string,
+  password: string;
 }
 
