@@ -5,7 +5,7 @@ import {from, Subscribable} from "rxjs";
 import {GraphQLResponse} from "../../shared/types/graphql";
 
 class AuthRequestsService {
-  login(userLogin: { email: string, password: string })  {
+  login(userLogin: { email: string, password: string }) {
     const LOG_IN = {
       query: gql`
       mutation logIn($userLogin: LoginInput) {
@@ -20,6 +20,24 @@ class AuthRequestsService {
     };
 
     return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: any }>>)
+  }
+
+  getMe() {
+    const GET_ME = {
+      query: gql`
+        query getMe {
+          me{
+            email
+            profile{
+              fullName
+              phone
+    }
+  }
+        }
+      `,
+    };
+
+    return from(execute(link, GET_ME) as unknown as Subscribable<GraphQLResponse<{ me: any }>>)
   }
 }
 

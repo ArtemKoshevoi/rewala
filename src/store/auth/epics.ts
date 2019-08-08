@@ -13,3 +13,9 @@ export const loginEpic: Epic = (action$: Observable<Action> ): Observable<Action
   ),
   tap(res => console.log(res))
 );
+
+
+export const getCurrentUserEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+  ofType(ActionTypes.GET_CURRENT_USER),
+  map(() => AuthRequestActions.getMe.action()),
+);

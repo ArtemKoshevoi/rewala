@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import SingUp from "../components/Pages/Authentification/SingUp";
 import ResetPassword from "../components/Pages/Authentification/ResetPassword";
 import {Container} from "@material-ui/core";
-import Homepage from "../components/Pages/Home"
+import {HomepageScreen} from "../components/Pages/Home"
 import NavTabs from "../components/Nav/NavTabs";
 
 const appRouter: React.FC = () => {
@@ -13,7 +13,7 @@ const appRouter: React.FC = () => {
       <Container maxWidth={"md"}>
         <div>
           <NavTabs/>
-          <Route exact path="/" component={Homepage}/>
+          <Route exact path="/" component={HomepageScreen}/>
           <Route path="/singup/" component={SingUp}/>
           <Route path="/resetpassword/" component={ResetPassword}/>
           <Route path="/singin" component={LoginScreen}/>

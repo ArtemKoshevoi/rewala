@@ -23,9 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
-  const onSubmit = ({Email, Password}: LoginFormValuesUpperCase) => {
-    const email: string = Email;
-    const password: string = Password;
+  const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
     login({email, password})
   };
   if (requestState !== null) {

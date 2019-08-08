@@ -1,30 +1,40 @@
 import { combineReducers } from 'redux';
+import {ActionType, StateType} from "typesafe-actions";
 
 import {
   Actions as login,
-  ActionTypes as loginTypes,
+  ActionTypes as loginActionTypes,
   epic as loginEpic,
   reducer as loginReducer,
 } from './nested-states/login';
-import {ActionType, StateType} from "typesafe-actions";
+
+import {
+  Actions as getMe,
+  ActionTypes as getMeActionTypes,
+  epic as getMeEpic,
+  reducer as getMeReducer,
+} from './nested-states/getMe';
 
 export const Actions = {
-  login
+  login,
+  getMe
 };
 
 export const ActionTypes = {
-  loginTypes
+  loginActionTypes,
+  getMeActionTypes
 };
 
 export const reducer = combineReducers({
   loginRequest: loginReducer,
-
+  getMeRequest: getMeReducer,
 });
 
 export type ActionTypeUnion = ActionType<typeof reducer>;
 
 export const epics = [
-  loginEpic
+  loginEpic,
+  getMeEpic
 ];
 
 export type State = StateType<typeof reducer>;
