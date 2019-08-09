@@ -6,7 +6,7 @@ import {Action, compose, Dispatch} from "redux";
 import {Actions} from "../../../../store/auth/actions";
 import {connect} from "react-redux";
 import {RootState} from "../../../../store";
-import {getState} from "../../../../store/auth/selectors";
+import {getState, setToken} from "../../../../store/auth/selectors";
 
 interface LoginFormValuesUpperCase {
   Email: string,
@@ -24,11 +24,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
   const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
-    login({email, password})
+    login({email, password});
   };
   if (requestState !== null) {
-    localStorage.setItem('token', requestState.data.login.authToken)
+    setToken('token', requestState.data.login.authToken)
   }
+
+  console.log(requestState);
 
   return (
     <Container maxWidth={"xs"}>
@@ -50,9 +52,9 @@ const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) 
           </div>
         </div>
         <div>
-          <Button fullWidth={true} type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
-            Sing In
-          </Button>
+            <Button fullWidth={true} type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
+              Sing In
+            </Button>
         </div>
       </form>
     </Container>

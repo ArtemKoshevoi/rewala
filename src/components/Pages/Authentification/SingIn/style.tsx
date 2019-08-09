@@ -5,7 +5,7 @@ export const renderTextField = (
   {input, label, meta: {touched, error}, ...custom}: any,
 ) => (
   <TextField
-    hintText={label}
+    // hintText={label}
     floatingLabelText={label}
     errorText={touched && error}
     {...input}

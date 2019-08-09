@@ -15,7 +15,7 @@ const renderTextField = (
         variant="outlined"
         placeholder={label}
         margin="normal"
-        fullWidth={true}
+        // fullWidth={true}
         defaultValue={1}
     />
 );
@@ -24,7 +24,7 @@ const renderSelectField = (
     { input, label, meta: { touched, error }, children, ...custom }: any,
 ) => (
     <Select
-        floatingLabelText={label}
+        // floatingLabelText={label}
         errorText={touched && error}
         {...input}
         // onChange={(event, index, value): any => input.onChange(value)}
