@@ -2,13 +2,13 @@ import React from "react"
 import {Container} from "@material-ui/core";
 import Header from "../../shared/components/header";
 
-class HomePage extends React.Component {
+class Notifications extends React.Component {
   render(): React.ReactNode {
     return (
       <Container>
         <Header />
         <div>
-          <h2>HomePage</h2>
+          <h2>Notifications</h2>
         </div>
       </Container>
 
@@ -16,4 +16,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage
+export default Notifications

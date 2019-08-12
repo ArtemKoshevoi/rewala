@@ -57,9 +57,7 @@ export default function SimpleTabs() {
 
   return (
     <div className={classes.root}>
-
       <AppBar position="static">
-
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <img style={imgStyle}
                src={"https://rewala.com/img/logo-desktop.svg"}/>

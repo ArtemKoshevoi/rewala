@@ -1,26 +1,40 @@
 import React from 'react';
 import { LoginScreen } from "../components/Pages/Authentification/SingIn";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import SingUp from "../components/Pages/Authentification/SingUp";
-import ResetPassword from "../components/Pages/Authentification/ResetPassword";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import {Container} from "@material-ui/core";
-import {HomepageScreen} from "../components/Pages/Home"
-import NavTabs from "../components/Nav/NavTabs";
+import HomePage from "../components/Pages/Home"
+import PublicRoute from "./publicRoute";
+import PrivateRoute from "./privatRoute";
+import Search from "../components/Pages/Search";
+import Notifications from "../components/Pages/Notifications";
+import {ProfileScreen} from "../components/Pages/Profile";
+
 
 const appRouter: React.FC = () => {
   return (
-    <Router>
       <Container maxWidth={"md"}>
-        <div>
-          <NavTabs/>
-          <Route exact path="/" component={HomepageScreen}/>
-          <Route path="/singup/" component={SingUp}/>
-          <Route path="/resetpassword/" component={ResetPassword}/>
-          <Route path="/singin" component={LoginScreen}/>
-        </div>
+        <Router>
+          <Switch>
+            <PublicRoute restricted={true} component={LoginScreen} path="/login"  />
+            <PrivateRoute component={HomePage} path="/" exact/>
+            <PrivateRoute component={Search} path="/search" />
+            <PrivateRoute component={Notifications} path="/notifications" />
+            <PrivateRoute component={ProfileScreen} path="/profile" />
+          </Switch>
+        </Router>
       </Container>
-    </Router>
   );
 };
 
 export default appRouter;
+
+{/*<div>*/}
+{/*{isLoggedIn()?*/}
+{/*<Route exact path="/" component={HomepageScreen} /> :*/}
+{/*<Route path="/login" component={LoginScreen}/>*/}
+{/*}*/}
+{/*<Route path="/singup/" component={SingUp}/>*/}
+{/*<Route path="/resetpassword/" component={ResetPassword}/>*/}
+{/*<Route exact path="/" component={HomepageScreen} />*/}
+{/*<Route path="/login" component={LoginScreen}/>*/}
+{/*</div>*/}
