@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginScreen } from "../components/Pages/Authentification/SingIn";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {Container} from "@material-ui/core";
 import HomePage from "../components/Pages/Home"
 import PublicRoute from "./publicRoute";
@@ -27,14 +27,3 @@ const appRouter: React.FC = () => {
 };
 
 export default appRouter;
-
-{/*<div>*/}
-{/*{isLoggedIn()?*/}
-{/*<Route exact path="/" component={HomepageScreen} /> :*/}
-{/*<Route path="/login" component={LoginScreen}/>*/}
-{/*}*/}
-{/*<Route path="/singup/" component={SingUp}/>*/}
-{/*<Route path="/resetpassword/" component={ResetPassword}/>*/}
-{/*<Route exact path="/" component={HomepageScreen} />*/}
-{/*<Route path="/login" component={LoginScreen}/>*/}
-{/*</div>*/}

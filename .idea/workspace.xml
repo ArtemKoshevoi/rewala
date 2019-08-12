@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04c0cdf0-9827-45f3-8e3c-10d6c4df02a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Pages/Notifications.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Pages/Profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Pages/Search.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/AppRouter/style.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/privatRoute.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/publicRoute.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/components/header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/utils/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/NavTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/NavTabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Authentification/ResetPassword/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/appRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/appRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/forms/showResults.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/selectors.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="313">
+              <caret line="34" column="6" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="36" selection-end-column="7" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -39,11 +28,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/appRouter.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="360">
+              <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,19 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/Pages/Home.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Pages/Notifications.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="28" lean-forward="true" selection-end-line="18" selection-end-column="28" />
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -111,10 +91,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Pages/Profile.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="26" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="26" />
+            <state relative-caret-position="-525">
+              <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/store/auth-requests/service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,6 +152,8 @@
       <find>floatingLabelText</find>
       <find>errorText</find>
       <find>userLogin</find>
+      <find>handleSubmit</find>
+      <find>requestState</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/shared/link/index.ts" />
         <option value="$PROJECT_DIR$/src/store/auth/actions.ts" />
         <option value="$PROJECT_DIR$/src/store/auth/epics.ts" />
-        <option value="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" />
         <option value="$PROJECT_DIR$/src/store/auth/selectors.ts" />
         <option value="$PROJECT_DIR$/src/store/utils/auth.ts" />
         <option value="$PROJECT_DIR$/src/router/privatRoute.tsx" />
@@ -216,9 +209,10 @@
         <option value="$PROJECT_DIR$/src/router/AppRouter/style.tsx" />
         <option value="$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx" />
         <option value="$PROJECT_DIR$/src/shared/components/header.tsx" />
-        <option value="$PROJECT_DIR$/src/components/Pages/Profile.tsx" />
         <option value="$PROJECT_DIR$/src/components/Pages/Home.tsx" />
         <option value="$PROJECT_DIR$/src/router/appRouter.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" />
+        <option value="$PROJECT_DIR$/src/components/Pages/Profile.tsx" />
       </list>
     </option>
   </component>
@@ -259,27 +253,20 @@
               <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
               <item name="rewala" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
               <item name="rewala" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
               <item name="rewala" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rewala" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-              <item name="AppRouter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
@@ -300,6 +287,19 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
               <item name="forms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="auth-requests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -369,12 +369,12 @@
       <workItem from="1565244749553" duration="8240000" />
       <workItem from="1565253475630" duration="25346000" />
       <workItem from="1565333788977" duration="27889000" />
-      <workItem from="1565593687616" duration="18925000" />
+      <workItem from="1565593687616" duration="28300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208665000" />
+    <option name="totallyTimeSpent" value="218040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -455,13 +455,6 @@
     <entry file="file://$PROJECT_DIR$/src/pages/SingOut.tsx" />
     <entry file="file://$PROJECT_DIR$/src/pages/SingIn.tsx" />
     <entry file="file://$PROJECT_DIR$/src/pages/Logout.tsx" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nav/style.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -641,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/auth/selectors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/auth-requests/nested-states/getMe.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -688,16 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/auth-requests/service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="55" column="3" lean-forward="true" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -721,12 +697,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/publicRoute.tsx">
+    <entry file="file://$PROJECT_DIR$/src/shared/forms/showResults.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/auth/selectors.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Pages/Notifications.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Pages/Home.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -741,25 +744,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/forms/showResults.tsx">
+    <entry file="file://$PROJECT_DIR$/src/router/privatRoute.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/publicRoute.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/appRouter.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="313">
+          <caret line="34" column="6" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="36" selection-end-column="7" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="45" lean-forward="true" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Pages/Search.tsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -773,48 +806,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Pages/Profile.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="26" />
+        <state relative-caret-position="-525">
+          <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Pages/Notifications.tsx">
+    <entry file="file://$PROJECT_DIR$/src/store/auth-requests/service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="28" lean-forward="true" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="390">
+          <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Pages/Home.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/privatRoute.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/appRouter.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
     </entry>

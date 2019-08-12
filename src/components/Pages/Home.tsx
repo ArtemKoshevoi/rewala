@@ -8,7 +8,7 @@ class HomePage extends React.Component {
       <Container>
         <Header />
         <div>
-          <h2>HomePage</h2>
+          <h2>Home Page</h2>
         </div>
       </Container>
 

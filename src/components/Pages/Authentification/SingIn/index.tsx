@@ -7,6 +7,7 @@ import {Actions} from "../../../../store/auth/actions";
 import {connect} from "react-redux";
 import {RootState} from "../../../../store";
 import {getState, setToken} from "../../../../store/auth/selectors";
+import {Redirect} from "react-router";
 
 interface LoginFormValuesUpperCase {
   Email: string,
@@ -22,44 +23,49 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
 });
 
-const Screen = ({handleSubmit, submitting, pristine, login, requestState}: any) => {
-  const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase): void => {
-    login({email, password});
-  };
-  if (requestState !== null) {
-    setToken('token', requestState.data.login.authToken)
-  }
+class Screen extends React.Component{
+  render(): React.ReactNode {
+    const {handleSubmit, submitting, pristine, login, requestState}: any = this.props;
 
-  console.log(requestState);
+    const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
+      login({email, password});
+    };
+    if (requestState !== null) {
+      setToken('token', requestState.data.login.authToken);
+      return  (
+        <Redirect to='/' />
+      )
+    }
 
-  return (
-    <Container maxWidth={"xs"}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+    return (
+      <Container maxWidth={"xs"}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <Field
-              name="Email"
-              component={renderTextField}
-              label="Email"
-            />
+            <div>
+              <Field
+                name="Email"
+                component={renderTextField}
+                label="Email"
+              />
+            </div>
+            <div>
+              <Field
+                name="Password"
+                component={renderTextField}
+                label="Password"
+              />
+            </div>
           </div>
           <div>
-            <Field
-              name="Password"
-              component={renderTextField}
-              label="Password"
-            />
-          </div>
-        </div>
-        <div>
             <Button fullWidth={true} type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
               Sing In
             </Button>
-        </div>
-      </form>
-    </Container>
-  )
-};
+          </div>
+        </form>
+      </Container>
+    )
+  }
+}
 
 export const LoginScreen: any = compose(
   reduxForm({
