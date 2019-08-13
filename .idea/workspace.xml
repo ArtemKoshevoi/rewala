@@ -3,37 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="04c0cdf0-9827-45f3-8e3c-10d6c4df02a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/NavTabs.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/style.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Authentification/SingIn/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Authentification/SingUp/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Notifications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Notifications.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pages/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pages/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/AppRouter/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/AppRouter/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/privatRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/privatRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/publicRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/publicRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/Interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/Interfaces/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/components/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/forms/SingUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/forms/SingUpForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/link/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/link/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shared/services/nav.service.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/nav.service.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types/graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types/graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth-requests/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth-requests/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth-requests/nested-states/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth-requests/nested-states/login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth-requests/nested-states/logout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth-requests/nested-states/logout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth-requests/service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth-requests/service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/auth/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/epics.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/selectors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/src/store/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-87">
-              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -55,10 +28,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shared/services/nav.service.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="135">
+              <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/store/auth/epics.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/router/publicRoute.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -86,17 +71,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/privatRoute.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shared/services/auth.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="56" selection-start-column="56" selection-end-column="56" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.css">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -115,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/containers/App/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -123,22 +115,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/store/auth-requests/service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            <state relative-caret-position="300">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
               <folding>
-                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -226,10 +209,8 @@
         <option value="$PROJECT_DIR$/src/shared/Interfaces/index.ts" />
         <option value="$PROJECT_DIR$/src/shared/link/index.ts" />
         <option value="$PROJECT_DIR$/src/shared/services/auth.service.ts" />
-        <option value="$PROJECT_DIR$/src/shared/services/nav.service.tsx" />
         <option value="$PROJECT_DIR$/src/shared/types/graphql.ts" />
         <option value="$PROJECT_DIR$/src/store/auth/actions.ts" />
-        <option value="$PROJECT_DIR$/src/store/auth/epics.ts" />
         <option value="$PROJECT_DIR$/src/store/auth/selectors.ts" />
         <option value="$PROJECT_DIR$/src/store/auth-requests/index.ts" />
         <option value="$PROJECT_DIR$/src/store/auth-requests/service.ts" />
@@ -237,6 +218,8 @@
         <option value="$PROJECT_DIR$/src/store/auth-requests/nested-states/logout.ts" />
         <option value="$PROJECT_DIR$/src/store/index.ts" />
         <option value="$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx" />
+        <option value="$PROJECT_DIR$/src/shared/services/nav.service.tsx" />
+        <option value="$PROJECT_DIR$/src/store/auth/epics.ts" />
       </list>
     </option>
   </component>
@@ -317,6 +300,13 @@
               <item name="rewala" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewala" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rewala" type="b2602c69:ProjectViewProjectNode" />
@@ -410,12 +400,12 @@
       <workItem from="1565704698115" duration="97000" />
       <workItem from="1565704810370" duration="499000" />
       <workItem from="1565705375833" duration="7142000" />
-      <workItem from="1565722096724" duration="5095000" />
+      <workItem from="1565722096724" duration="8130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254557000" />
+    <option name="totallyTimeSpent" value="257592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="59" y="25" width="1221" height="695" extended-state="6" />
@@ -662,16 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/privatRoute.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/AppRouter/style.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -740,16 +720,6 @@
           <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/auth/epics.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -831,7 +801,7 @@
     <entry file="file://$PROJECT_DIR$/src/store/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-87">
-          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -842,20 +812,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/services/nav.service.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/publicRoute.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -872,7 +832,17 @@
     <entry file="file://$PROJECT_DIR$/src/containers/App/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/privatRoute.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -881,8 +851,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router/AppRouter/appRouter.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        <state relative-caret-position="300">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/services/nav.service.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/auth/epics.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

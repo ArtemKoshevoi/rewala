@@ -7,6 +7,7 @@ import { redirectToHomepage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
+import { push } from 'react-router-redux';
 
 export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.LOGIN),
@@ -36,5 +37,5 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => ac
   ofType(ActionTypes.LOGIN_SUCCEDED),
   map((action) => action.payload),
   map((payload: string) => setToken('token', payload)),
-  map(() => redirectToHomepage()),
+  map(() => push('/')),
 );
