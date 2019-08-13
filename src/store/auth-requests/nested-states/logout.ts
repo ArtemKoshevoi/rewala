@@ -9,7 +9,7 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<{FCMToken: string}, any, Error>('LOGOUT_REQUEST');
+} = asyncActionHandlerFactory<{ FCMToken: string }, any, Error>('LOGOUT_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,

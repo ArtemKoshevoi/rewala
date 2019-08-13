@@ -1,9 +1,9 @@
-export const setToken = (storageName: string, token: any ) => {
+export const setToken = (storageName: string, token: any) => {
   console.log(333);
   localStorage.setItem(storageName, token.data.login.authToken);
 };
 
-export const getToken = (): string|null => {
+export const getToken = (): string | null => {
   return localStorage.getItem('token');
 };
 

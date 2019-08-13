@@ -4,6 +4,6 @@ import { Redirect } from 'react-router';
 export const redirectToHomepage = () => {
   console.log(444);
   return (
-    <Redirect to='/' />
+    <Redirect to='/'/>
   );
 };

@@ -1,8 +1,8 @@
-import {execute} from 'apollo-link';
+import { execute } from 'apollo-link';
 import gql from 'graphql-tag';
-import {from, Subscribable} from 'rxjs';
+import { from, Subscribable } from 'rxjs';
 import link from '../../shared/link';
-import {GraphQLResponse} from '../../shared/types/graphql';
+import { GraphQLResponse } from '../../shared/types/graphql';
 
 class AuthRequestsService {
   login(userLogin: { email: string, password: string }) {
@@ -40,7 +40,7 @@ class AuthRequestsService {
     return from(execute(link, GET_ME) as unknown as Subscribable<GraphQLResponse<{ me: any }>>);
   }
 
-  logout(token: {FCMToken: string}) {
+  logout(token: { FCMToken: string }) {
     console.log(token);
     const LOG_OUT = {
       query: gql`

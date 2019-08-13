@@ -10,4 +10,6 @@ export interface RequestError {
   statusCode?: number;
 }
 
-export type GraphQLResponse<ResponseType> = FetchResult<{errors: RequestError[], data: ResponseType}> & {data: ResponseType, errors: RequestError[]};
+export type GraphQLResponse<ResponseType> =
+  FetchResult<{ errors: RequestError[], data: ResponseType }>
+  & { data: ResponseType, errors: RequestError[] };

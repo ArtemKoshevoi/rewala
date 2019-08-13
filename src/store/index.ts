@@ -1,8 +1,8 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {reducer as reduxFormReducer} from 'redux-form';
-import {combineEpics, createEpicMiddleware} from 'redux-observable';
-import {StateType} from 'typesafe-actions';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { reducer as reduxFormReducer } from 'redux-form';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { StateType } from 'typesafe-actions';
 import {
   getCurrentUserEpic,
   loginEpic,
@@ -34,8 +34,8 @@ const rootReducer = combineReducers({
 
 const epicMiddleware = createEpicMiddleware();
 
-const index = createStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleware)));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleware)));
 
 epicMiddleware.run(rootEpic);
 
-export default index;
+export default store;

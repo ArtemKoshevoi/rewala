@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {ActionType, StateType} from 'typesafe-actions';
+import { ActionType, StateType } from 'typesafe-actions';
 
 import {
   Actions as login,

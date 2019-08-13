@@ -1,13 +1,12 @@
-import {Button, Container} from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router';
-import {compose, Dispatch} from 'redux';
-import {Field, reduxForm} from 'redux-form';
-import {RootState} from '../../../../store';
-import {Actions} from '../../../../store/auth/actions';
-import {getState} from '../../../../store/auth/selectors';
-import {renderTextField} from './style';
+import { connect } from 'react-redux';
+import { compose, Dispatch } from 'redux';
+import { Field, reduxForm } from 'redux-form';
+import { RootState } from '../../../../store';
+import { Actions } from '../../../../store/auth/actions';
+import { getState } from '../../../../store/auth/selectors';
+import { renderTextField } from './style';
 
 interface LoginFormValuesUpperCase {
   Email: string;
@@ -15,15 +14,15 @@ interface LoginFormValuesUpperCase {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { loginRequest } = getState(state);
-  return { requestState: loginRequest.data };
+  const {loginRequest} = getState(state);
+  return {requestState: loginRequest.data};
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
 });
 
-class Screen extends React.Component{
+class Screen extends React.Component {
   render(): React.ReactNode {
     const {handleSubmit, submitting, pristine, login, requestState}: any = this.props;
 
@@ -65,7 +64,13 @@ class Screen extends React.Component{
             </div>
           </div>
           <div>
-            <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>
+            <Button
+              fullWidth={true}
+              type='submit'
+              variant='contained'
+              color='primary'
+              disabled={pristine || submitting}
+            >
               Sing In
             </Button>
           </div>
