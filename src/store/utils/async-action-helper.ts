@@ -1,5 +1,5 @@
-import {Observable, of, pipe} from 'rxjs';
-import {catchError, concatMap, filter, map, mergeMap, switchMap, takeUntil, tap} from 'rxjs/operators';
+import { Observable, of, pipe } from 'rxjs';
+import { catchError, concatMap, filter, map, mergeMap, switchMap, takeUntil } from 'rxjs/operators';
 
 interface Action<TType extends string = string> {
   type: TType;
@@ -10,7 +10,7 @@ interface PayloadAction<PType, TType extends string = string> extends Action<TTy
 }
 
 interface PayloadMetaAction<PType, TType extends string = string, MType extends string = string> extends PayloadAction<PType, TType> {
-  meta: MType,
+  meta: MType;
 }
 
 export enum AsyncActionStatus {

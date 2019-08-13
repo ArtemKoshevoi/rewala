@@ -1,6 +1,6 @@
-import React from "react"
-import {Container} from "@material-ui/core";
-import Header from "../../shared/components/header";
+import {Container} from '@material-ui/core';
+import React from 'react';
+import Header from '../../shared/components/header';
 
 class HomePage extends React.Component {
   render(): React.ReactNode {
@@ -16,4 +16,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage
+export default HomePage;

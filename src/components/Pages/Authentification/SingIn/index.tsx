@@ -1,22 +1,22 @@
-import React, {FunctionComponent} from "react"
-import {Button, Container} from "@material-ui/core";
-import {Field, reduxForm, InjectedArrayProps} from "redux-form";
-import {renderTextField} from "./style";
-import {Action, compose, Dispatch} from "redux";
-import {Actions} from "../../../../store/auth/actions";
-import {connect} from "react-redux";
-import {RootState} from "../../../../store";
-import {getState, setToken} from "../../../../store/auth/selectors";
-import {Redirect} from "react-router";
+import {Button, Container} from '@material-ui/core';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router';
+import {compose, Dispatch} from 'redux';
+import {Field, reduxForm} from 'redux-form';
+import {RootState} from '../../../../store';
+import {Actions} from '../../../../store/auth/actions';
+import {getState} from '../../../../store/auth/selectors';
+import {renderTextField} from './style';
 
 interface LoginFormValuesUpperCase {
-  Email: string,
-  Password: string
+  Email: string;
+  Password: string;
 }
 
 const mapStateToProps = (state: RootState) => {
   const { loginRequest } = getState(state);
-  return { requestState: loginRequest.data }
+  return { requestState: loginRequest.data };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -30,40 +30,48 @@ class Screen extends React.Component{
     const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
       login({email, password});
     };
+
     if (requestState !== null) {
-      setToken('token', requestState.data.login.authToken);
+      console.log(requestState.data.login);
       return  (
-        <Redirect to='/' />
-      )
+          <Redirect to='/' />
+        );
     }
 
+    // if (requestState !== null) {
+    //   console.log(222, requestState);
+    //   return  (
+    //     <Redirect to='/' />
+    //   )
+    // }
+
     return (
-      <Container maxWidth={"xs"}>
+      <Container maxWidth={'xs'}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div>
               <Field
-                name="Email"
+                name='Email'
                 component={renderTextField}
-                label="Email"
+                label='Email'
               />
             </div>
             <div>
               <Field
-                name="Password"
+                name='Password'
                 component={renderTextField}
-                label="Password"
+                label='Password'
               />
             </div>
           </div>
           <div>
-            <Button fullWidth={true} type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
+            <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>
               Sing In
             </Button>
           </div>
         </form>
       </Container>
-    )
+    );
   }
 }
 
@@ -71,6 +79,3 @@ export const LoginScreen: any = compose(
   reduxForm({
     form: 'singIn',
   }), connect(mapStateToProps, mapDispatchToProps))(Screen);
-
-
-

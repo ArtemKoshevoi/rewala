@@ -1,17 +1,17 @@
 import React  from 'react';
 
-import {Button, ButtonGroup, Grid} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
+import {Button, ButtonGroup, Grid} from '@material-ui/core';
+import {NavLink} from 'react-router-dom';
 
 class Header extends React.Component {
   render(): React.ReactNode {
     return (
-      <Grid item>
+      <Grid item={true}>
         <ButtonGroup
-          fullWidth
-          variant="contained"
+          fullWidth={true}
+          variant='contained'
         >
-          <Button component={NavLink} to='/' exact activeStyle={{color: 'orange'}}>
+          <Button component={NavLink} to='/' exact={true} activeStyle={{color: 'orange'}}>
             Home
           </Button>
           <Button component={NavLink} to='/search' activeStyle={{color: 'orange'}}>
@@ -25,9 +25,8 @@ class Header extends React.Component {
           </Button>
         </ButtonGroup>
       </Grid>
-    )
+    );
   }
 }
 
-export default Header
-
+export default Header;

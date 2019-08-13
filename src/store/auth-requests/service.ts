@@ -1,9 +1,8 @@
 import {execute} from 'apollo-link';
 import gql from 'graphql-tag';
-import link from "../../shared/link";
-import {from, Subscribable} from "rxjs";
-import {GraphQLResponse} from "../../shared/types/graphql";
-import {removeToken} from "../auth/selectors";
+import {from, Subscribable} from 'rxjs';
+import link from '../../shared/link';
+import {GraphQLResponse} from '../../shared/types/graphql';
 
 class AuthRequestsService {
   login(userLogin: { email: string, password: string }) {
@@ -17,10 +16,10 @@ class AuthRequestsService {
   }
 }
 `,
-      variables: {userLogin}
+      variables: {userLogin},
     };
 
-    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: any }>>)
+    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: any }>>);
   }
 
   getMe() {
@@ -38,7 +37,7 @@ class AuthRequestsService {
       `,
     };
 
-    return from(execute(link, GET_ME) as unknown as Subscribable<GraphQLResponse<{ me: any }>>)
+    return from(execute(link, GET_ME) as unknown as Subscribable<GraphQLResponse<{ me: any }>>);
   }
 
   logout(token: {FCMToken: string}) {
@@ -49,7 +48,7 @@ class AuthRequestsService {
           logout(input: $token)
         }
       `,
-      variables: {token}
+      variables: {token},
     };
 
     return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ login: any }>>);

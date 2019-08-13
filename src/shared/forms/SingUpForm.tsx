@@ -1,20 +1,17 @@
+import {Button, Select, TextField} from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import {Button, Select, TextField} from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const renderTextField = (
     { input, label, meta: { touched, error }, ...custom }: any,
 ) => (
     <TextField
-        // hintText={label}
-        // floatingLabelText={label}
-        // errorText={touched && error}
         {...input}
         {...custom}
-        variant="outlined"
+        variant='outlined'
         placeholder={label}
-        margin="normal"
+        margin='normal'
         // fullWidth={true}
         defaultValue={1}
     />
@@ -24,7 +21,6 @@ const renderSelectField = (
     { input, label, meta: { touched, error }, children, ...custom }: any,
 ) => (
     <Select
-        // floatingLabelText={label}
         errorText={touched && error}
         {...input}
         // onChange={(event, index, value): any => input.onChange(value)}
@@ -40,43 +36,43 @@ const SingUpForm = (props: any) => {
             <div>
                 <div>
                     <Field
-                        name="FullName"
+                        name='FullName'
                         component={renderTextField}
-                        label="FullName"
+                        label='FullName'
                     />
                 </div>
                 <div>
                     <Field
-                        name="countryCode"
+                        name='countryCode'
                         component={renderSelectField}
-                        label="Country Code"
+                        label='Country Code'
                     >
-                        <MenuItem value="1"  >+380</MenuItem>
+                        <MenuItem value='1'  >+380</MenuItem>
                     </Field>
                     <Field
-                        name="Phone"
+                        name='Phone'
                         component={renderTextField}
-                        label="Phone (optional)"
+                        label='Phone (optional)'
                     />
                     <Field
-                        name="Email"
+                        name='Email'
                         component={renderTextField}
-                        label="Email"
+                        label='Email'
                     />
                     <Field
-                        name="Password"
+                        name='Password'
                         component={renderTextField}
-                        label="Password"
+                        label='Password'
                     />
                     <Field
-                        name="ConfirmPassword"
+                        name='ConfirmPassword'
                         component={renderTextField}
-                        label="Confirm Password"
+                        label='Confirm Password'
                     />
                 </div>
             </div>
             <div>
-                <Button fullWidth={true} type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
+                <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>
                     Sing Up
                 </Button>
             </div>

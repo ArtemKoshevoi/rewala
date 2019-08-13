@@ -1,8 +1,8 @@
-import React from "react"
-import {Container} from "@material-ui/core";
-import SingUpForm from "../../../../shared/forms/SingUpForm";
-import {gql} from "apollo-boost";
-import {ApolloConsumer, Mutation} from "react-apollo";
+import {Container} from '@material-ui/core';
+import {gql} from 'apollo-boost';
+import React from 'react';
+import {ApolloConsumer, Mutation} from 'react-apollo';
+import SingUpForm from '../../../../shared/forms/SingUpForm';
 
 class singUp extends React.Component {
   render(): React.ReactNode {
@@ -17,7 +17,7 @@ class singUp extends React.Component {
 }
 `;
     return (
-      <Container maxWidth={"xs"}>
+      <Container maxWidth={'xs'}>
         <ApolloConsumer>
           {client => (
             <Mutation
@@ -36,9 +36,9 @@ class singUp extends React.Component {
                     variables: {
                       userLogin: {
                         email: e.Email,
-                        password: e.Password
-                      }
-                    }
+                        password: e.Password,
+                      },
+                    },
                   });
                 }}/>;
               }}
@@ -50,4 +50,4 @@ class singUp extends React.Component {
   }
 }
 
-export default singUp
+export default singUp;

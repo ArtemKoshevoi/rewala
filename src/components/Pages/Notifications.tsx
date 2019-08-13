@@ -1,6 +1,6 @@
-import React from "react"
-import {Container} from "@material-ui/core";
-import Header from "../../shared/components/header";
+import {Container} from '@material-ui/core';
+import React from 'react';
+import Header from '../../shared/components/header';
 
 class Notifications extends React.Component {
   render(): React.ReactNode {
@@ -16,4 +16,4 @@ class Notifications extends React.Component {
   }
 }
 
-export default Notifications
+export default Notifications;

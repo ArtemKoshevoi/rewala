@@ -1,9 +1,9 @@
-import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
-import { Action } from 'typesafe-actions';
 import { Observable } from 'rxjs';
+import { Action } from 'typesafe-actions';
+import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 
+import {Epic} from 'redux-observable';
 import { authRequestsService } from '../service';
-import {Epic} from "redux-observable";
 
 const {
     effect,
@@ -16,6 +16,5 @@ const epic: Epic = (actions$: Observable<Action>) => effect(
     actions$,
     (payload) => authRequestsService.login(payload),
 );
-
 
 export { epic, reducer, Actions, ActionTypes };

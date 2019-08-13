@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {ActionType, StateType} from "typesafe-actions";
+import {ActionType, StateType} from 'typesafe-actions';
 
 import {
   Actions as login,
@@ -25,13 +25,13 @@ import {
 export const Actions = {
   login,
   logout,
-  getMe
+  getMe,
 };
 
 export const ActionTypes = {
   loginActionTypes,
   logoutActionTypes,
-  getMeActionTypes
+  getMeActionTypes,
 };
 
 export const reducer = combineReducers({
@@ -45,7 +45,7 @@ export type ActionTypeUnion = ActionType<typeof reducer>;
 export const epics = [
   loginEpic,
   logoutEpic,
-  getMeEpic
+  getMeEpic,
 ];
 
 export type State = StateType<typeof reducer>;

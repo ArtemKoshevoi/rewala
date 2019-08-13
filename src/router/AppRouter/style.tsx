@@ -1,5 +1,5 @@
-import {CSSProperties} from "react";
+import {CSSProperties} from 'react';
 
 export const active: CSSProperties = {
-  color: "orange"
+  color: 'orange',
 };

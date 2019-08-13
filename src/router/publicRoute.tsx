@@ -1,15 +1,18 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import {isLoggedIn} from "../store/utils/auth";
+import { Redirect, Route } from 'react-router-dom';
+import { isLoggedIn } from '../store/utils/auth';
 
 const PublicRoute = ({component: Component, restricted, ...rest}: any) => {
   console.log({...rest});
   return (
-    <Route {...rest} render={props => (
-      isLoggedIn() && restricted ?
-        <Redirect to="/" />
-        : <Component {...props} />
-    )} />
+    <Route
+      {...rest}
+      render={props => (
+        isLoggedIn() && restricted ?
+          <Redirect to='/'/>
+          : <Component {...props} />
+      )}
+    />
   );
 };
 

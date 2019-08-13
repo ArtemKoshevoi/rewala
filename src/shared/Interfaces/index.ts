@@ -1,15 +1,14 @@
-import {Action} from "redux";
-
+import {Action} from 'redux';
 
 export interface CustomAction extends Action {
-  payload: any
+  payload: any;
 }
 
 export interface LoginFormValues {
-  email: string,
+  email: string;
   password: string;
 }
 
 export interface LogOutValue {
-  FCMToken: string
+  FCMToken: string;
 }

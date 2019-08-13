@@ -1,9 +1,8 @@
 import { Epic } from 'redux-observable';
-import { Action } from 'typesafe-actions';
 import { Observable } from 'rxjs';
+import { Action } from 'typesafe-actions';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 import { authRequestsService } from '../service';
-import {tap} from "rxjs/operators";
 
 const {
   effect,
