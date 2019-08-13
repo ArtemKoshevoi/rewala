@@ -12,7 +12,7 @@ export enum ActionTypes {
 export const Actions = {
   login: (payload: LoginFormValues) => action(ActionTypes.LOGIN, payload),
   loginSucceded: (token?: string) => action(ActionTypes.LOGIN_SUCCEDED, token),
-  // loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
+  loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
   logout: (payload: LogOutValue) => action(ActionTypes.LOGOUT, payload),
   getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
 };

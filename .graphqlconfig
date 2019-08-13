@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "rewala": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "https://rewala-api.2mc.team/graphql"
+        }
+      }
+    }
+  }
+}

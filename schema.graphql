@@ -1,0 +1,337 @@
+# source: https://rewala-api.2mc.team/graphql
+# timestamp: Tue Aug 13 2019 17:27:51 GMT+0300 (Eastern European Summer Time)
+
+directive @uploadDir on FIELD_DEFINITION
+
+input AddVoteInput {
+  questionOptionId: MongoId
+}
+
+input ChangePasswordInput {
+  oldPassword: String!
+  newPassword: String!
+}
+
+type Config {
+  countries: [Country]
+}
+
+type Contact {
+  _id: MongoId
+  friendTo: String
+  status: String
+  emails: [String]
+  phones: [String]
+}
+
+input ContactInput {
+  emails: [String]
+  phones: [String]
+}
+
+type Country {
+  _id: MongoId
+  name: String
+  shortName: String
+  currency: String
+  code: String
+  flag: String
+}
+
+input CreateFollowRequestInput {
+  toUserId: String
+}
+
+input CreateQuestionInput {
+  title: String
+  titleColor: String
+  expiredTime: String
+  background: Upload
+  type: QuestionType
+  memberIds: [MongoId]
+  questionOptions: [CreateQuestionOptionInput]
+}
+
+input CreateQuestionOptionInput {
+  text: String!
+}
+
+input FCMTokenInput {
+  token: String
+}
+
+type FollowRequest {
+  _id: MongoId
+  fromUserId: MongoId
+  toUserId: MongoId
+  status: FollowRequestStatus
+  fromUser: User
+  toUser: User
+}
+
+type FollowRequestNotification {
+  _id: MongoId
+  followRequestId: MongoId
+  followRequest: FollowRequest
+  forUserId: MongoId
+  createdAt: String
+}
+
+enum FollowRequestStatus {
+  PENDING
+  DECLINED
+  ACCEPTED
+}
+
+enum FriendStatus {
+  ACTIVE
+  INACTIVE
+  INVITED
+  REGISTERED
+}
+
+input LoginInput {
+  email: String
+  password: String
+}
+
+input LogOutInput {
+  FCMToken: String
+}
+
+type Media {
+  _id: MongoId
+  dir: String
+  filename: String
+  mimetype: String
+}
+
+"""MongoId custom scalar type"""
+scalar MongoId
+
+type Mutation {
+  login(input: LoginInput): User
+  logout(input: LogOutInput): Boolean
+  registration(input: UserInput): User
+  changePassword(input: ChangePasswordInput): User
+  resetPassword(email: String): Boolean
+  resetPasswordConfirmCode(resetPasswordCode: String): Boolean
+  resetPasswordConfirm(input: ResetPasswordConfirmInput): Boolean
+  importContacts(input: [ContactInput]): [User]
+  sendFCMToken(input: FCMTokenInput): Boolean
+  createFollowRequest(input: CreateFollowRequestInput): FollowRequest
+  updateFollowRequest(input: UpdateFollowRequestInput): FollowRequest
+  createQuestion(input: CreateQuestionInput): Question
+  deleteQuestion(input: String): Question
+  reportContent(input: ReportContentInput): Boolean
+  reportUser(input: ReportUserInput): Boolean
+  updateMe(input: UpdateUserInput): User
+  addVote(input: AddVoteInput): Question
+}
+
+type Notification {
+  followRequest: [FollowRequestNotification]
+  userFromContacts: [UserFromContactsNotification]
+  question: [QuestionNotification]
+}
+
+type PagedQuestion {
+  results: [Question]
+  next: String
+  hasNext: Boolean
+  previous: String
+  hasPrevious: Boolean
+}
+
+type PagedUsers {
+  results: [User]
+  next: String
+  hasNext: Boolean
+  previous: String
+  hasPrevious: Boolean
+}
+
+type PersonProfile {
+  _id: MongoId!
+  fullName: String
+  avatarId: MongoId
+  avatar: Media
+  avatarThumbId: MongoId
+  avatarThumb: Media
+  friendsCount: Int
+  rewalsCount: Int
+}
+
+type Profile {
+  _id: MongoId!
+  fullName: String
+  phone: String
+  countryCode: String
+  notifications: Boolean
+  avatarId: MongoId
+  avatar: Media
+  avatarThumbId: MongoId
+  avatarThumb: Media
+  friendsCount: Int
+  rewalsCount: Int
+}
+
+input ProfileInput {
+  fullName: String
+  phone: String
+  countryCode: String
+  notifications: Boolean
+  avatar: Upload
+}
+
+type Query {
+  config: Config
+  myFollowRequests: [FollowRequest]
+  myUnseenNotifications: Notification
+  confirmViewingAllNotifications: Boolean
+  profiles: [PersonProfile]
+  personProfile(id: String!): PersonProfile
+  question(id: String): Question
+  questionCount: Int
+  friendsQuestions(next: String, previous: String, limit: Int): PagedQuestion
+  myQuestions(next: String, previous: String, limit: Int): PagedQuestion
+  feedQuestions(next: String, previous: String, limit: Int): PagedQuestion
+  personQuestions(id: String, next: String, previous: String, limit: Int): PagedQuestion
+  questionOption(id: String): QuestionOption
+  userStatusIn: [UserStatus]
+  users: [User]
+  search(fullName: String, next: String, previous: String, limit: Int): PagedUsers
+  user(id: String!): User
+  userFriends(userId: String, fullName: String, next: String, previous: String, limit: Int): PagedUsers
+  allUserFriends(userId: String): [User]
+  me: User
+  temp__: Boolean
+}
+
+type Question {
+  _id: MongoId!
+  title: String
+  titleColor: String
+  expiredTime: String
+  img: String
+  type: QuestionType
+  backgroundId: MongoId
+  background: Media
+  memberIds: [MongoId]
+  ownerId: MongoId
+  owner: User
+  questionOptions: [QuestionOption]
+  createdAt: String
+  isFinished: Boolean
+  userVote: Vote
+  totalVotes: Int
+}
+
+type QuestionNotification {
+  _id: MongoId
+  questionId: MongoId
+  question: Question
+  type: QuestionNotificationType
+  forUsersIds: [MongoId]
+  createdAt: String
+}
+
+enum QuestionNotificationType {
+  NEW
+  SOON_EXPIRED
+  EXPIRED
+}
+
+type QuestionOption {
+  _id: MongoId
+  text: String
+  questionId: MongoId
+  votes: Int
+}
+
+enum QuestionType {
+  TEXT
+}
+
+input ReportContentInput {
+  complaint: String
+  toQuestionId: MongoId
+}
+
+input ReportUserInput {
+  complaint: String
+  toUserId: MongoId
+}
+
+input ResetPasswordConfirmCodeInput {
+  resetPasswordCode: String!
+}
+
+input ResetPasswordConfirmInput {
+  resetPasswordCode: String!
+  password: String!
+}
+
+type Roles {
+  admin: Boolean
+  regular: Boolean
+}
+
+type Subscription {
+  invitedToFriends(repoFullName: String!): FollowRequestNotification
+  userFromContactsJoinedRewala(repoFullName: String!): UserFromContactsNotification
+  addedQuestion(repoFullName: String!): QuestionNotification
+  expiredQuestion(repoFullName: String!): QuestionNotification
+  soonExpiredQuestion(repoFullName: String!): QuestionNotification
+}
+
+input UpdateFollowRequestInput {
+  _id: String
+  status: FollowRequestStatus
+}
+
+input UpdateUserInput {
+  email: String
+  profileInput: ProfileInput
+}
+
+scalar Upload
+
+type User {
+  _id: MongoId
+  email: String
+  profile: Profile
+  authToken: String
+  roles: Roles
+  status: UserStatus
+  statusIn: [UserStatus]
+  followRequestWithMe: FollowRequest
+  rewalsCount: Int
+}
+
+type UserFromContactsNotification {
+  _id: MongoId
+  userId: MongoId
+  user: User
+  forUsersIds: [MongoId]
+  createdAt: String
+}
+
+input UserInput {
+  email: String
+  password: String
+  isAgreeWithPrivacyPolicyAndTermOfUse: Boolean
+  profileInput: ProfileInput!
+}
+
+enum UserStatus {
+  DELETED
+  INACTIVE
+  ACTIVE
+}
+
+type Vote {
+  _id: MongoId!
+  user: User
+  questionOption: QuestionOption
+}

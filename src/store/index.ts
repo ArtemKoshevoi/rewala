@@ -3,7 +3,13 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {reducer as reduxFormReducer} from 'redux-form';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import {StateType} from 'typesafe-actions';
-import {getCurrentUserEpic, loginEpic, loginSucceededEpic, logoutEpic, setTokenOnLoginSuccessEpic} from './auth/epics';
+import {
+  getCurrentUserEpic,
+  loginEpic,
+  loginSucceededEpic,
+  logoutEpic,
+  redirectOnLoginSuccessEpic,
+} from './auth/epics';
 
 import {
   epics as authRequestEpics,
@@ -16,7 +22,7 @@ const rootEpic = combineEpics(
   logoutEpic,
   getCurrentUserEpic,
   loginSucceededEpic,
-  setTokenOnLoginSuccessEpic,
+  redirectOnLoginSuccessEpic,
 );
 
 export type RootState = StateType<typeof rootReducer>;

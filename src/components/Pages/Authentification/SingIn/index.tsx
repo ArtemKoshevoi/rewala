@@ -30,13 +30,13 @@ class Screen extends React.Component{
     const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
       login({email, password});
     };
-
-    if (requestState !== null) {
-      console.log(requestState.data.login);
-      return  (
-          <Redirect to='/' />
-        );
-    }
+    //
+    // if (requestState !== null) {
+    //   console.log(requestState.data.login);
+    //   return  (
+    //       <Redirect to='/' />
+    //     );
+    // }
 
     // if (requestState !== null) {
     //   console.log(222, requestState);
