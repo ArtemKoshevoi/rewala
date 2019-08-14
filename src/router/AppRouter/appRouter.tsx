@@ -2,7 +2,7 @@ import { Container } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Switch } from 'react-router-dom';
-import { LoginScreen } from '../../components/Pages/Authentification/SingIn';
+import Login from '../../components/Pages/Authentification/SingIn';
 import HomePage from '../../components/Pages/Home';
 import Notifications from '../../components/Pages/Notifications';
 import Profile from '../../components/Pages/Profile';
@@ -22,7 +22,7 @@ const appRouter: React.FC = () => {
     <Container maxWidth={'md'}>
       <Router history={history}>
         <Switch>
-          <PublicRoute restricted={true} component={LoginScreen} path='/login'/>
+          <PublicRoute restricted={true} component={Login} path='/login'/>
           <PrivateRoute component={HomePage} path='/' exact={true}/>
           <PrivateRoute component={Search} path='/search'/>
           <PrivateRoute component={Notifications} path='/notifications'/>

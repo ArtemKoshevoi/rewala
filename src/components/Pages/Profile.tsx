@@ -26,9 +26,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 class Profile extends React.Component<ProfileProps> {
-  componentDidMount(): void {
-    this.props.getCurrentUser();
-  }
+  // componentDidMount(): void {
+  //   this.props.getCurrentUser();
+  // }
 
   render(): React.ReactNode {
     const {getCurrentUser, logoutRequestState, getMeRequestState, logout}: any = this.props;

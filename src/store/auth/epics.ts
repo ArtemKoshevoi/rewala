@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ignoreElements, map } from 'rxjs/operators';
 import { removeToken, setToken } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
@@ -42,11 +42,12 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => ac
   map((action) => action.payload),
   map((payload: string) => setToken('token', payload)),
   map(() => redirectToHomepage()),
+  ignoreElements(),
 );
 
 export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
   ofType(ActionTypes.LOGOUT_SUCCEDED),
-  // map((action) => action.payload),
   map(() => removeToken()),
   map(() => redirectToLoginpage()),
+  ignoreElements(),
 );

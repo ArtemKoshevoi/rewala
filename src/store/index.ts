@@ -25,7 +25,7 @@ const rootEpic = combineEpics(
   loginSucceededEpic,
   redirectOnLoginSuccessEpic,
   logoutSucceededEpic,
-  redirectOnLogoutSuccessEpic
+  redirectOnLogoutSuccessEpic,
 );
 
 export type RootState = StateType<typeof rootReducer>;

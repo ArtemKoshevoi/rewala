@@ -1,4 +1,3 @@
-import React from 'react';
 import history from '../../history';
 
 export const redirectToHomepage = () => {
@@ -6,5 +5,5 @@ export const redirectToHomepage = () => {
   };
 
 export const redirectToLoginpage = () => {
-  return history.push('/');
+  return history.push('/login');
 };
