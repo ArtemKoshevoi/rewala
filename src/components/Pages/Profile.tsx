@@ -1,106 +1,67 @@
 import { Button, Container } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, Dispatch } from 'redux';
-import { reduxForm } from 'redux-form';
+import { Dispatch } from 'redux';
 import Header from '../../shared/components/header';
 import { getToken, removeToken } from '../../shared/services/auth.service';
 import { RootState } from '../../store';
+import { getState } from '../../store/auth-requests/selectors';
 import { Actions } from '../../store/auth/actions';
-import { getState } from '../../store/auth/selectors';
+
+interface ProfileProps {
+  getCurrentUser: any
+}
 
 const mapStateToProps = (state: RootState) => {
-  const {logoutRequest} = getState(state);
-  return {requestState: logoutRequest.data};
+  const {logoutRequest, getMeRequest} = getState(state);
+  return {
+    logoutRequestState: logoutRequest.data,
+    getMeRequestState: getMeRequest.data,
+  };
 };
+
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   getCurrentUser: () => dispatch(Actions.getCurrentUser()),
   logout: (logoutValue: { FCMToken: string }) => dispatch((Actions.logout(logoutValue))),
 });
 
-class Profile extends React.Component {
+class Profile extends React.Component<ProfileProps> {
+  componentDidMount(): void {
+    this.props.getCurrentUser();
+  }
+
   render(): React.ReactNode {
-    const {getCurrentUser, handleSubmit, requestState, logout}: any = this.props;
+    const {getCurrentUser, logoutRequestState, getMeRequestState, logout}: any = this.props;
     const logOut = (): void => {
       const FCMToken = getToken();
       logout({FCMToken});
     };
 
-    const getMe = (): void => {
-      return getCurrentUser();
-    };
 
-    if (requestState !== null && requestState.data.logout) {
-      console.log(requestState);
-      removeToken(requestState.data.logout);
-      if (!getToken()) {
-        console.log(111, requestState.data.logout);
-        // return  (
-        //   <Redirect to='/login' />
-        // )
-      }
-    }
+    const getMeIsNull = getMeRequestState !== null;
+
+    // if (logoutRequestState !== null && logoutRequestState.data.logout) {
+    //   console.log(logoutRequestState);
+    //   removeToken(logoutRequestState.data.logout);
+    //   if (!getToken()) {
+    //     return  (
+    //       <Redirect to='/login' />
+    //     )
+    //   }
+    // }
 
     return (
       <Container>
         <Header/>
-        <form onSubmit={handleSubmit(getMe)}>
-          <Button type='submit' variant='contained' color='secondary'>
-            Get Me
-          </Button>
-        </form>
-        <form onSubmit={handleSubmit(logOut)}>
-          <Button type='submit' variant='contained' color='primary'>
-            Log Out
-          </Button>
-        </form>
+        <Button variant='contained' color='secondary' onClick={() => getCurrentUser()}>get me</Button>
+        <Button variant='contained' color='primary' onClick={() => logOut()}>log out</Button>
+        <div>{getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}</div>
+        <div>{getMeIsNull ? getMeRequestState.data.me.email : ''}</div>
+        <div>{getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}</div>
       </Container>
     );
   }
 }
 
-/*const profile = ({getCurrentUser, handleSubmit, requestState, logout}: any) => {
-  const getMe = (): void => {
-    return getCurrentUser();
-  };
-
-  const logOut = (): void => {
-    const FCMToken = getToken();
-    logout({FCMToken});
-    removeToken();
-  };
-
-  if (requestState !== null){
-    if (!requestState.data.logout) {
-      return  (
-        <Redirect to='/login' />
-      )
-    }
-  }
-
-  return (
-    <Container>
-      <Header />
-      <form onSubmit={handleSubmit(getMe)}>
-        <Button type="submit" variant="contained" color="secondary">
-          Get Me
-        </Button>
-      </form>
-      <form onSubmit={handleSubmit(logOut)}>
-        <Button type="submit" variant="contained" color="primary">
-          Log Out
-        </Button>
-      </form>
-    </Container>
-  )
-};*/
-
-export const ProfileScreen: any = compose(
-  reduxForm({
-    form: 'getMe',
-  }),
-  reduxForm({
-    form: 'logOut',
-  }),
-  connect(mapStateToProps, mapDispatchToProps))(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

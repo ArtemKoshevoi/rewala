@@ -8,7 +8,6 @@ const PublicRoute = ({component: Component, restricted, ...rest}: any) => {
       <Redirect to='/'/>
       : <Component {...props} />
   );
-  console.log({...rest});
   return (
     <Route
       {...rest}

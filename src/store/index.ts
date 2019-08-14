@@ -7,9 +7,10 @@ import {
   getCurrentUserEpic,
   loginEpic,
   loginSucceededEpic,
-  logoutEpic,
-  redirectOnLoginSuccessEpic,
+  logoutEpic, logoutSucceededEpic,
+  redirectOnLoginSuccessEpic, redirectOnLogoutSuccessEpic,
 } from './auth/epics';
+import { reducer as authReducer } from './auth/reducer';
 
 import {
   epics as authRequestEpics,
@@ -23,12 +24,15 @@ const rootEpic = combineEpics(
   getCurrentUserEpic,
   loginSucceededEpic,
   redirectOnLoginSuccessEpic,
+  logoutSucceededEpic,
+  redirectOnLogoutSuccessEpic
 );
 
 export type RootState = StateType<typeof rootReducer>;
 
 const rootReducer = combineReducers({
   form: reduxFormReducer,
+  auth: authReducer,
   authRequest: authRequestReducer,
 });
 

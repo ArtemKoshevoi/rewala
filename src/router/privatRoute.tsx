@@ -8,7 +8,6 @@ const PrivateRoute = ({component: Component, ...rest}: any) => {
       <Component {...props} />
       : <Redirect to='/login'/>
   );
-  console.log(isLoggedIn());
   return (
     <Route
       {...rest}

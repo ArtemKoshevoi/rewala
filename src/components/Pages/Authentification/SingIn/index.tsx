@@ -5,8 +5,8 @@ import { compose, Dispatch } from 'redux';
 import { Field, reduxForm } from 'redux-form';
 import { RootState } from '../../../../store';
 import { Actions } from '../../../../store/auth/actions';
-import { getState } from '../../../../store/auth/selectors';
 import { renderTextField } from './style';
+import { getState } from '../../../../store/auth-requests/selectors';
 
 interface LoginFormValuesUpperCase {
   Email: string;

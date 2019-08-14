@@ -2,12 +2,11 @@ import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { setToken } from '../../shared/services/auth.service';
-import { redirectToHomepage } from '../../shared/services/nav.service';
+import { removeToken, setToken } from '../../shared/services/auth.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
-import { push } from 'react-router-redux';
+import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 
 export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.LOGIN),
@@ -33,9 +32,21 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
   Actions.loginSucceded,
 );
 
+export const logoutSucceededEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.logoutActionTypes.ACTION_SUCCEEDED,
+  Actions.logoutSucceded,
+);
+
 export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
   map((action) => action.payload),
   map((payload: string) => setToken('token', payload)),
-  map(() => push('/')),
+  map(() => redirectToHomepage()),
+);
+
+export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+  ofType(ActionTypes.LOGOUT_SUCCEDED),
+  // map((action) => action.payload),
+  map(() => removeToken()),
+  map(() => redirectToLoginpage()),
 );
