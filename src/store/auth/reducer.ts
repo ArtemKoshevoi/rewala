@@ -1,5 +1,5 @@
-import { AuthState } from './state';
 import { ActionTypes } from './actions';
+import { AuthState } from './state';
 
 const initialState: AuthState = {
   isAuthorized: null,

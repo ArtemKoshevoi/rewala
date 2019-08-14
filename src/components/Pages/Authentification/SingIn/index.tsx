@@ -3,20 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, Dispatch } from 'redux';
 import { Field, reduxForm } from 'redux-form';
-import { RootState } from '../../../../store';
 import { Actions } from '../../../../store/auth/actions';
 import { renderTextField } from './style';
-import { getState } from '../../../../store/auth-requests/selectors';
 
 interface LoginFormValuesUpperCase {
   Email: string;
   Password: string;
 }
-
-const mapStateToProps = (state: RootState) => {
-  const {loginRequest} = getState(state);
-  return {requestState: loginRequest.data};
-};
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
@@ -24,25 +17,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 class Screen extends React.Component {
   render(): React.ReactNode {
-    const {handleSubmit, submitting, pristine, login, requestState}: any = this.props;
+    const {handleSubmit, submitting, pristine, login}: any = this.props;
 
     const onSubmit = ({Email: email, Password: password}: LoginFormValuesUpperCase) => {
       login({email, password});
     };
-    //
-    // if (requestState !== null) {
-    //   console.log(requestState.data.login);
-    //   return  (
-    //       <Redirect to='/' />
-    //     );
-    // }
-
-    // if (requestState !== null) {
-    //   console.log(222, requestState);
-    //   return  (
-    //     <Redirect to='/' />
-    //   )
-    // }
 
     return (
       <Container maxWidth={'xs'}>
@@ -83,4 +62,4 @@ class Screen extends React.Component {
 export const LoginScreen: any = compose(
   reduxForm({
     form: 'singIn',
-  }), connect(mapStateToProps, mapDispatchToProps))(Screen);
+  }), connect(null, mapDispatchToProps))(Screen);

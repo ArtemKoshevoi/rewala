@@ -1,9 +1,8 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../../shared/components/header';
 import { RootState } from '../../store';
-import { getState } from '../../store/auth-requests/selectors';
-import { connect } from 'react-redux';
 import { getIsAuthorized } from '../../store/auth/selectors';
 
 interface HomePageProps {

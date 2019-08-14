@@ -2,9 +2,9 @@ import React from 'react';
 import history from '../../history';
 
 export const redirectToHomepage = () => {
-  history.push('/');
-};
+  return history.push('/');
+  };
 
 export const redirectToLoginpage = () => {
-  history.push('/login');
+  return history.push('/');
 };

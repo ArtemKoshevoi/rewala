@@ -1,17 +1,17 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Router, Switch } from 'react-router-dom';
 import { LoginScreen } from '../../components/Pages/Authentification/SingIn';
 import HomePage from '../../components/Pages/Home';
 import Notifications from '../../components/Pages/Notifications';
 import Profile from '../../components/Pages/Profile';
 import Search from '../../components/Pages/Search';
-import PrivateRoute from '../privatRoute';
-import PublicRoute from '../publicRoute';
+import history from '../../history';
 import { RootState } from '../../store';
 import { getIsAuthorized } from '../../store/auth/selectors';
-import { connect } from 'react-redux';
-import history from '../../history';
+import PrivateRoute from '../privatRoute';
+import PublicRoute from '../publicRoute';
 
 const mapStateToProps = (state: RootState) => ({
   requestState: getIsAuthorized(state),
