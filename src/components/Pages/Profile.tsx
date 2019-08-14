@@ -38,6 +38,7 @@ class Profile extends React.Component<ProfileProps> {
     };
 
     const getMeIsNull = getMeRequestState !== null;
+    console.log(getMeRequestState);
     const getUser = () => getCurrentUser();
     const log = () => logOut();
 
@@ -46,9 +47,9 @@ class Profile extends React.Component<ProfileProps> {
         <Header/>
         <Button variant='contained' color='secondary' onClick={getUser}>get me</Button>
         <Button variant='contained' color='primary' onClick={log}>log out</Button>
-        <div>{getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}</div>
-        <div>{getMeIsNull ? getMeRequestState.data.me.email : ''}</div>
-        <div>{getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}</div>
+        <div>{getMeRequestState ? getMeRequestState.data.me.profile.fullName : ''}</div>
+        <div>{getMeRequestState ? getMeRequestState.data.me.email : ''}</div>
+        <div>{getMeRequestState ? getMeRequestState.data.me.profile.phone : ''}</div>
       </Container>
     );
   }

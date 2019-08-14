@@ -1,11 +1,17 @@
-export const setToken = (storageName: string, token: any) => {
-  localStorage.setItem(storageName, token.data.login.authToken);
-};
+class AuthService {
+  token = 'auth-token';
 
-export const getToken = (): string | null => {
-  return localStorage.getItem('token');
-};
+  setToken(token: any) {
+    return localStorage.setItem(this.token, token.data.login.authToken);
+  }
 
-export const removeToken = (): void => {
-    localStorage.removeItem('token');
-};
+  getToken() {
+    return localStorage.getItem(this.token);
+  }
+
+  removeToken() {
+    return localStorage.removeItem(this.token);
+  }
+}
+
+export const authService = new AuthService();
