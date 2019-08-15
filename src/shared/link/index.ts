@@ -1,7 +1,7 @@
 import { setContext } from 'apollo-link-context';
 import { map } from 'rxjs/operators';
 import { authService } from '../services/auth.service';
-import { Config } from '../../../environments/environment';
+import { Config } from '../../environments/environment';
 import { ApolloLink } from 'apollo-link';
 import { createHttpLink } from 'apollo-link-http';
 

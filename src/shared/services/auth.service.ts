@@ -1,3 +1,5 @@
+import { of } from 'rxjs';
+
 class AuthService {
   token = 'auth-token';
 
@@ -6,11 +8,11 @@ class AuthService {
   }
 
   getToken() {
-    return localStorage.getItem(this.token);
+    return of(localStorage.getItem(this.token));
   }
 
   removeToken() {
-    return localStorage.removeItem(this.token);
+    return of(localStorage.removeItem(this.token));
   }
 }
 

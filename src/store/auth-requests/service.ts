@@ -41,7 +41,6 @@ class AuthRequestsService {
   }
 
   logout(token: { FCMToken: string }) {
-    console.log(token);
     const LOG_OUT = {
       query: gql`
         mutation logOut($token: LogOutInput){

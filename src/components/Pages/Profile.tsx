@@ -3,10 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from '../../shared/components/header';
-import { getToken } from '../../shared/services/auth.service';
 import { RootState } from '../../store';
 import { getState } from '../../store/auth-requests/selectors';
 import { Actions } from '../../store/auth/actions';
+import { authService } from '../../shared/services/auth.service';
 
 interface ProfileProps {
   getCurrentUser: any;
@@ -33,12 +33,11 @@ class Profile extends React.Component<ProfileProps> {
   render(): React.ReactNode {
     const {getCurrentUser, logoutRequestState, getMeRequestState, logout}: any = this.props;
     const logOut = (): void => {
-      const FCMToken = getToken();
-      logout({FCMToken});
+      const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
+      auth.unsubscribe();
     };
 
     const getMeIsNull = getMeRequestState !== null;
-    console.log(getMeRequestState);
     const getUser = () => getCurrentUser();
     const log = () => logOut();
 
