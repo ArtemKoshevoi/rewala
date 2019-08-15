@@ -3,8 +3,8 @@ import { of } from 'rxjs';
 class AuthService {
   token = 'auth-token';
 
-  setToken(token: any) {
-    return localStorage.setItem(this.token, token.data.login.authToken);
+  setToken(token: string) {
+    return localStorage.setItem(this.token, token);
   }
 
   getToken() {

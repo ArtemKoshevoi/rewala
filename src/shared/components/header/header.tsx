@@ -2,11 +2,12 @@ import React from 'react';
 
 import { Button, ButtonGroup, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import { gridStyle } from './style';
 
 class Header extends React.Component {
   render(): React.ReactNode {
     return (
-      <Grid item={true}>
+      <Grid item={true} style={gridStyle}>
         <ButtonGroup
           fullWidth={true}
           variant='contained'

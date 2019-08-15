@@ -5,7 +5,7 @@ import { Router, Switch } from 'react-router-dom';
 import Login from '../../components/Pages/Authentification/SingIn';
 import HomePage from '../../components/Pages/Home';
 import Notifications from '../../components/Pages/Notifications';
-import Profile from '../../components/Pages/Profile';
+import Profile from '../../components/Pages/Profile/Profile';
 import Search from '../../components/Pages/Search';
 import history from '../../history';
 import { RootState } from '../../store';
