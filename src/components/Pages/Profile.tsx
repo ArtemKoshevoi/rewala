@@ -26,29 +26,27 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 });
 
 class Profile extends React.Component<ProfileProps> {
-  // componentDidMount(): void {
-  //   this.props.getCurrentUser();
-  // }
+  componentDidMount(): void {
+    this.props.getCurrentUser();
+  }
 
   render(): React.ReactNode {
-    const {getCurrentUser, logoutRequestState, getMeRequestState, logout}: any = this.props;
+    const {getMeRequestState, logout}: any = this.props;
     const logOut = (): void => {
       const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
       auth.unsubscribe();
     };
 
     const getMeIsNull = getMeRequestState !== null;
-    const getUser = () => getCurrentUser();
     const log = () => logOut();
 
     return (
       <Container>
         <Header/>
-        <Button variant='contained' color='secondary' onClick={getUser}>get me</Button>
+        <div>{getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}</div>
+        <div>{getMeIsNull ? getMeRequestState.data.me.email : ''}</div>
+        <div>{getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}</div>
         <Button variant='contained' color='primary' onClick={log}>log out</Button>
-        <div>{getMeRequestState ? getMeRequestState.data.me.profile.fullName : ''}</div>
-        <div>{getMeRequestState ? getMeRequestState.data.me.email : ''}</div>
-        <div>{getMeRequestState ? getMeRequestState.data.me.profile.phone : ''}</div>
       </Container>
     );
   }
