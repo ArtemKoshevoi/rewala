@@ -9,8 +9,7 @@ export enum ActionTypes {
   LOGOUT_SUCCEDED = 'LOGOUT_SUCCEDED',
   GET_CURRENT_USER = 'GET_CURRENT_USER',
   SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN',
-  SET_IS_AUTHORIZED = 'SET_IS_AUTHORIZED',
-  RESET_IS_AUTHORIZED = 'RESET_IS_AUTHORIZED',
+  GET_WRONG_LOGIN_PASSWORD = 'GET_WRONG_LOGIN_PASSWORD',
 }
 
 export const Actions = {
@@ -20,8 +19,7 @@ export const Actions = {
   logout: (payload: LogOutValue) => action(ActionTypes.LOGOUT, payload),
   logoutSucceded: (token?: string) => action(ActionTypes.LOGOUT_SUCCEDED, token),
   getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
-  setIsAuthorized: () => action(ActionTypes.SET_IS_AUTHORIZED),
-  resetIsAuthorized: () => action(ActionTypes.RESET_IS_AUTHORIZED),
+  loginPasswordWrong: () => action(ActionTypes.GET_WRONG_LOGIN_PASSWORD),
   setAccessToken: (token?: string) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
 

@@ -19,7 +19,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const appRouter: React.FC = () => {
   return (
-    <Container maxWidth={'md'}>
+    <Container maxWidth={'lg'}>
       <Router history={history}>
         <Switch>
           <PublicRoute restricted={true} component={Login} path='/login'/>

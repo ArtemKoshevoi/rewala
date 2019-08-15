@@ -1,9 +1,9 @@
-import { setContext } from 'apollo-link-context';
-import { map } from 'rxjs/operators';
-import { authService } from '../services/auth.service';
-import { Config } from '../../environments/environment';
 import { ApolloLink } from 'apollo-link';
+import { setContext } from 'apollo-link-context';
 import { createHttpLink } from 'apollo-link-http';
+import { map } from 'rxjs/operators';
+import { Config } from '../../environments/environment';
+import { authService } from '../services/auth.service';
 
 const authMiddleware = setContext(() => {
   return authService.getToken()

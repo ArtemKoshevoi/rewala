@@ -1,10 +1,11 @@
-import { Button } from '@material-ui/core';
+import { Button, FormHelperText } from '@material-ui/core';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { renderTextField } from '../style';
 
+
 const SignInForm = (props: any) => {
-  const { handleSubmit, pristine, submitting } = props;
+  const { handleSubmit, pristine, submitting, warningMessage} = props;
   return (
       <form onSubmit={handleSubmit}>
         <div>
@@ -20,9 +21,13 @@ const SignInForm = (props: any) => {
               name='Password'
               component={renderTextField}
               label='Password'
+              // type='password'
             />
           </div>
         </div>
+        <FormHelperText id='component-error-text' style={{color: 'red', fontSize: '16px'}}>
+          {warningMessage}
+        </FormHelperText>
         <div>
           <Button
             fullWidth={true}

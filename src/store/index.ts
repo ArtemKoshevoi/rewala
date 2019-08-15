@@ -5,7 +5,7 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { StateType } from 'typesafe-actions';
 import {
   getCurrentUserEpic,
-  loginEpic,
+  loginEpic, loginFailedEpic,
   loginSucceededEpic,
   logoutEpic, logoutSucceededEpic,
   redirectOnLoginSuccessEpic, redirectOnLogoutSuccessEpic,
@@ -26,6 +26,7 @@ const rootEpic = combineEpics(
   redirectOnLoginSuccessEpic,
   logoutSucceededEpic,
   redirectOnLogoutSuccessEpic,
+  loginFailedEpic,
 );
 
 export type RootState = StateType<typeof rootReducer>;

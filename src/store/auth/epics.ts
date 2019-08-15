@@ -1,18 +1,41 @@
 import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map, switchMap, tap } from 'rxjs/operators';
+import { ignoreElements, map } from 'rxjs/operators';
+import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
-import { authService } from '../../shared/services/auth.service';
 
 export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.LOGIN),
   map(({payload, type}: any) =>
     AuthRequestActions.login.action(payload, type),
   ),
+);
+
+export const loginSucceededEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.loginActionTypes.ACTION_SUCCEEDED,
+  Actions.loginSucceded,
+);
+
+export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+  ofType(ActionTypes.LOGIN_SUCCEDED),
+  map(({payload}) => {
+    if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
+      authService.setToken(payload.data.login.authToken);
+    } else {
+      // map(() => console.log(999));
+    }
+  }),
+  map(() => redirectToHomepage()),
+  ignoreElements(),
+);
+
+export const loginFailedEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.loginActionTypes.ACTION_FAILED,
+  Actions.loginFailed,
 );
 
 export const logoutEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
@@ -22,28 +45,9 @@ export const logoutEpic: Epic = (action$: Observable<Action>): Observable<Action
   ),
 );
 
-export const getCurrentUserEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
-  ofType(ActionTypes.GET_CURRENT_USER),
-  map(() => AuthRequestActions.getMe.action()),
-);
-
-export const loginSucceededEpic: Epic = transferActionEpicFactory(
-  AuthRequestActionTypes.loginActionTypes.ACTION_SUCCEEDED,
-  Actions.loginSucceded,
-);
-
 export const logoutSucceededEpic: Epic = transferActionEpicFactory(
   AuthRequestActionTypes.logoutActionTypes.ACTION_SUCCEEDED,
   Actions.logoutSucceded,
-);
-
-export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
-  ofType(ActionTypes.LOGIN_SUCCEDED),
-  map(({ payload: { data: { login } } }) => {if (login && login.hasOwnProperty('authToken')) {
-    authService.setToken(login.authToken);
-  } }),
-  map(() => redirectToHomepage()),
-  ignoreElements(),
 );
 
 export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
@@ -51,4 +55,9 @@ export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => a
   map(() => authService.removeToken()),
   map(() => redirectToLoginpage()),
   ignoreElements(),
+);
+
+export const getCurrentUserEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+  ofType(ActionTypes.GET_CURRENT_USER),
+  map(() => AuthRequestActions.getMe.action()),
 );

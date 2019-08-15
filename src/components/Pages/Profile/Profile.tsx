@@ -3,13 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from '../../../shared/components/header/header';
+import { authService } from '../../../shared/services/auth.service';
 import { RootState } from '../../../store';
 import { getState } from '../../../store/auth-requests/selectors';
 import { Actions } from '../../../store/auth/actions';
-import { authService } from '../../../shared/services/auth.service';
 
 interface ProfileProps {
   getCurrentUser: any;
+  logout: any;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -43,7 +44,7 @@ class Profile extends React.Component<ProfileProps> {
     return (
       <Container>
         <Header/>
-        <Grid container={true} spacing={3}  alignItems='center' >
+        <Grid container={true} spacing={3} alignItems='center'>
           <Grid item={true} xs={12} sm={6}>
             <div>
               <Typography variant='h5' gutterBottom={true}>

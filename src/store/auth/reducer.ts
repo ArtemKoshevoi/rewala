@@ -4,6 +4,8 @@ import { AuthState } from './state';
 const initialState: AuthState = {
   isAuthorized: null,
   token: null,
+  error: null,
+  wrongLoginPassword: false,
 };
 
 export function reducer(state = initialState, action: any): AuthState {
@@ -26,17 +28,20 @@ export function reducer(state = initialState, action: any): AuthState {
       };
     }
 
-    case ActionTypes.SET_IS_AUTHORIZED: {
-      return {
-        ...state,
-        isAuthorized: true,
-      };
-    }
-
-    case ActionTypes.RESET_IS_AUTHORIZED: {
+    case ActionTypes.LOGIN_FAILED: {
+      console.log(action.payload);
       return {
         ...state,
         isAuthorized: false,
+        error: action.payload,
+      };
+    }
+
+    case ActionTypes.GET_WRONG_LOGIN_PASSWORD: {
+      console.log(123);
+      return {
+        ...state,
+        wrongLoginPassword: true,
       };
     }
 
