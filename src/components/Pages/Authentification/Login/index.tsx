@@ -6,7 +6,7 @@ import { Dispatch } from 'redux';
 import { RootState } from '../../../../store';
 import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
-import LoginForm from './Login/LoginForm';
+import LoginForm from './LoginForm';
 
 interface LoginFormValues {
   email: string;

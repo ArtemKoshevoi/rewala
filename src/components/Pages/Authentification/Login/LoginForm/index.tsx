@@ -1,4 +1,4 @@
-import { Button, FormHelperText } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { renderTextField } from '../style';
@@ -23,7 +23,7 @@ const validate = (values: any) => {
   return errors;
 };
 
-const LoginForm = (props: any) => {
+const Index = (props: any) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -62,4 +62,4 @@ const LoginForm = (props: any) => {
 export default reduxForm({
   form: 'Login',
   validate,
-})(LoginForm);
+})(Index);
