@@ -6,7 +6,7 @@ class Registration extends React.Component {
   render(): React.ReactNode {
     return (
       <Container maxWidth={'xs'}>
-        <SingUpForm />
+        <SingUpForm/>
       </Container>
     );
   }

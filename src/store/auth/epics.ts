@@ -25,8 +25,6 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => ac
   map(({payload}) => {
     if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
       authService.setToken(payload.data.login.authToken);
-    } else {
-      // map(() => console.log(999));
     }
   }),
   map(() => redirectToHomepage()),
