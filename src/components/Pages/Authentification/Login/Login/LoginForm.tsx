@@ -26,36 +26,36 @@ const validate = (values: any) => {
 const LoginForm = (props: any) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <div>
         <div>
-          <div>
-            <Field
-              name='email'
-              component={renderTextField}
-              label='Email'
-            />
-          </div>
-          <div>
-            <Field
-              name='password'
-              component={renderTextField}
-              label='Password'
-              type='password'
-            />
-          </div>
+          <Field
+            name='email'
+            component={renderTextField}
+            label='Email'
+          />
         </div>
         <div>
-          <Button
-            fullWidth={true}
-            type='submit'
-            variant='contained'
-            color='primary'
-            disabled={pristine || submitting}
-          >
-            Sing In
-          </Button>
+          <Field
+            name='password'
+            component={renderTextField}
+            label='Password'
+            type='password'
+          />
         </div>
-      </form>
+      </div>
+      <div>
+        <Button
+          fullWidth={true}
+          type='submit'
+          variant='contained'
+          color='primary'
+          disabled={pristine || submitting}
+        >
+          Sing In
+        </Button>
+      </div>
+    </form>
   );
 };
 

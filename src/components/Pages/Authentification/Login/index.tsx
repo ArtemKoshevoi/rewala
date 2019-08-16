@@ -1,12 +1,12 @@
 import { Button, Container, FormHelperText, Grid } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { Actions } from '../../../../store/auth/actions';
-import SignInForm from './LoginForm/LoginForm';
 import { RootState } from '../../../../store';
 import { getState } from '../../../../store/auth-requests/selectors';
-import { Link } from 'react-router-dom';
+import { Actions } from '../../../../store/auth/actions';
+import LoginForm from './Login/LoginForm';
 
 interface LoginFormValues {
   email: string;
@@ -28,7 +28,7 @@ class Login extends React.Component {
   render(): React.ReactNode {
     let warningMessage = '';
     const {loginRequestState}: any = this.props;
-    if (loginRequestState && loginRequestState.hasOwnProperty('errors')){
+    if (loginRequestState && loginRequestState.hasOwnProperty('errors')) {
       warningMessage = 'Wrong email or password';
     }
     const {login}: any = this.props;
@@ -36,9 +36,9 @@ class Login extends React.Component {
     const Submit = ({email, password}: any): void => {
       login({email, password});
     };
-    return(
+    return (
       <Container maxWidth={'xs'}>
-        <SignInForm onSubmit={Submit} />
+        <LoginForm onSubmit={Submit}/>
         <FormHelperText id='component-error-text' style={{color: 'red', fontSize: '16px'}}>
           {warningMessage}
         </FormHelperText>
