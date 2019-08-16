@@ -3,31 +3,47 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { renderTextField } from '../style';
 
+const validate = (values: any) => {
+  const errors: any = {};
+  const requiredFields = [
+    'email',
+    'password',
+  ];
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required';
+    }
+  });
+  if (
+    values.email &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  ) {
+    errors.email = 'Invalid email address';
+  }
+  return errors;
+};
 
-const SignInForm = (props: any) => {
-  const { handleSubmit, pristine, submitting, warningMessage} = props;
+const LoginForm = (props: any) => {
+  const { handleSubmit, pristine, submitting } = props;
   return (
       <form onSubmit={handleSubmit}>
         <div>
           <div>
             <Field
-              name='Email'
+              name='email'
               component={renderTextField}
               label='Email'
             />
           </div>
           <div>
             <Field
-              name='Password'
+              name='password'
               component={renderTextField}
               label='Password'
-              // type='password'
+              type='password'
             />
           </div>
         </div>
-        <FormHelperText id='component-error-text' style={{color: 'red', fontSize: '16px'}}>
-          {warningMessage}
-        </FormHelperText>
         <div>
           <Button
             fullWidth={true}
@@ -44,5 +60,6 @@ const SignInForm = (props: any) => {
 };
 
 export default reduxForm({
-  form: 'singIn',
-})(SignInForm);
+  form: 'Login',
+  validate,
+})(LoginForm);

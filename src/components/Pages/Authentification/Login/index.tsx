@@ -1,15 +1,16 @@
-import { Container, FormHelperText } from '@material-ui/core';
+import { Button, Container, FormHelperText, Grid } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Actions } from '../../../../store/auth/actions';
-import SignInForm from './SignInForm/SignInForm';
+import SignInForm from './LoginForm/LoginForm';
 import { RootState } from '../../../../store';
 import { getState } from '../../../../store/auth-requests/selectors';
+import { Link } from 'react-router-dom';
 
-interface LoginFormValuesUpperCase {
-  Email: string;
-  Password: string;
+interface LoginFormValues {
+  email: string;
+  password: string;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -32,7 +33,7 @@ class Login extends React.Component {
     }
     const {login}: any = this.props;
 
-    const Submit = ({Email: email, Password: password}: any): void => {
+    const Submit = ({email, password}: any): void => {
       login({email, password});
     };
     return(
@@ -41,6 +42,18 @@ class Login extends React.Component {
         <FormHelperText id='component-error-text' style={{color: 'red', fontSize: '16px'}}>
           {warningMessage}
         </FormHelperText>
+        <Grid container={true}>
+          <Grid item={true} xs={true}>
+            <Link to='#'>
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item={true}>
+            <Link to='/registration'>
+              {'Don\'t have an account? Sign Up'}
+            </Link>
+          </Grid>
+        </Grid>
       </Container>
     );
   }
