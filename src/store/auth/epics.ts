@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map } from 'rxjs/operators';
+import { ignoreElements, map, tap } from 'rxjs/operators';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
@@ -58,4 +58,28 @@ export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => a
 export const getCurrentUserEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.GET_CURRENT_USER),
   map(() => AuthRequestActions.getMe.action()),
+);
+
+export const registrationEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+  ofType(ActionTypes.REGISTRATION),
+  tap(res => console.log(111, res)),
+  map(({payload, type}: any) =>
+    AuthRequestActions.registration.action(payload, type),
+  ),
+);
+
+export const registrationSucceededEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.registrationActionTypes.ACTION_SUCCEEDED,
+  Actions.registrationSucceded,
+);
+
+export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+  ofType(ActionTypes.REGISTRATION_SUCCEDED),
+  map(({payload}) => {
+    if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
+      authService.setToken(payload.data.login.authToken);
+    }
+  }),
+  map(() => redirectToHomepage()),
+  ignoreElements(),
 );

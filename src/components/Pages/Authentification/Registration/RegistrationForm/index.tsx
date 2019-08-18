@@ -1,4 +1,4 @@
-import { Button, Select, TextField } from '@material-ui/core';
+import { Button, Checkbox, FormControlLabel, Select, TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
@@ -8,6 +8,8 @@ const validate = (values: any) => {
   const requiredFields = [
     'email',
     'password',
+    'confirmPassword',
+    'fullName',
   ];
   requiredFields.forEach(field => {
     if (!values[field]) {
@@ -22,7 +24,6 @@ const validate = (values: any) => {
   }
   return errors;
 };
-
 
 export const renderTextField = (
   {input, label, meta: {touched, invalid, error}, ...custom}: any,
@@ -55,6 +56,20 @@ const renderSelectField = (
   />
 );
 
+const renderCheckbox = ({ input, label }: any) => (
+  <div>
+    <FormControlLabel
+      control={
+        <Checkbox
+          checked={!!input.value}
+          onChange={input.onChange}
+        />
+      }
+      label={label}
+    />
+  </div>
+);
+
 const SingUpForm = (props: any) => {
   const {handleSubmit, pristine, submitting} = props;
   return (
@@ -62,7 +77,7 @@ const SingUpForm = (props: any) => {
       <div>
         <div>
           <Field
-            name='FullName'
+            name='fullName'
             component={renderTextField}
             label='FullName'
           />
@@ -76,26 +91,33 @@ const SingUpForm = (props: any) => {
             <MenuItem value='1'>+380</MenuItem>
           </Field>
           <Field
-            name='Phone'
+            name='phone'
             component={renderTextField}
             label='Phone (optional)'
           />
           <Field
-            name='Email'
+            name='email'
             component={renderTextField}
             label='Email'
           />
           <Field
-            name='Password'
+            name='password'
             component={renderTextField}
             label='Password'
           />
           <Field
-            name='ConfirmPassword'
+            name='confirmPassword'
             component={renderTextField}
             label='Confirm Password'
           />
         </div>
+      </div>
+      <div>
+        <Field
+          name='policy'
+          component={renderCheckbox}
+          label='I have read and agree with Privacy Policy and Terms of Use'
+        />
       </div>
       <div>
         <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>

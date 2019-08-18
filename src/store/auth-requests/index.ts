@@ -22,22 +22,32 @@ import {
   reducer as getMeReducer,
 } from './nested-states/getMe';
 
+import {
+  Actions as registration,
+  ActionTypes as registrationActionTypes,
+  epic as registrationEpic,
+  reducer as registrationReducer,
+} from './nested-states/registration';
+
 export const Actions = {
   login,
   logout,
   getMe,
+  registration,
 };
 
 export const ActionTypes = {
   loginActionTypes,
   logoutActionTypes,
   getMeActionTypes,
+  registrationActionTypes,
 };
 
 export const reducer = combineReducers({
   loginRequest: loginReducer,
   logoutRequest: logoutReducer,
   getMeRequest: getMeReducer,
+  registrationRequest: registrationReducer,
 });
 
 export type ActionTypeUnion = ActionType<typeof reducer>;
@@ -46,6 +56,7 @@ export const epics = [
   loginEpic,
   logoutEpic,
   getMeEpic,
+  registrationEpic,
 ];
 
 export type State = StateType<typeof reducer>;

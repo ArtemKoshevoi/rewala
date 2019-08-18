@@ -5,10 +5,16 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { StateType } from 'typesafe-actions';
 import {
   getCurrentUserEpic,
-  loginEpic, loginFailedEpic,
+  loginEpic,
+  loginFailedEpic,
   loginSucceededEpic,
-  logoutEpic, logoutSucceededEpic,
-  redirectOnLoginSuccessEpic, redirectOnLogoutSuccessEpic,
+  logoutEpic,
+  logoutSucceededEpic,
+  redirectOnLoginSuccessEpic,
+  redirectOnLogoutSuccessEpic,
+  redirectOnRegistrationSuccessEpic,
+  registrationEpic,
+  registrationSucceededEpic,
 } from './auth/epics';
 import { reducer as authReducer } from './auth/reducer';
 
@@ -27,6 +33,9 @@ const rootEpic = combineEpics(
   logoutSucceededEpic,
   redirectOnLogoutSuccessEpic,
   loginFailedEpic,
+  registrationEpic,
+  registrationSucceededEpic,
+  redirectOnRegistrationSuccessEpic,
 );
 
 export type RootState = StateType<typeof rootReducer>;
