@@ -54,21 +54,20 @@ class AuthRequestsService {
         return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: any }>>);
     }
 
-    registration(userLogin: UserInput) {
-        const REGISTRATION = {
+    registration(userInput: UserInput) {
+      const REGISTRATION = {
             query: gql`
-                mutation registration($UserInput: UserInput) {
-                    registration(input: $UserInput) {
+                mutation Registration($userInput: UserInput) {
+                    registration(input: $userInput) {
                         email
                         authToken
                         status
                     }
                 }
             `,
-          variables: {userLogin},
+          variables: {userInput},
         };
-
-        return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: any }>>);
+      return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: any }>>);
     }
 }
 

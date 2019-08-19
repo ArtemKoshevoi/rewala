@@ -22,6 +22,9 @@ const validate = (values: any) => {
   ) {
     errors.email = 'Invalid email address';
   }
+  if (values.password !== values.confirmPassword) {
+    errors.confirmPassword = 'Wrong confirm password';
+  }
   return errors;
 };
 
@@ -103,11 +106,13 @@ const SingUpForm = (props: any) => {
             name='password'
             component={renderTextField}
             label='Password'
+            type='password'
           />
           <Field
             name='confirmPassword'
             component={renderTextField}
             label='Confirm Password'
+            type='password'
           />
         </div>
       </div>

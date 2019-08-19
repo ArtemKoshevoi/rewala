@@ -17,12 +17,13 @@ class Registration extends React.Component {
     const Submit = (values: any) => {
       const payload = {
         email: values.email,
-        password: values.confirmPassword,
-        isAgreeWithPrivacyPolicyAndTermOfUse: values.police || false,
+        password: values.password,
+        isAgreeWithPrivacyPolicyAndTermOfUse: values.policy || false,
         profileInput: {
           fullName: values.fullName || null,
           phone: values.phone || null,
           countryCode: values.countryCode || null,
+          notifications: true,
         },
       };
       registration(payload);
