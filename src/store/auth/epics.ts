@@ -7,6 +7,7 @@ import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/n
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
+import { RootActions } from '../index';
 
 export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.LOGIN),
@@ -20,7 +21,7 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
   Actions.loginSucceded,
 );
 
-export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
   map(({payload}) => {
     if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
@@ -48,7 +49,7 @@ export const logoutSucceededEpic: Epic = transferActionEpicFactory(
   Actions.logoutSucceded,
 );
 
-export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT_SUCCEDED),
   map(() => authService.removeToken()),
   map(() => redirectToLoginpage()),
@@ -72,7 +73,7 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
   Actions.registrationSucceded,
 );
 
-export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<any>) => action$.pipe(
+export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
   map(({payload}) => {
     if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {

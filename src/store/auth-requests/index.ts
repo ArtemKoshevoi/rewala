@@ -21,6 +21,7 @@ import {
   reducer as getMeReducer,
 } from './nested-states/getMe';
 
+import { ActionType } from 'typesafe-actions';
 import {
   Actions as registration,
   ActionTypes as registrationActionTypes,
@@ -48,6 +49,8 @@ export const reducer = combineReducers({
   getMeRequest: getMeReducer,
   registrationRequest: registrationReducer,
 });
+
+export type ActionTypeUnion = ActionType<typeof reducer>;
 
 export const epics = [
   loginEpic,

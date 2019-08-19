@@ -1,4 +1,4 @@
-import { action } from 'typesafe-actions';
+import { action, ActionType } from 'typesafe-actions';
 import { LoginFormValues, LogOutValue, UserInput } from '../../shared/Interfaces';
 
 export enum ActionTypes {
@@ -25,3 +25,5 @@ export const Actions = {
   getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
   setAccessToken: (token?: string) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
+
+export type ActionTypeUnion = ActionType<typeof Actions>;

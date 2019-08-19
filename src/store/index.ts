@@ -2,7 +2,8 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
-import { StateType } from 'typesafe-actions';
+import { ActionType, StateType } from 'typesafe-actions';
+import { ActionTypeUnion as AuthActionTypeUnion } from './auth/actions';
 import {
   getCurrentUserEpic,
   loginEpic,
@@ -19,6 +20,7 @@ import {
 import { reducer as authReducer } from './auth/reducer';
 
 import {
+  ActionTypeUnion as AuthRequestActionTypeUnion,
   epics as authRequestEpics,
   reducer as authRequestReducer,
 } from './auth-requests';
@@ -45,6 +47,11 @@ const rootReducer = combineReducers({
 });
 
 export type RootState = StateType<typeof rootReducer>;
+
+export type RootActions = ActionType<
+  | AuthActionTypeUnion
+  | AuthRequestActionTypeUnion
+  >;
 
 const epicMiddleware = createEpicMiddleware();
 
