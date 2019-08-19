@@ -5,9 +5,9 @@ import { ignoreElements, map } from 'rxjs/operators';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
+import { RootActions } from '../index';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
-import { RootActions } from '../index';
 
 export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
   ofType(ActionTypes.LOGIN),
