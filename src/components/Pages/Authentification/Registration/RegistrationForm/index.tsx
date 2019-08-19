@@ -23,7 +23,7 @@ const validate = (values: any) => {
     errors.email = 'Invalid email address';
   }
   if (values.password !== values.confirmPassword) {
-    errors.confirmPassword = 'Wrong confirm password';
+    errors.confirmPassword = 'Passwords do not match';
   }
   return errors;
 };
