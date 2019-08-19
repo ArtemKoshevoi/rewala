@@ -38,13 +38,13 @@ const rootEpic = combineEpics(
   redirectOnRegistrationSuccessEpic,
 );
 
-export type RootState = StateType<typeof rootReducer>;
-
 const rootReducer = combineReducers({
   form: reduxFormReducer,
   auth: authReducer,
   authRequest: authRequestReducer,
 });
+
+export type RootState = StateType<typeof rootReducer>;
 
 const epicMiddleware = createEpicMiddleware();
 

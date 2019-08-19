@@ -29,19 +29,10 @@ export function reducer(state = initialState, action: any): AuthState {
     }
 
     case ActionTypes.LOGIN_FAILED: {
-      console.log(action.payload);
       return {
         ...state,
         isAuthorized: false,
         error: action.payload,
-      };
-    }
-
-    case ActionTypes.GET_WRONG_LOGIN_PASSWORD: {
-      console.log(123);
-      return {
-        ...state,
-        wrongLoginPassword: true,
       };
     }
 

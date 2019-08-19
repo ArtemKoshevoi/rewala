@@ -1,4 +1,4 @@
-import { action, ActionType } from 'typesafe-actions';
+import { action } from 'typesafe-actions';
 import { LoginFormValues, LogOutValue, UserInput } from '../../shared/Interfaces';
 
 export enum ActionTypes {
@@ -12,7 +12,6 @@ export enum ActionTypes {
   RREGISTRATION_FAILED = 'REGISTRATION_FAILED',
   GET_CURRENT_USER = 'GET_CURRENT_USER',
   SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN',
-  GET_WRONG_LOGIN_PASSWORD = 'GET_WRONG_LOGIN_PASSWORD',
 }
 
 export const Actions = {
@@ -24,8 +23,5 @@ export const Actions = {
   registration: (payload: UserInput) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: UserInput) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
   getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
-  loginPasswordWrong: () => action(ActionTypes.GET_WRONG_LOGIN_PASSWORD),
   setAccessToken: (token?: string) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
-
-export type ActionTypeUnion = ActionType<typeof Actions>;

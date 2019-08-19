@@ -1,7 +1,12 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderTextField } from '../style';
+
+interface LoginFormValues {
+  email: string | null;
+  password: string | null;
+}
 
 const validate = (values: any) => {
   const errors: any = {};
@@ -23,7 +28,7 @@ const validate = (values: any) => {
   return errors;
 };
 
-const Index = (props: any) => {
+const Index = (props: InjectedFormProps<LoginFormValues>) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>

@@ -18,6 +18,4 @@ const epic: Epic = (actions$: Observable<Action>) => effect(
   (payload) => authRequestsService.registration(payload),
 );
 
-console.log(epic, reducer, Actions, ActionTypes);
-
 export { epic, reducer, Actions, ActionTypes };

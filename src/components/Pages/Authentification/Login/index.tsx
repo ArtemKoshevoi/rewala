@@ -8,11 +8,6 @@ import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
 import LoginForm from './LoginForm';
 
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
-
 const mapStateToProps = (state: RootState) => {
   const {loginRequest} = getState(state);
   return {

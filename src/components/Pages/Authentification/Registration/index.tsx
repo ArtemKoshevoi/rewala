@@ -20,9 +20,9 @@ class Registration extends React.Component {
         password: values.confirmPassword,
         isAgreeWithPrivacyPolicyAndTermOfUse: values.police || false,
         profileInput: {
-          fullName: values.fullname || null,
-          phone: values.phone_number || null,
-          countryCode: (values.code && values.code.value) || null,
+          fullName: values.fullName || null,
+          phone: values.phone || null,
+          countryCode: values.countryCode || null,
         },
       };
       registration(payload);

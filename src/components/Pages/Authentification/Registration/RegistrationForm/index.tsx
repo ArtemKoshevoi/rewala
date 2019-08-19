@@ -49,7 +49,6 @@ const renderSelectField = (
   <Select
     errorText={touched && error}
     {...input}
-    // onChange={(event, index, value): any => input.onChange(value)}
     children={children}
     {...custom}
     defaultValue={1}
@@ -88,7 +87,7 @@ const SingUpForm = (props: any) => {
             component={renderSelectField}
             label='Country Code'
           >
-            <MenuItem value='1'>+380</MenuItem>
+            <MenuItem value='+38'>+38</MenuItem>
           </Field>
           <Field
             name='phone'

@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { ActionType, StateType } from 'typesafe-actions';
 
 import {
   Actions as login,
@@ -50,13 +49,9 @@ export const reducer = combineReducers({
   registrationRequest: registrationReducer,
 });
 
-export type ActionTypeUnion = ActionType<typeof reducer>;
-
 export const epics = [
   loginEpic,
   logoutEpic,
   getMeEpic,
   registrationEpic,
 ];
-
-export type State = StateType<typeof reducer>;
