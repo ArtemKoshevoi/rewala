@@ -1,18 +1,18 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
-import Header from '../../shared/components/header/header';
+import Header from '../../../shared/components/header/header';
 
-class Search extends React.Component {
+class HomePage extends React.Component {
   render(): React.ReactNode {
     return (
       <Container>
         <Header/>
         <div>
-          <h2>Search</h2>
+          <h2>Home Page</h2>
         </div>
       </Container>
     );
   }
 }
 
-export default Search;
+export default HomePage;
