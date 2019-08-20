@@ -8,6 +8,11 @@ import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
 import LoginForm from './LoginForm';
 
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
 const mapStateToProps = (state: RootState) => {
   const {loginRequest} = getState(state);
   return {
@@ -19,19 +24,19 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
 });
 
-class Login extends React.Component {
-  render(): React.ReactNode {
-    let warningMessage = '';
-    const {loginRequestState}: any = this.props;
-    if (loginRequestState && loginRequestState.hasOwnProperty('errors')) {
+type Props =
+  & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>;
+
+const Login: React.FC<Props> = ({loginRequestState, login}) => {
+  let warningMessage = '';
+  if (loginRequestState && loginRequestState.hasOwnProperty('errors')) {
       warningMessage = 'Wrong email or password';
     }
-    const {login}: any = this.props;
-
-    const Submit = ({email, password}: any): void => {
+  const Submit = ({email, password}: LoginFormValues) => {
       login({email, password});
     };
-    return (
+  return (
       <Container maxWidth={'xs'}>
         <LoginForm onSubmit={Submit}/>
         <FormHelperText id='component-error-text' style={{color: 'red', fontSize: '16px'}}>
@@ -51,7 +56,6 @@ class Login extends React.Component {
         </Grid>
       </Container>
     );
-  }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
