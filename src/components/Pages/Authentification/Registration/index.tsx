@@ -10,11 +10,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   registration: (registrationFormValues: UserInput) => dispatch(Actions.registration(registrationFormValues)),
 });
 
-class Registration extends React.Component {
-  render(): React.ReactNode {
-    const {registration}: any = this.props;
+type Props =
+  & ReturnType<typeof mapDispatchToProps>;
 
-    const Submit = (values: any) => {
+const Registration: React.FC<Props> = ({registration}) => {
+  const Submit = (values: any) => {
       const payload = {
         email: values.email,
         password: values.password,
@@ -28,12 +28,11 @@ class Registration extends React.Component {
       };
       registration(payload);
     };
-    return (
+  return (
       <Container maxWidth={'xs'}>
         <SingUpForm onSubmit={Submit}/>
       </Container>
     );
-  }
-}
+};
 
 export default connect(null, mapDispatchToProps)(Registration);
