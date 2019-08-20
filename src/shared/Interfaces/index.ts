@@ -4,7 +4,7 @@ export interface LoginFormValues {
 }
 
 export interface LogOutValue {
-  FCMToken: string;
+  FCMToken: string | null;
 }
 
 interface ProfileInput {
