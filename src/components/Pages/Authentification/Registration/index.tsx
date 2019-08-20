@@ -6,6 +6,16 @@ import { UserInput } from '../../../../shared/Interfaces';
 import { Actions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
 
+interface SubmitProps {
+  email: string;
+  password: string;
+  policy: boolean;
+  fullName?: string;
+  phone?: string;
+  countryCode?: string;
+  notifications?: boolean;
+}
+
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   registration: (registrationFormValues: UserInput) => dispatch(Actions.registration(registrationFormValues)),
 });
