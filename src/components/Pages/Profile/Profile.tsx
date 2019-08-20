@@ -8,11 +8,6 @@ import { RootState } from '../../../store';
 import { getState } from '../../../store/auth-requests/selectors';
 import { Actions } from '../../../store/auth/actions';
 
-interface ProfileProps {
-  getCurrentUser: any;
-  logout: any;
-}
-
 const mapStateToProps = (state: RootState) => {
   const {logoutRequest, getMeRequest} = getState(state);
   return {
@@ -23,48 +18,45 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   getCurrentUser: () => dispatch(Actions.getCurrentUser()),
-  logout: (logoutValue: { FCMToken: string }) => dispatch((Actions.logout(logoutValue))),
+  logout: (logoutValue: { FCMToken: string | null }) => dispatch((Actions.logout(logoutValue))),
 });
 
-class Profile extends React.Component<ProfileProps> {
-  componentDidMount(): void {
-    this.props.getCurrentUser();
-  }
+type Props =
+  & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>;
 
-  render(): React.ReactNode {
-    const {getMeRequestState, logout}: any = this.props;
-    const logOut = (): void => {
-      const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
-      auth.unsubscribe();
-    };
+const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
+  const logOut = () => {
+    const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
+    auth.unsubscribe();
+  };
 
-    const getMeIsNull = getMeRequestState !== null;
-    const log = () => logOut();
+  const getMeIsNull = getMeRequestState !== null;
+  const log = () => logOut();
 
-    return (
-      <Container>
-        <Header/>
-        <Grid container={true} spacing={3} alignItems='center'>
-          <Grid item={true} xs={12} sm={6}>
-            <div>
-              <Typography variant='h5' gutterBottom={true}>
-                {getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}
-              </Typography>
-              <Typography variant='h6' gutterBottom={true}>
-                {getMeIsNull ? getMeRequestState.data.me.email : ''}
-              </Typography>
-              <Typography variant='h6' gutterBottom={true}>
-                {getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item={true} xs={12} sm={6}>
-            <Button variant='contained' color='primary' onClick={log}>log out</Button>
-          </Grid>
+  return (
+    <Container>
+      <Header/>
+      <Grid container={true} spacing={3} alignItems='center'>
+        <Grid item={true} xs={12} sm={6}>
+          <div>
+            <Typography variant='h5' gutterBottom={true}>
+              {getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}
+            </Typography>
+            <Typography variant='h6' gutterBottom={true}>
+              {getMeIsNull ? getMeRequestState.data.me.email : ''}
+            </Typography>
+            <Typography variant='h6' gutterBottom={true}>
+              {getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}
+            </Typography>
+          </div>
         </Grid>
-      </Container>
-    );
-  }
-}
+        <Grid item={true} xs={12} sm={6}>
+          <Button variant='contained' color='primary' onClick={log}>log out</Button>
+        </Grid>
+      </Grid>
+    </Container>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
