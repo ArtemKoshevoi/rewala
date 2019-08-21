@@ -24,7 +24,7 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
   map(({payload}) => {
-    if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
+    if (payload.data.login) {
       authService.setToken(payload.data.login.authToken);
     }
   }),
@@ -76,7 +76,7 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
 export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
   map(({payload}) => {
-    if (payload.data.login && payload.data.login.hasOwnProperty('authToken')) {
+    if (payload.data.login) {
       authService.setToken(payload.data.login.authToken);
     }
   }),
