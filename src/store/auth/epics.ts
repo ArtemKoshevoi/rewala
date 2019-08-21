@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map } from 'rxjs/operators';
+import { ignoreElements, map, tap } from 'rxjs/operators';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
@@ -28,7 +28,7 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
       authService.setToken(payload.data.login.authToken);
     }
   }),
-  map(() => redirectToHomepage()),
+  tap(() => redirectToHomepage()),
   ignoreElements(),
 );
 
@@ -52,7 +52,7 @@ export const logoutSucceededEpic: Epic = transferActionEpicFactory(
 export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT_SUCCEDED),
   map(() => authService.removeToken()),
-  map(() => redirectToLoginpage()),
+  tap(() => redirectToLoginpage()),
   ignoreElements(),
 );
 
@@ -80,6 +80,6 @@ export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<Root
       authService.setToken(payload.data.login.authToken);
     }
   }),
-  map(() => redirectToHomepage()),
+  tap(() => redirectToHomepage()),
   ignoreElements(),
 );
