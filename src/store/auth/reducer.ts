@@ -1,4 +1,4 @@
-import { ActionTypes } from './actions';
+import { ActionTypes, ActionTypeUnion } from './actions';
 import { AuthState } from './state';
 
 const initialState: AuthState = {
@@ -8,7 +8,7 @@ const initialState: AuthState = {
   wrongLoginPassword: false,
 };
 
-export function reducer(state = initialState, action: any): AuthState {
+export function reducer(state = initialState, action: ActionTypeUnion): AuthState {
   switch (action.type) {
     case ActionTypes.SET_ACCESS_TOKEN: {
       const token = action.payload || null;

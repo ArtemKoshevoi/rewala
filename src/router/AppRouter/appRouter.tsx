@@ -1,6 +1,6 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import Login from '../../components/Pages/Authentification/Login';
 import Index from '../../components/Pages/Authentification/Registration';
 import HomePage from '../../components/Pages/Home/Home';

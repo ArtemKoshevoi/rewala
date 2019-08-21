@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormControlLabel, Select, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
