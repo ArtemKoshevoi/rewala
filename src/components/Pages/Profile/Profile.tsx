@@ -37,8 +37,8 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
   return (
     <Container>
       <Header/>
-      <Grid container={true} spacing={3} alignItems='center'>
-        <Grid item={true} xs={12} sm={6}>
+      <Grid container={true} spacing={3}>
+        <Grid item={true} xs={6}>
           <div>
             <Typography variant='h5' gutterBottom={true}>
               {getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}
@@ -51,7 +51,7 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
             </Typography>
           </div>
         </Grid>
-        <Grid item={true} xs={12} sm={6}>
+        <Grid item={true} xs={6}>
           <Button variant='contained' color='primary' onClick={log}>log out</Button>
         </Grid>
       </Grid>

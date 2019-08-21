@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import { makeStyles, TextField } from '@material-ui/core';
 import React from 'react';
 import { WrappedFieldProps } from 'redux-form';
 
@@ -23,3 +23,10 @@ export const renderTextField: React.FC<Props> = (
     fullWidth={true}
   />
 );
+
+export const useStyles = makeStyles({
+  root: {
+    color: 'red',
+    fontSize: '16px',
+  },
+});

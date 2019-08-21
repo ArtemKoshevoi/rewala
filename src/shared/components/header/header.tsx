@@ -2,25 +2,26 @@ import React from 'react';
 
 import { Button, ButtonGroup, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import { gridStyle } from './style';
+import { gridStyle, useStyles } from './style';
 
 const Header: React.FC = () => {
+  const classes = useStyles();
   return (
     <Grid item={true} style={gridStyle}>
       <ButtonGroup
         fullWidth={true}
         variant='contained'
       >
-        <Button component={NavLink} to='/' exact={true} activeStyle={{color: 'orange'}}>
+        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/' exact={true} >
           Home
         </Button>
-        <Button component={NavLink} to='/search' activeStyle={{color: 'orange'}}>
+        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/search'>
           Search
         </Button>
-        <Button component={NavLink} to='/notifications' activeStyle={{color: 'orange'}}>
+        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/notifications'>
           Notifications
         </Button>
-        <Button component={NavLink} to='/profile' activeStyle={{color: 'orange'}}>
+        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/profile'>
           Profile
         </Button>
       </ButtonGroup>

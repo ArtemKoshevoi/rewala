@@ -2,6 +2,7 @@ import { Button, Checkbox, FormControlLabel, Select, TextField } from '@material
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
 
 const validate = (values: any) => {
   const errors: any = {};
@@ -28,50 +29,6 @@ const validate = (values: any) => {
   return errors;
 };
 
-export const renderTextField = (
-  {input, label, meta: {touched, invalid, error}, ...custom}: any,
-) => (
-  <TextField
-    label={label}
-    hinttext={label}
-    floatinglabeltext={label}
-    error={touched && invalid}
-    helperText={touched && error}
-    {...input}
-    {...custom}
-    variant='outlined'
-    placeholder={label}
-    margin='normal'
-    fullWidth={true}
-  />
-);
-
-const renderSelectField = (
-  {input, label, meta: {touched, error}, children, ...custom}: any,
-) => (
-  <Select
-    errorText={touched && error}
-    {...input}
-    children={children}
-    {...custom}
-    defaultValue={1}
-  />
-);
-
-const renderCheckbox = ({ input, label }: any) => (
-  <div>
-    <FormControlLabel
-      control={
-        <Checkbox
-          checked={!!input.value}
-          onChange={input.onChange}
-        />
-      }
-      label={label}
-    />
-  </div>
-);
-
 const SingUpForm = (props: any) => {
   const {handleSubmit, pristine, submitting} = props;
   return (
@@ -80,7 +37,7 @@ const SingUpForm = (props: any) => {
         <div>
           <Field
             name='fullName'
-            component={renderTextField}
+            component={renderRegistrationTextField}
             label='FullName'
           />
         </div>
@@ -94,23 +51,23 @@ const SingUpForm = (props: any) => {
           </Field>
           <Field
             name='phone'
-            component={renderTextField}
+            component={renderRegistrationTextField}
             label='Phone (optional)'
           />
           <Field
             name='email'
-            component={renderTextField}
+            component={renderRegistrationTextField}
             label='Email'
           />
           <Field
             name='password'
-            component={renderTextField}
+            component={renderRegistrationTextField}
             label='Password'
             type='password'
           />
           <Field
             name='confirmPassword'
-            component={renderTextField}
+            component={renderRegistrationTextField}
             label='Confirm Password'
             type='password'
           />
