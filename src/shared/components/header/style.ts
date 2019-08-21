@@ -1,9 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import {CSSProperties} from 'react';
-
-export const gridStyle: CSSProperties = {
-  marginBottom: '50px',
-};
 
 export const useStyles = makeStyles({
   root: {
@@ -13,5 +8,8 @@ export const useStyles = makeStyles({
   },
   active: {
     color: 'orange',
+  },
+  grid: {
+    marginBottom: '50px',
   },
 });

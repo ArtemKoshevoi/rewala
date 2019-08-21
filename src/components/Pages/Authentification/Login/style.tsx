@@ -2,8 +2,10 @@ import { makeStyles, TextField } from '@material-ui/core';
 import React from 'react';
 import { WrappedFieldProps } from 'redux-form';
 
-interface Props extends WrappedFieldProps {
+interface Props extends WrappedFieldProps{
   label: string;
+  hinttext: string;
+  floatinglabeltext: string;
 }
 
 export const renderTextField: React.FC<Props> = (
@@ -11,8 +13,8 @@ export const renderTextField: React.FC<Props> = (
 ) => (
   <TextField
     label={label}
-    // hinttext={label}
-    // floatinglabeltext={label}
+    hinttext={label}
+    floatinglabeltext={label}
     error={touched && invalid}
     helperText={touched && error}
     {...input}

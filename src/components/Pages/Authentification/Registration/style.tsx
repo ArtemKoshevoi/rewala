@@ -1,8 +1,17 @@
 import { Checkbox, FormControlLabel, Select, TextField } from '@material-ui/core';
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { WrappedFieldProps } from 'redux-form';
 
-export const renderRegistrationTextField = (
-  {input, label, meta: {touched, invalid, error}, ...custom}: any,
+interface Props extends WrappedFieldProps{
+  label: string;
+  hinttext: string;
+  floatinglabeltext: string;
+  defaultValue: number;
+  children: ReactNode;
+}
+
+export const renderRegistrationTextField: React.FC<Props> = (
+  {input, label, meta: {touched, invalid, error}, ...custom},
 ) => (
   <TextField
     label={label}
@@ -19,11 +28,11 @@ export const renderRegistrationTextField = (
   />
 );
 
-export const renderSelectField = (
-  {input, label, meta: {touched, error}, children, ...custom}: any,
+export const renderSelectField: React.FC<Props> = (
+  {input, label, meta: {touched, error}, children, ...custom},
 ) => (
   <Select
-    errorText={touched && error}
+    error={touched && error}
     {...input}
     children={children}
     {...custom}
@@ -31,7 +40,7 @@ export const renderSelectField = (
   />
 );
 
-export const renderCheckbox = ({input, label}: any) => (
+export const renderCheckbox: React.FC<Props> = ({input, label}) => (
   <div>
     <FormControlLabel
       control={

@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Button, ButtonGroup, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
-import { gridStyle, useStyles } from './style';
+import { useStyles } from './style';
 
 const Header: React.FC = () => {
   const classes = useStyles();
   return (
-    <Grid item={true} style={gridStyle}>
+    <Grid item={true} className={classes.grid}>
       <ButtonGroup
         fullWidth={true}
         variant='contained'

@@ -1,9 +1,14 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps, RouteProps } from 'react-router-dom';
 import { isLoggedIn } from '../store/utils/auth';
 
-const PublicRoute = ({component: Component, restricted, ...rest}: any) => {
-  const renderProps = (props: string) => (
+interface Props extends RouteProps{
+  restricted: boolean;
+}
+
+const PublicRoute: React.FC<Props> = ({component: Component, restricted, ...rest}) => {
+  if (!Component) return null;
+  const renderProps = (props: RouteComponentProps) => (
     isLoggedIn() && restricted ?
       <Redirect to='/'/>
       : <Component {...props} />
