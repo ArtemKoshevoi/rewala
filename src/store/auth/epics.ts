@@ -1,7 +1,8 @@
-import { Action } from 'redux';
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { ignoreElements, map, tap } from 'rxjs/operators';
+import { PayloadAction } from 'typesafe-actions';
+import { LoginFormValues, LogOutValue, UserInput } from '../../shared/Interfaces';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
@@ -9,9 +10,9 @@ import { RootActions } from '../index';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
 
-export const loginEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+export const loginEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN),
-  map(({payload, type}: any) =>
+  map(({payload, type}: PayloadAction<ActionTypes.LOGIN, LoginFormValues>) =>
     AuthRequestActions.login.action(payload, type),
   ),
 );
@@ -37,9 +38,9 @@ export const loginFailedEpic: Epic = transferActionEpicFactory(
   Actions.loginFailed,
 );
 
-export const logoutEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+export const logoutEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT),
-  map(({payload, type}: any) =>
+  map(({payload, type}: PayloadAction<ActionTypes.LOGOUT, LogOutValue>) =>
     AuthRequestActions.logout.action(payload, type),
   ),
 );
@@ -56,14 +57,14 @@ export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootAction
   ignoreElements(),
 );
 
-export const getCurrentUserEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+export const getCurrentUserEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.GET_CURRENT_USER),
   map(() => AuthRequestActions.getMe.action()),
 );
 
-export const registrationEpic: Epic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
+export const registrationEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION),
-  map(({payload, type}: any) =>
+  map(({payload, type}: PayloadAction<ActionTypes.REGISTRATION, UserInput>) =>
     AuthRequestActions.registration.action(payload, type),
   ),
 );
