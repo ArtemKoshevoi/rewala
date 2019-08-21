@@ -84,3 +84,8 @@ export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<Root
   tap(() => redirectToHomepage()),
   ignoreElements(),
 );
+
+export const getConfigEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
+  ofType(ActionTypes.GET_CONFIG),
+  map(() => AuthRequestActions.getConfig.action()),
+  );

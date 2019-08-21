@@ -5,6 +5,7 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { ActionType, StateType } from 'typesafe-actions';
 import { ActionTypeUnion as AuthActionTypeUnion } from './auth/actions';
 import {
+  getConfigEpic,
   getCurrentUserEpic,
   loginEpic,
   loginFailedEpic,
@@ -38,6 +39,7 @@ const rootEpic = combineEpics(
   registrationEpic,
   registrationSucceededEpic,
   redirectOnRegistrationSuccessEpic,
+  getConfigEpic,
 );
 
 const rootReducer = combineReducers({

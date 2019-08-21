@@ -69,6 +69,24 @@ class AuthRequestsService {
         };
       return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: any }>>);
     }
+
+    getConfig() {
+        const GET_CONFIG = {
+            query: gql`
+                query getConfig {
+                    config{
+                        countries{
+                            name,
+                            flag,
+                            code
+                        }
+                    }
+                }
+            `,
+        };
+
+        return from(execute(link, GET_CONFIG) as unknown as Subscribable<GraphQLResponse<{ config: any }>>);
+    }
 }
 
 export const authRequestsService = new AuthRequestsService();
