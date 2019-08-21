@@ -1,9 +1,10 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
-import { Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import Login from '../../components/Pages/Authentification/Login';
 import Index from '../../components/Pages/Authentification/Registration';
 import HomePage from '../../components/Pages/Home/Home';
+import NotFound from '../../components/Pages/NotFound';
 import Notifications from '../../components/Pages/Notifications/Notifications';
 import Profile from '../../components/Pages/Profile/Profile';
 import Search from '../../components/Pages/Search/Search';
@@ -22,6 +23,7 @@ const appRouter: React.FC = () => {
           <PrivateRoute component={Search} path='/search'/>
           <PrivateRoute component={Notifications} path='/notifications'/>
           <PrivateRoute component={Profile} path='/profile'/>
+          <PublicRoute component={NotFound}  path='*'/>
         </Switch>
       </Router>
     </Container>
