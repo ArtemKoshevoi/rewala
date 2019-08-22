@@ -5,12 +5,12 @@ const initialState: AuthState = {
   isAuthorized: null,
   token: null,
   error: null,
-  wrongLoginPassword: false,
 };
 
 export function reducer(state = initialState, action: ActionTypeUnion): AuthState {
   switch (action.type) {
     case ActionTypes.SET_ACCESS_TOKEN: {
+      console.log(111, action.payload);
       const token = action.payload || null;
 
       if (token) {

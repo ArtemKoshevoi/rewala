@@ -24,10 +24,16 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
-  filter((action) => !!action.payload.data.login),
-  map(({payload}) => authService.setToken(payload.data.login.authToken)),
-  map(() => Actions.getCurrentUser()),
+  filter((action) => action.payload.data.login),
+  tap(({payload}) => authService.setToken(payload.data.login.authToken)),
+  map(({payload}) => Actions.setAccessToken(payload.data.login.authToken)),
   tap(() => redirectToHomepage()),
+);
+
+export const getCurrentUserOnTokenSetEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
+  ofType(ActionTypes.SET_ACCESS_TOKEN),
+  filter(action => !!action.payload),
+  map(() => Actions.getCurrentUser()),
 );
 
 export const loginFailedEpic: Epic = transferActionEpicFactory(
@@ -59,6 +65,11 @@ export const getCurrentUserEpic: Epic = (action$: Observable<RootActions>) => ac
   map(() => AuthRequestActions.getMe.action()),
 );
 
+export const getCurrentUserSucceededEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.getMeActionTypes.ACTION_SUCCEEDED,
+  Actions.getCurrentUserSucceded,
+);
+
 export const registrationEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION),
   map(({payload, type}: PayloadAction<ActionTypes.REGISTRATION, UserInput>) =>
@@ -85,4 +96,4 @@ export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<Root
 export const getConfigEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.GET_CONFIG),
   map(() => AuthRequestActions.getConfig.action()),
-  );
+);

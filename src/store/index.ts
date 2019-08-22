@@ -6,7 +6,7 @@ import { ActionType, StateType } from 'typesafe-actions';
 import { ActionTypeUnion as AuthActionTypeUnion } from './auth/actions';
 import {
   getConfigEpic,
-  getCurrentUserEpic,
+  getCurrentUserEpic, getCurrentUserOnTokenSetEpic, getCurrentUserSucceededEpic,
   loginEpic,
   loginFailedEpic,
   loginSucceededEpic,
@@ -40,6 +40,8 @@ const rootEpic = combineEpics(
   registrationSucceededEpic,
   redirectOnRegistrationSuccessEpic,
   getConfigEpic,
+  getCurrentUserSucceededEpic,
+  getCurrentUserOnTokenSetEpic,
 );
 
 const rootReducer = combineReducers({
