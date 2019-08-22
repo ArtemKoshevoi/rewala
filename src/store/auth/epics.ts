@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map, tap } from 'rxjs/operators';
+import { filter, ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { LoginFormValues, LogOutValue, UserInput } from '../../shared/Interfaces';
 import { authService } from '../../shared/services/auth.service';
@@ -24,13 +24,10 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
-  map(({payload}) => {
-    if (payload.data.login) {
-      authService.setToken(payload.data.login.authToken);
-    }
-  }),
+  filter((action) => !!action.payload.data.login),
+  map(({payload}) => authService.setToken(payload.data.login.authToken)),
+  map(() => Actions.getCurrentUser()),
   tap(() => redirectToHomepage()),
-  ignoreElements(),
 );
 
 export const loginFailedEpic: Epic = transferActionEpicFactory(

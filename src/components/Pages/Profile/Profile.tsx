@@ -17,7 +17,6 @@ const mapStateToProps = (state: RootState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getCurrentUser: () => dispatch(Actions.getCurrentUser()),
   logout: (logoutValue: { FCMToken: string | null }) => dispatch((Actions.logout(logoutValue))),
 });
 
