@@ -77,7 +77,6 @@ class AuthRequestsService {
                     config{
                         countries{
                             name,
-                            flag,
                             code
                         }
                     }

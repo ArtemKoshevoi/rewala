@@ -84,13 +84,10 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
-  map(({payload}) => {
-    if (payload.data.login) {
-      authService.setToken(payload.data.login.authToken);
-    }
-  }),
+  filter((action) => action.payload.data.login),
+  tap(({payload}) => authService.setToken(payload.data.login.authToken)),
+  map(({payload}) => Actions.setAccessToken(payload.data.login.authToken)),
   tap(() => redirectToHomepage()),
-  ignoreElements(),
 );
 
 export const getConfigEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(

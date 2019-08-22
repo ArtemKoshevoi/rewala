@@ -1,8 +1,23 @@
-import { Button } from '@material-ui/core';
+import { Button, FormControl, makeStyles } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
+
+const useStyle = makeStyles({
+  root: {
+    display: 'flax',
+  },
+  select: {
+    width: '100px',
+    marginRight: '15px',
+    height: '55px',
+  },
+  phone: {
+    width: '280px',
+    margin: 'auto',
+  },
+});
 
 const validate = (values: any) => {
   const errors: any = {};
@@ -30,9 +45,10 @@ const validate = (values: any) => {
 };
 
 const SingUpForm = (props: any) => {
+  const classes = useStyle();
   const {handleSubmit, pristine, submitting} = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={classes.root} onSubmit={handleSubmit}>
       <div>
         <div>
           <Field
@@ -43,6 +59,7 @@ const SingUpForm = (props: any) => {
         </div>
         <div>
           <Field
+            className={classes.select}
             name='countryCode'
             component={renderSelectField}
             label='Country Code'
@@ -50,6 +67,7 @@ const SingUpForm = (props: any) => {
             <MenuItem value='+38'>+38</MenuItem>
           </Field>
           <Field
+            className={classes.phone}
             name='phone'
             component={renderRegistrationTextField}
             label='Phone (optional)'

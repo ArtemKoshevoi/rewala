@@ -7,6 +7,8 @@ export interface LogOutValue {
   FCMToken: string | null;
 }
 
+
+
 interface ProfileInput {
   fullName: string;
   phone: string;
@@ -19,4 +21,9 @@ export interface UserInput {
   password: string;
   isAgreeWithPrivacyPolicyAndTermOfUse: boolean;
   profileInput: ProfileInput;
+}
+
+export interface Country {
+  name: string;
+  code: string;
 }

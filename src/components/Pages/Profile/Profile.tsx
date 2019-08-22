@@ -9,9 +9,8 @@ import { getState } from '../../../store/auth-requests/selectors';
 import { Actions } from '../../../store/auth/actions';
 
 const mapStateToProps = (state: RootState) => {
-  const {logoutRequest, getMeRequest} = getState(state);
+  const {getMeRequest} = getState(state);
   return {
-    logoutRequestState: logoutRequest.data,
     getMeRequestState: getMeRequest.data,
   };
 };
