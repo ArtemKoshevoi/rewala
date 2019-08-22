@@ -1,7 +1,8 @@
 import { Button, FormControl, makeStyles } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, FormErrors, reduxForm } from 'redux-form';
+import { UserInput } from '../../../../../shared/Interfaces';
 import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
 
 const useStyle = makeStyles({
@@ -20,7 +21,7 @@ const useStyle = makeStyles({
 });
 
 const validate = (values: any) => {
-  const errors: any = {};
+  const errors: FormErrors<UserInput = {}, T = string>;
   const requiredFields = [
     'email',
     'password',

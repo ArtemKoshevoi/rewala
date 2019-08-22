@@ -2,22 +2,13 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
-  InputLabel, makeStyles,
+  InputLabel,
   OutlinedInput,
   Select,
-  TextField
+  TextField,
 } from '@material-ui/core';
 import React, { ReactNode } from 'react';
 import { WrappedFieldProps } from 'redux-form';
-
-const useStyles = makeStyles({
-  inputLabel: {
-    textAlign: 'center',
-    padding: '20px',
-  },
-});
-
-
 
 interface Props extends WrappedFieldProps {
   label: string;
