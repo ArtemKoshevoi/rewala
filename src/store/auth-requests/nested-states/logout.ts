@@ -1,6 +1,7 @@
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
+import { LogOutValue } from '../../../shared/Interfaces';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 import { authRequestsService } from '../service';
 
@@ -9,7 +10,7 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<{ FCMToken: string }, any, Error>('LOGOUT_REQUEST');
+} = asyncActionHandlerFactory<{ FCMToken: string }, LogOutValue, Error>('LOGOUT_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,

@@ -1,6 +1,7 @@
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
+import { MeValues } from '../../../shared/Interfaces';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 import { authRequestsService } from '../service';
 
@@ -9,7 +10,7 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<undefined, any, Error>('GET_ME_REQUEST');
+} = asyncActionHandlerFactory<undefined, MeValues, Error>('GET_ME_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,
