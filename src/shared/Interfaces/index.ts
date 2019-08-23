@@ -7,7 +7,20 @@ export interface LogOutValue {
   FCMToken: string | null;
 }
 
+export interface InputValue extends LoginFormValues, LogOutValue {
+}
 
+export interface Profile {
+  fullName: string;
+  notifications: boolean;
+}
+
+export interface MeValues {
+  me: {
+    email: string;
+    profile: Profile;
+  };
+}
 
 interface ProfileInput {
   fullName: string;
@@ -23,7 +36,20 @@ export interface UserInput {
   profileInput: ProfileInput;
 }
 
-export interface Country {
+export enum UserStatus {
+  DELETED = 'DELETED',
+  INACTIVE = 'INACTIVE',
+  ACTIVE = 'ACTIVE',
+}
+
+export interface RegistrationValues {
+  email: string;
+  FCMToken: string | null;
+  status: UserStatus;
+}
+
+
+export interface Countries {
   name: string;
   code: string;
 }
