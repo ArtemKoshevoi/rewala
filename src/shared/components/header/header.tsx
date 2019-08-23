@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button, ButtonGroup, Grid } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useStyles } from './style';
 
 const Header: React.FC = () => {
@@ -12,16 +12,16 @@ const Header: React.FC = () => {
         fullWidth={true}
         variant='contained'
       >
-        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/' exact={true} >
+        <Button className={classes.root} component={Link} to='/' >
           Home
         </Button>
-        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/search'>
+        <Button className={classes.root} component={Link} to='/search'>
           Search
         </Button>
-        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/notifications'>
+        <Button className={classes.root} component={Link} to='/notifications'>
           Notifications
         </Button>
-        <Button className={classes.root} activeClassName={classes.active} component={NavLink} to='/profile'>
+        <Button className={classes.root} component={Link} to='/profile'>
           Profile
         </Button>
       </ButtonGroup>

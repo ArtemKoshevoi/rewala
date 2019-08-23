@@ -8,14 +8,20 @@ import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
 
-interface SubmitProps {
-  email: string;
-  password: string;
-  policy: boolean;
-  fullName?: string;
+interface ProfileInput {
+  fullName: string;
   phone?: string;
   countryCode?: string;
   notifications?: boolean;
+}
+
+interface SubmitProps extends UserInput{
+  email: string;
+  password: string;
+  policy: boolean;
+  fullName: string | null;
+  phone: string | null;
+  countryCode: string | null;
 }
 
 const mapStateToProps = (state: RootState) => {
