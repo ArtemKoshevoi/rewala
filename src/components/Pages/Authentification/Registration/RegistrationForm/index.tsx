@@ -83,7 +83,6 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='countryCode'
             component={renderSelectField}
             label='Country Code'
-            // data={countriesCode}
           >
             {countryList}
           </Field>
