@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { UserInput } from '../../../../shared/Interfaces';
-import { RootState } from '../../../../store';
-import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
 
@@ -15,7 +13,7 @@ interface ProfileInput {
   notifications?: boolean;
 }
 
-interface SubmitProps extends UserInput{
+interface SubmitProps extends UserInput {
   email: string;
   password: string;
   policy: boolean;
@@ -24,28 +22,18 @@ interface SubmitProps extends UserInput{
   countryCode: string | null;
 }
 
-const mapStateToProps = (state: RootState) => {
-  const {getConfigRequest} = getState(state);
-  return {
-    getConfigRequestState: getConfigRequest.data,
-  };
-};
-
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   registration: (registrationFormValues: UserInput) => dispatch(Actions.registration(registrationFormValues)),
   getConfig: () => dispatch(Actions.getConfig()),
 });
 
 type Props =
-  & ReturnType<typeof mapDispatchToProps>
-  & ReturnType<typeof mapStateToProps>;
+  & ReturnType<typeof mapDispatchToProps>;
 
-const Registration: React.FC<Props> = ({registration, getConfig, getConfigRequestState}) => {
+const Registration: React.FC<Props> = ({registration, getConfig}) => {
   useEffect(() => {
     getConfig();
   }, [getConfig]);
-
-  // const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
 
   const Submit = (values: any) => {
     const payload = {
@@ -63,9 +51,9 @@ const Registration: React.FC<Props> = ({registration, getConfig, getConfigReques
   };
   return (
     <Container maxWidth={'xs'}>
-      <SingUpForm onSubmit={Submit} />
+      <SingUpForm onSubmit={Submit}/>
     </Container>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default connect(null, mapDispatchToProps)(Registration);

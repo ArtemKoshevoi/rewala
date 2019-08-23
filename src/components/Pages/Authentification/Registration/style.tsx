@@ -2,7 +2,6 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
-  InputLabel,
   OutlinedInput,
   Select,
   TextField,
@@ -46,40 +45,14 @@ export const renderSelectField: React.FC<Props> = (
   {input, label, data, meta: {touched, error}, children, ...custom},
 ) => {
 
-  // const countryList = () => {
-  //   const listItems = [];
-  //   for (const item in data) {
-  //     if (item) {
-  //       listItems.push({value: data[item].code, label: `${data[item].name} ${data[item].code}`});
-  //     }
-  //   }
-  //   return listItems;
-  // };
-
-  // const countryList = () => {
-  //   const listItems = [];
-  //   for (const item in data) {
-  //     if (item) {
-  //       listItems.push(data[item].name);
-  //     }
-  //   }
-  //   return listItems;
-  // };
-  //
-  // console.log(countryList());
-
   return (
     <FormControl error={touched && error}>
-      <InputLabel htmlFor='outlined-code'>Code</InputLabel>
       <Select
-        input={<OutlinedInput labelWidth={30} name='code' id='outlined-code'/>}
+        input={<OutlinedInput labelWidth={0} name='code' id='outlined-code'/>}
         error={touched && error}
         {...input}
         children={children}
         {...custom}
-        // multiple={true}
-        // value={countryList()}
-        // inputProps={countryList()}
       />
     </FormControl>
   );

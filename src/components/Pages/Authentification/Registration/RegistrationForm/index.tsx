@@ -1,27 +1,18 @@
-import { Button, makeStyles } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { UserInput } from '../../../../../shared/Interfaces';
 import { RootState } from '../../../../../store';
 import { getState } from '../../../../../store/auth-requests/selectors';
 import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
+import { useStyle } from './style';
 
-const useStyle = makeStyles({
-  root: {
-    display: 'flax',
-  },
-  select: {
-    width: '100px',
-    marginRight: '15px',
-    height: '55px',
-  },
-  phone: {
-    width: '280px',
-    margin: 'auto',
-  },
-});
+interface Item {
+  code: string;
+  name: string;
+}
 
 const validate = (values: any) => {
   const errors: any = {};
@@ -58,22 +49,24 @@ const mapStateToProps = (state: RootState) => {
 type StateProps =
   & ReturnType<typeof mapStateToProps>;
 
-interface Props extends StateProps {
-  countriesCode: string[];
-}
-
 const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
   const classes = useStyle();
+  const [countryList, setList] = useState(null);
   const {handleSubmit, pristine, submitting, getConfigRequestState} = props;
-  const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
-  let list = null;
-  if (countriesCode) {
-    list = countriesCode.map((item: any) => {
-      return(
-        <MenuItem key={Math.random()} value={item.code}>{item.name} {item.code}</MenuItem>
-      );
-    });
-  }
+
+  useEffect(() => {
+    const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
+    let list = null;
+    if (countriesCode) {
+      list = countriesCode.map((item: Item) => {
+        return (
+          <MenuItem key={Math.random()} value={item.code}>{item.name} {item.code}</MenuItem>
+        );
+      });
+    }
+    setList(list);
+  }, [getConfigRequestState]);
+
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <div>
@@ -90,9 +83,9 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='countryCode'
             component={renderSelectField}
             label='Country Code'
-            data={countriesCode}
+            // data={countriesCode}
           >
-            {list}
+            {countryList}
           </Field>
           <Field
             className={classes.phone}
