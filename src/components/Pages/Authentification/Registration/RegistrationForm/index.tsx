@@ -1,9 +1,9 @@
-import { Button, FormControl, makeStyles } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
-import { Field, FormErrors, reduxForm } from 'redux-form';
-import { UserInput } from '../../../../../shared/Interfaces';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
+import { UserInput } from '../../../../../shared/Interfaces';
 
 const useStyle = makeStyles({
   root: {
@@ -21,7 +21,7 @@ const useStyle = makeStyles({
 });
 
 const validate = (values: any) => {
-  const errors: FormErrors<UserInput = {}, T = string>;
+  const errors: any = {};
   const requiredFields = [
     'email',
     'password',
@@ -45,7 +45,7 @@ const validate = (values: any) => {
   return errors;
 };
 
-const SingUpForm = (props: any) => {
+const SingUpForm = (props: InjectedFormProps<UserInput>) => {
   const classes = useStyle();
   const {handleSubmit, pristine, submitting} = props;
   return (
