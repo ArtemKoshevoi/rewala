@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, RouteComponentProps, RouteProps } from 'react-router-dom';
 import { isLoggedIn } from '../store/utils/auth';
 
-interface Props extends RouteProps{
+interface Props extends RouteProps {
   restricted: boolean;
 }
 

@@ -32,6 +32,7 @@ class AuthRequestsService {
                         profile{
                             fullName
                             phone
+                            countryCode
                         }
                     }
                 }

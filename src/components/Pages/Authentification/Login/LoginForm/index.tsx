@@ -29,7 +29,7 @@ const validate = (values: any) => {
 };
 
 const Index = (props: InjectedFormProps<LoginFormValues>) => {
-  const { handleSubmit, pristine, submitting } = props;
+  const {handleSubmit, pristine, submitting} = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>

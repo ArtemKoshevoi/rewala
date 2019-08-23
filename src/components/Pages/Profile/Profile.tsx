@@ -38,13 +38,16 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
       <Grid container={true} spacing={3}>
         <Grid item={true} xs={6}>
           <div>
-            <Typography variant='h5' gutterBottom={true}>
+            <Typography variant='h5' gutterBottom={true}>Name:
               {getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}
             </Typography>
-            <Typography variant='h6' gutterBottom={true}>
+            <Typography variant='h6' gutterBottom={true}>Email:
               {getMeIsNull ? getMeRequestState.data.me.email : ''}
             </Typography>
-            <Typography variant='h6' gutterBottom={true}>
+            <Typography variant='h6' gutterBottom={true}>Country Code:
+              {getMeIsNull ? getMeRequestState.data.me.profile.countryCode : ''}
+            </Typography>
+            <Typography variant='h6' gutterBottom={true}>Phone:
               {getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}
             </Typography>
           </div>

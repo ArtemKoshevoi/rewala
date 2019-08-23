@@ -14,6 +14,6 @@ export function transferActionEpicFactory<InputAction extends PayloadMetaAction<
     action$.pipe(
       ofType(inputActionType),
       filter((action: InputAction) => initialActionType ? initialActionType === action.meta : true),
-      map(({ payload, meta }: InputAction) => outputActionCreator(payload, meta)),
+      map(({payload, meta}: InputAction) => outputActionCreator(payload, meta)),
     );
 }

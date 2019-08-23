@@ -45,7 +45,7 @@ const Registration: React.FC<Props> = ({registration, getConfig, getConfigReques
     getConfig();
   }, [getConfig]);
 
-  const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
+  // const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
 
   const Submit = (values: any) => {
     const payload = {
@@ -63,7 +63,7 @@ const Registration: React.FC<Props> = ({registration, getConfig, getConfigReques
   };
   return (
     <Container maxWidth={'xs'}>
-      <SingUpForm onSubmit={Submit}/>
+      <SingUpForm onSubmit={Submit} />
     </Container>
   );
 };

@@ -23,7 +23,7 @@ const appRouter: React.FC = () => {
           <PrivateRoute component={Search} path='/search'/>
           <PrivateRoute component={Notifications} path='/notifications'/>
           <PrivateRoute component={Profile} path='/profile'/>
-          <PublicRoute restricted={false} component={NotFound}  path='*'/>
+          <PublicRoute restricted={false} component={NotFound} path='*'/>
         </Switch>
       </Router>
     </Container>

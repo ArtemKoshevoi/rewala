@@ -1,9 +1,12 @@
 import { Button, makeStyles } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
 import { UserInput } from '../../../../../shared/Interfaces';
+import { RootState } from '../../../../../store';
+import { getState } from '../../../../../store/auth-requests/selectors';
+import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
 
 const useStyle = makeStyles({
   root: {
@@ -45,9 +48,32 @@ const validate = (values: any) => {
   return errors;
 };
 
-const SingUpForm = (props: InjectedFormProps<UserInput>) => {
+const mapStateToProps = (state: RootState) => {
+  const {getConfigRequest} = getState(state);
+  return {
+    getConfigRequestState: getConfigRequest.data,
+  };
+};
+
+type StateProps =
+  & ReturnType<typeof mapStateToProps>;
+
+interface Props extends StateProps {
+  countriesCode: string[];
+}
+
+const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
   const classes = useStyle();
-  const {handleSubmit, pristine, submitting} = props;
+  const {handleSubmit, pristine, submitting, getConfigRequestState} = props;
+  const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
+  let list = null;
+  if (countriesCode) {
+    list = countriesCode.map((item: any) => {
+      return(
+        <MenuItem key={Math.random()} value={item.code}>{item.name} {item.code}</MenuItem>
+      );
+    });
+  }
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <div>
@@ -64,8 +90,9 @@ const SingUpForm = (props: InjectedFormProps<UserInput>) => {
             name='countryCode'
             component={renderSelectField}
             label='Country Code'
+            data={countriesCode}
           >
-            <MenuItem value='+38'>+38</MenuItem>
+            {list}
           </Field>
           <Field
             className={classes.phone}
@@ -108,7 +135,9 @@ const SingUpForm = (props: InjectedFormProps<UserInput>) => {
   );
 };
 
-export default reduxForm({
-  form: 'registration',
-  validate,
-})(SingUpForm);
+export default connect(mapStateToProps)(
+  reduxForm<{}, any>({
+    form: 'registration',
+    validate,
+  })(SingUpForm),
+);

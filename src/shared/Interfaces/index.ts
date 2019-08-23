@@ -19,6 +19,7 @@ export interface MeValues {
   me: {
     email: string;
     profile: Profile;
+    countryCode: string
   };
 }
 
@@ -47,7 +48,6 @@ export interface RegistrationValues {
   FCMToken: string | null;
   status: UserStatus;
 }
-
 
 export interface Countries {
   name: string;
