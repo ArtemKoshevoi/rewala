@@ -45,7 +45,7 @@ const Index = (props: InjectedFormProps<LoginFormValues>) => {
             name='password'
             component={renderTextField}
             label='Password'
-            // type='password'
+            type='password'
           />
         </div>
       </div>
