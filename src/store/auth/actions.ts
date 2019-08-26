@@ -1,5 +1,7 @@
 import { action, ActionType } from 'typesafe-actions';
-import { LoginFormValues, LogOutValue, UserInput } from '../../shared/Interfaces';
+import { LoginFormValues } from '../../shared/interfaces/login';
+import { LogOutValue } from '../../shared/interfaces/logout';
+import { UserInput } from '../../shared/interfaces/registration';
 
 export enum ActionTypes {
   LOGIN = 'LOGIN',

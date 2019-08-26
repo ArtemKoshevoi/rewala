@@ -1,7 +1,9 @@
 import { execute } from 'apollo-link';
 import gql from 'graphql-tag';
 import { from, Subscribable } from 'rxjs';
-import { Countries, InputValue, LogOutValue, MeValues, RegistrationValues, UserInput } from '../../shared/Interfaces';
+import { LogOutValue } from '../../shared/interfaces/logout';
+import { UserInput } from '../../shared/interfaces/registration';
+import { Countries, InputValue, MeValues, RegistrationValues } from '../../shared/interfaces/services';
 import link from '../../shared/link';
 import { GraphQLResponse } from '../../shared/types/graphql';
 

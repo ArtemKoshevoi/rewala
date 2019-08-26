@@ -3,16 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
+import { LoginFormValues } from '../../../../shared/interfaces/login';
 import { RootState } from '../../../../store';
 import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';
 import LoginForm from './LoginForm';
 import { useStyles } from './style';
-
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
 
 const mapStateToProps = (state: RootState) => {
   const {loginRequest} = getState(state);
@@ -22,7 +18,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: (loginFormValues: { email: string, password: string }) => dispatch(Actions.login(loginFormValues)),
+  login: (loginFormValues: LoginFormValues) => dispatch(Actions.login(loginFormValues)),
 });
 
 type Props =
@@ -32,7 +28,7 @@ type Props =
 const Login: React.FC<Props> = ({loginRequestState, login}) => {
   const classes = useStyles();
   let warningMessage = '';
-  if (loginRequestState && loginRequestState.hasOwnProperty('errors')) {
+  if (loginRequestState && loginRequestState.errors) {
     warningMessage = 'Wrong email or password';
   }
   const Submit = ({email, password}: LoginFormValues) => {

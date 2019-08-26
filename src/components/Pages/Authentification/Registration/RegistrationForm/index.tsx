@@ -3,7 +3,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { UserInput } from '../../../../../shared/Interfaces';
+import { UserInput } from '../../../../../shared/interfaces/registration';
 import { RootState } from '../../../../../store';
 import { getState } from '../../../../../store/auth-requests/selectors';
 import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';

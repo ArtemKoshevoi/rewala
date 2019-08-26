@@ -1,7 +1,8 @@
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
-import { RegistrationValues, UserInput } from '../../../shared/Interfaces';
+import { UserInput } from '../../../shared/interfaces/registration';
+import { RegistrationValues } from '../../../shared/interfaces/services';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 import { authRequestsService } from '../service';
 

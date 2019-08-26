@@ -2,25 +2,9 @@ import { Container } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { UserInput } from '../../../../shared/Interfaces';
+import { UserInput } from '../../../../shared/interfaces/registration';
 import { Actions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
-
-interface ProfileInput {
-  fullName: string;
-  phone?: string;
-  countryCode?: string;
-  notifications?: boolean;
-}
-
-interface SubmitProps extends UserInput {
-  email: string;
-  password: string;
-  policy: boolean;
-  fullName: string | null;
-  phone: string | null;
-  countryCode: string | null;
-}
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   registration: (registrationFormValues: UserInput) => dispatch(Actions.registration(registrationFormValues)),

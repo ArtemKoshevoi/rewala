@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
+import { InputValue } from '../../../shared/interfaces/services';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 
 import { Epic } from 'redux-observable';
-import { InputValue } from '../../../shared/Interfaces';
 import { authRequestsService } from '../service';
 
 const {
