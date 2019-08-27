@@ -44,6 +44,12 @@ export function reducer(state = initialState, action: ActionTypeUnion): AuthStat
       };
     }
 
+    case ActionTypes.LOGOUT_SUCCEDED: {
+      return {
+        ...initialState,
+      };
+    }
+
     default:
       return state;
   }

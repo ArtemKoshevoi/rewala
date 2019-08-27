@@ -50,7 +50,8 @@ class AuthRequestsService {
       variables: {token},
     };
 
-    return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: LogOutValue }>>);
+    return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: LogOutValue }>>)
+    .pipe(responseInterceptor('logout'));
   }
 
   registration(userInput: UserInput) {

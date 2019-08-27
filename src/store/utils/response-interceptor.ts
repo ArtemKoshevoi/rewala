@@ -1,5 +1,5 @@
 import { Observable, of, throwError } from 'rxjs';
-import { pluck, switchMap, tap } from 'rxjs/operators';
+import { pluck, switchMap } from 'rxjs/operators';
 
 export function responseInterceptor(key: string) {
   return (obs: Observable<{data: any, errors: any}>) => {
