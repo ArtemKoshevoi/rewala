@@ -26,9 +26,9 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
-  filter((action) => action.payload.data.login),
-  tap(({payload}) => authService.setToken(payload.data.login.authToken)),
-  map(({payload}) => Actions.setAccessToken(payload.data.login.authToken)),
+  // filter((action) => action.payload.data.login),
+  tap(({payload}) => authService.setToken(payload.authToken)),
+  map(({payload}) => Actions.setAccessToken(payload.authToken)),
   tap(() => redirectToHomepage()),
 );
 
@@ -41,6 +41,12 @@ export const getCurrentUserOnTokenSetEpic: Epic = (action$: Observable<RootActio
 export const loginFailedEpic: Epic = transferActionEpicFactory(
   AuthRequestActionTypes.loginActionTypes.ACTION_FAILED,
   Actions.loginFailed,
+);
+
+export const errorMessageOnLoginFailedEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
+  ofType(ActionTypes.LOGIN_FAILED),
+  tap(res => console.log(res)),
+  ignoreElements(),
 );
 
 export const logoutEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(

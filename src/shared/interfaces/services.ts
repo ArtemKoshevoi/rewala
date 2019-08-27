@@ -1,14 +1,11 @@
 import { LoginFormValues } from './loginFormValues';
 import { LogOutValue } from './logOutValue';
-import { ProfileInput } from './userInput';
 
 export interface InputValue extends LoginFormValues, LogOutValue {
 }
 
 export interface MeValues {
-  email: string;
-  profile: ProfileInput;
-  countryCode: string;
+  _id: string;
 }
 
 export enum UserStatus {

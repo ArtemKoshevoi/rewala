@@ -30,7 +30,7 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
     auth.unsubscribe();
   };
 
-  const getMeIsNull = getMeRequestState !== null;
+  // const getMeIsNull = getMeRequestState !== null;
   const log = () => logOut();
 
   return (
@@ -40,16 +40,16 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
         <Grid item={true} xs={6}>
           <div>
             <Typography variant='h5' gutterBottom={true}>Name:
-              {getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}
+              {/*{getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}*/}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Email:
-              {getMeIsNull ? getMeRequestState.data.me.email : ''}
+              {/*{getMeIsNull ? getMeRequestState.data.me.email : ''}*/}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Country Code:
-              {getMeIsNull ? getMeRequestState.data.me.profile.countryCode : ''}
+              {/*{getMeIsNull ? getMeRequestState.data.me.profile.countryCode : ''}*/}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Phone:
-              {getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}
+              {/*{getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}*/}
             </Typography>
           </div>
         </Grid>

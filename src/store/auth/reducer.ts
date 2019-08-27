@@ -4,7 +4,7 @@ import { AuthState } from './state';
 const initialState: AuthState = {
   isAuthorized: null,
   token: null,
-  error: null,
+  authorizedUserId: null,
 };
 
 export function reducer(state = initialState, action: ActionTypeUnion): AuthState {
@@ -23,7 +23,17 @@ export function reducer(state = initialState, action: ActionTypeUnion): AuthStat
       return {
         ...state,
         isAuthorized: false,
+        authorizedUserId: null,
         token,
+      };
+    }
+
+    case ActionTypes.GET_CURRENT_USER_SUCCEDED: {
+      const {_id} = action.payload;
+      return {
+        ...state,
+        authorizedUserId: _id,
+        isAuthorized: true,
       };
     }
 
@@ -31,7 +41,6 @@ export function reducer(state = initialState, action: ActionTypeUnion): AuthStat
       return {
         ...state,
         isAuthorized: false,
-        error: action.payload,
       };
     }
 
