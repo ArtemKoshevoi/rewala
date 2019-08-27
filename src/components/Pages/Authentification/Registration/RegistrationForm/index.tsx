@@ -3,10 +3,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { renderCheckbox } from '../../../../../shared/formComponents/renderCheckbox';
+import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
+import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
 import { UserInput } from '../../../../../shared/interfaces/registration';
 import { RootState } from '../../../../../store';
 import { getState } from '../../../../../store/auth-requests/selectors';
-import { renderCheckbox, renderRegistrationTextField, renderSelectField } from '../style';
 import { useStyle } from './style';
 
 interface Item {
@@ -73,7 +75,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
         <div>
           <Field
             name='fullName'
-            component={renderRegistrationTextField}
+            component={renderTextField}
             label='FullName'
           />
         </div>
@@ -89,23 +91,23 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
           <Field
             className={classes.phone}
             name='phone'
-            component={renderRegistrationTextField}
+            component={renderTextField}
             label='Phone (optional)'
           />
           <Field
             name='email'
-            component={renderRegistrationTextField}
+            component={renderTextField}
             label='Email'
           />
           <Field
             name='password'
-            component={renderRegistrationTextField}
+            component={renderTextField}
             label='Password'
             type='password'
           />
           <Field
             name='confirmPassword'
-            component={renderRegistrationTextField}
+            component={renderTextField}
             label='Confirm Password'
             type='password'
           />
