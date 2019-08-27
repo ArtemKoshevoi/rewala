@@ -120,7 +120,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
           label='I have read and agree with Privacy Policy and Terms of Use'
         />
       </div>
-      <div>
+      <div className={classes.btn}>
         <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>
           Sing Up
         </Button>

@@ -13,4 +13,7 @@ export const useStyle = makeStyles({
     width: '280px',
     margin: 'auto',
   },
+  btn: {
+    paddingTop: '15px',
+  }
 });
