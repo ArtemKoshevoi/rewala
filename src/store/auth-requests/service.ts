@@ -1,8 +1,8 @@
 import { execute } from 'apollo-link';
 import gql from 'graphql-tag';
 import { from, Subscribable } from 'rxjs';
-import { LogOutValue } from '../../shared/interfaces/logOutValue';
-import { Countries, InputValue, MeValues, RegistrationValues } from '../../shared/interfaces/services';
+import { AuthToken } from '../../shared/interfaces/AuthToken';
+import { Countries, MeValues } from '../../shared/interfaces/services';
 import { UserInput } from '../../shared/interfaces/userInput';
 import link from '../../shared/link';
 import { GraphQLResponse } from '../../shared/types/graphql';
@@ -21,7 +21,7 @@ class AuthRequestsService {
       variables: {userLogin},
     };
 
-    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: InputValue }>>)
+    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: AuthToken }>>)
         .pipe(responseInterceptor('login'));
     }
 
@@ -50,7 +50,7 @@ class AuthRequestsService {
       variables: {token},
     };
 
-    return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: LogOutValue }>>)
+    return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: AuthToken }>>)
     .pipe(responseInterceptor('logout'));
   }
 
@@ -59,15 +59,14 @@ class AuthRequestsService {
       query: gql`
                 mutation Registration($userInput: UserInput) {
                     registration(input: $userInput) {
-                        email
                         authToken
-                        status
                     }
                 }
             `,
       variables: {userInput},
     };
-    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: RegistrationValues }>>);
+    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: AuthToken }>>)
+    .pipe(responseInterceptor('registration'));
   }
 
   getConfig() {

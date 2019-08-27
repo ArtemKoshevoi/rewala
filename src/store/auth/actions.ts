@@ -1,6 +1,6 @@
 import { action, ActionType } from 'typesafe-actions';
+import { AuthToken } from '../../shared/interfaces/AuthToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
-import { LogOutValue } from '../../shared/interfaces/logOutValue';
 import { MeValues } from '../../shared/interfaces/services';
 import { UserInput } from '../../shared/interfaces/userInput';
 
@@ -23,7 +23,7 @@ export const Actions = {
   login: (payload: LoginFormValues) => action(ActionTypes.LOGIN, payload),
   loginSucceded: (token?: string) => action(ActionTypes.LOGIN_SUCCEDED, token),
   loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
-  logout: (payload: LogOutValue) => action(ActionTypes.LOGOUT, payload),
+  logout: (payload: AuthToken) => action(ActionTypes.LOGOUT, payload),
   logoutSucceded: (token?: string) => action(ActionTypes.LOGOUT_SUCCEDED, token),
   registration: (payload: UserInput) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: UserInput) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),

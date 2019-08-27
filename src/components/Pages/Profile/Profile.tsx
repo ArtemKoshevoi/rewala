@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from '../../../shared/components/header/header';
-import { LogOutValue } from '../../../shared/interfaces/logOutValue';
+import { AuthToken } from '../../../shared/interfaces/AuthToken';
 import { authService } from '../../../shared/services/auth.service';
 import { RootState } from '../../../store';
 import { getState } from '../../../store/auth-requests/selectors';
@@ -17,7 +17,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  logout: (logoutValue: LogOutValue) => dispatch((Actions.logout(logoutValue))),
+  logout: (logoutValue: AuthToken) => dispatch((Actions.logout(logoutValue))),
 });
 
 type Props =

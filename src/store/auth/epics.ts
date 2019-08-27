@@ -2,8 +2,8 @@ import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { filter, ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
+import { AuthToken } from '../../shared/interfaces/AuthToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
-import { LogOutValue } from '../../shared/interfaces/logOutValue';
 import { UserInput } from '../../shared/interfaces/userInput';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
@@ -50,7 +50,7 @@ export const loginFailedEpic: Epic = transferActionEpicFactory(
 
 export const logoutEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT),
-  map(({payload, type}: PayloadAction<ActionTypes.LOGOUT, LogOutValue>) =>
+  map(({payload, type}: PayloadAction<ActionTypes.LOGOUT, AuthToken>) =>
     AuthRequestActions.logout.action(payload, type),
   ),
 );
@@ -91,9 +91,8 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
-  // filter((action) => action.payload.data.registration),
-  tap(({payload}) => authService.setToken(payload.data.registration.authToken)),
-  map(({payload}) => Actions.setAccessToken(payload.data.registration.authToken)),
+  tap(({payload}) => authService.setToken(payload.authToken)),
+  map(({payload}) => Actions.setAccessToken(payload.authToken)),
   tap(() => redirectToHomepage()),
 );
 

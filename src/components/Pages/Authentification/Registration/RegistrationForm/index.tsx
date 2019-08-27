@@ -103,13 +103,13 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='password'
             component={renderTextField}
             label='Password'
-            type='password'
+            // type='password'
           />
           <Field
             name='confirmPassword'
             component={renderTextField}
             label='Confirm Password'
-            type='password'
+            // type='password'
           />
         </div>
       </div>
