@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { UserInput } from '../../../../shared/interfaces/registration';
+import { UserInput } from '../../../../shared/interfaces/userInput';
 import { Actions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
 import { useStyles } from './style';

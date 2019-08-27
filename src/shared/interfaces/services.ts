@@ -1,6 +1,6 @@
-import { LoginFormValues } from './login';
-import { LogOutValue } from './logout';
-import { ProfileInput } from './registration';
+import { LoginFormValues } from './loginFormValues';
+import { LogOutValue } from './logOutValue';
+import { ProfileInput } from './userInput';
 
 export interface InputValue extends LoginFormValues, LogOutValue {
 }

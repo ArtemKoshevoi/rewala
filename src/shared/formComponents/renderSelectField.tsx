@@ -1,6 +1,6 @@
 import { FormControl, OutlinedInput, Select } from '@material-ui/core';
 import React from 'react';
-import { FieldsProps } from '../interfaces/forms';
+import { FieldsProps } from '../interfaces/fieldsProps';
 
 export const renderSelectField: React.FC<FieldsProps> = (
   {input, label, data, meta: {touched, error}, children, ...custom},

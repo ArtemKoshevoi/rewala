@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
-import { LoginFormValues } from '../../../../../shared/interfaces/login';
+import { LoginFormValues } from '../../../../../shared/interfaces/loginFormValues';
 
 const validate = (values: any) => {
   const errors: any = {};

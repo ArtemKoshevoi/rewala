@@ -6,7 +6,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderCheckbox } from '../../../../../shared/formComponents/renderCheckbox';
 import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
-import { UserInput } from '../../../../../shared/interfaces/registration';
+import { UserInput } from '../../../../../shared/interfaces/userInput';
 import { RootState } from '../../../../../store';
 import { getState } from '../../../../../store/auth-requests/selectors';
 import { useStyle } from './style';

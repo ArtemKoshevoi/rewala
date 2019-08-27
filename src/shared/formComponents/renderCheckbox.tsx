@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import React from 'react';
-import { FieldsProps } from '../interfaces/forms';
+import { FieldsProps } from '../interfaces/fieldsProps';
 
 export const renderCheckbox: React.FC<FieldsProps> = ({input, label}) => (
   <div>

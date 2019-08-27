@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { LoginFormValues } from '../../../../shared/interfaces/login';
+import { LoginFormValues } from '../../../../shared/interfaces/loginFormValues';
 import { RootState } from '../../../../store';
 import { getState } from '../../../../store/auth-requests/selectors';
 import { Actions } from '../../../../store/auth/actions';

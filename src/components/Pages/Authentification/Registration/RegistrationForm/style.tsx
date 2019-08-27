@@ -5,7 +5,7 @@ export const useStyle = makeStyles({
     display: 'flax',
   },
   select: {
-    width: '100px',
+    width: '85px',
     marginRight: '15px',
     height: '55px',
   },
