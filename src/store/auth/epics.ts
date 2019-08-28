@@ -80,10 +80,7 @@ export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<Root
   tap(() => redirectToHomepage()),
 );
 
-export const getConfigEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
-  ofType(ActionTypes.GET_CONFIG),
-  map(() => AuthRequestActions.getConfig.action()),
-);
+
 
 export const epics = [
   loginEpic,
@@ -97,5 +94,4 @@ export const epics = [
   registrationEpic,
   registrationSucceededEpic,
   redirectOnRegistrationSuccessEpic,
-  getConfigEpic,
 ];

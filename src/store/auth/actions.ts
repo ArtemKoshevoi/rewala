@@ -13,7 +13,7 @@ export enum ActionTypes {
   REGISTRATION_SUCCEDED = 'REGISTRATION_SUCCEDED',
   RREGISTRATION_FAILED = 'REGISTRATION_FAILED',
   SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN',
-  GET_CONFIG = 'GET_CONFIG',
+
 }
 
 export const Actions = {
@@ -24,7 +24,7 @@ export const Actions = {
   logoutSucceded: (token?: string) => action(ActionTypes.LOGOUT_SUCCEDED, token),
   registration: (payload: UserInput) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: UserInput) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
-  getConfig: () => action(ActionTypes.GET_CONFIG),
+
   setAccessToken: (token?: string) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
 
