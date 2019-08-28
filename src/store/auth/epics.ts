@@ -2,7 +2,7 @@ import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { filter, ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
-import { AuthToken } from '../../shared/interfaces/AuthToken';
+import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { UserInput } from '../../shared/interfaces/userInput';
 import { authService } from '../../shared/services/auth.service';
@@ -100,3 +100,21 @@ export const getConfigEpic: Epic = (action$: Observable<RootActions>) => action$
   ofType(ActionTypes.GET_CONFIG),
   map(() => AuthRequestActions.getConfig.action()),
 );
+
+export const epics = [
+  loginEpic,
+  loginSucceededEpic,
+  redirectOnLoginSuccessEpic,
+  errorMessageOnLoginFailedEpic,
+  getCurrentUserOnTokenSetEpic,
+  loginFailedEpic,
+  logoutEpic,
+  logoutSucceededEpic,
+  redirectOnLogoutSuccessEpic,
+  getCurrentUserEpic,
+  getCurrentUserSucceededEpic,
+  registrationEpic,
+  registrationSucceededEpic,
+  redirectOnRegistrationSuccessEpic,
+  getConfigEpic,
+];

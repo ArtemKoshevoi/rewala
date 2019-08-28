@@ -1,5 +1,5 @@
 import { action, ActionType } from 'typesafe-actions';
-import { AuthToken } from '../../shared/interfaces/AuthToken';
+import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { MeValues } from '../../shared/interfaces/services';
 import { UserInput } from '../../shared/interfaces/userInput';

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from '../../../shared/components/header/header';
-import { AuthToken } from '../../../shared/interfaces/AuthToken';
+import { AuthToken } from '../../../shared/interfaces/authToken';
 import { authService } from '../../../shared/services/auth.service';
 import { RootState } from '../../../store';
 import { getState } from '../../../store/auth-requests/selectors';
