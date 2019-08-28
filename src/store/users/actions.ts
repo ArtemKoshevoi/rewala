@@ -8,7 +8,7 @@ export enum ActionTypes {
 
 export const Actions = {
   setUsers: (users: UserValues[]) => action(ActionTypes.SET_USER, users),
-  removeUser: (id: string) => action(ActionTypes.REMOVE_USER, id),
+  removeUser: () => action(ActionTypes.REMOVE_USER),
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;

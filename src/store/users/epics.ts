@@ -12,6 +12,13 @@ export const setCurrentUserEpic: Epic = (actions$) =>
     map((user) => Actions.setUsers([user])),
   );
 
+export const removeCurrentUserEpic: Epic = (actions$) =>
+  actions$.pipe(
+    ofType(AuthActionTypes.LOGOUT_SUCCEDED),
+    map(() => Actions.removeUser()),
+  );
+
 export const epics = [
   setCurrentUserEpic,
+  removeCurrentUserEpic,
 ];

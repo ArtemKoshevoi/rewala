@@ -23,17 +23,7 @@ export function reducer(state = initialState, action: ActionTypeUnion): UsersSta
     }
 
     case ActionTypes.REMOVE_USER: {
-      const userId = action.payload;
-
-      const entities = {
-        ...state.entities,
-      };
-      delete entities[ userId ];
-
-      return {
-        ...state,
-        entities,
-      };
+      return initialState;
     }
 
     default:
