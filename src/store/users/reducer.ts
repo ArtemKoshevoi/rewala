@@ -3,7 +3,6 @@ import { UsersState } from './state';
 
 const initialState: UsersState = {
   entities: {},
-  ids: [],
 };
 
 export function reducer(state = initialState, action: ActionTypeUnion): UsersState {
@@ -17,12 +16,23 @@ export function reducer(state = initialState, action: ActionTypeUnion): UsersSta
         [ user._id ]: user,
       }), state.entities);
 
-      const ids = Object.keys(entities);
+      return {
+        ...state,
+        entities,
+      };
+    }
+
+    case ActionTypes.REMOVE_USER: {
+      const userId = action.payload;
+
+      const entities = {
+        ...state.entities,
+      };
+      delete entities[ userId ];
 
       return {
         ...state,
         entities,
-        ids,
       };
     }
 
