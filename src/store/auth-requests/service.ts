@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { from, Subscribable } from 'rxjs';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
-import { Countries, MeValues } from '../../shared/interfaces/services';
+import { Countries } from '../../shared/interfaces/services';
 import { UserInput } from '../../shared/interfaces/userInput';
 import { UserValues } from '../../shared/interfaces/userValues';
 import link from '../../shared/link';
@@ -29,21 +29,6 @@ class AuthRequestsService {
     return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: UserValues}>>)
         .pipe(responseInterceptor('login'));
     }
-
-  getMe() {
-    const GET_ME = {
-      query: gql`
-        query getMe {
-          me{
-            _id
-          }
-        }
-      `,
-    };
-
-    return from(execute(link, GET_ME) as unknown as Subscribable<GraphQLResponse<{ me: MeValues }>>)
-    .pipe(responseInterceptor('me'));
-  }
 
   logout(token: AuthToken) {
     const LOG_OUT = {

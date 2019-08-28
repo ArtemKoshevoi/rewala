@@ -5,32 +5,22 @@ import { Dispatch } from 'redux';
 import Header from '../../../shared/components/header/header';
 import { AuthToken } from '../../../shared/interfaces/authToken';
 import { authService } from '../../../shared/services/auth.service';
-import { RootState } from '../../../store';
-import { getState } from '../../../store/auth-requests/selectors';
 import { Actions } from '../../../store/auth/actions';
-
-const mapStateToProps = (state: RootState) => {
-  const {getMeRequest} = getState(state);
-  return {
-    getMeRequestState: getMeRequest.data,
-  };
-};
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   logout: (logoutValue: AuthToken) => dispatch((Actions.logout(logoutValue))),
 });
 
 type Props =
-  & ReturnType<typeof mapStateToProps>
+  // & ReturnType<typeof mapStateToProps>
   & ReturnType<typeof mapDispatchToProps>;
 
-const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
+const Profile: React.FC<Props> = ({logout}) => {
   const logOut = () => {
     const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
     auth.unsubscribe();
   };
 
-  // const getMeIsNull = getMeRequestState !== null;
   const log = () => logOut();
 
   return (
@@ -40,16 +30,16 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
         <Grid item={true} xs={6}>
           <div>
             <Typography variant='h5' gutterBottom={true}>Name:
-              {/*{getMeIsNull ? getMeRequestState.data.me.profile.fullName : ''}*/}
+              {}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Email:
-              {/*{getMeIsNull ? getMeRequestState.data.me.email : ''}*/}
+              {}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Country Code:
-              {/*{getMeIsNull ? getMeRequestState.data.me.profile.countryCode : ''}*/}
+              {}
             </Typography>
             <Typography variant='h6' gutterBottom={true}>Phone:
-              {/*{getMeIsNull ? getMeRequestState.data.me.profile.phone : ''}*/}
+              {}
             </Typography>
           </div>
         </Grid>
@@ -61,4 +51,4 @@ const Profile: React.FC<Props> = ({getMeRequestState, logout}) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(null, mapDispatchToProps)(Profile);

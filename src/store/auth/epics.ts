@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { filter, ignoreElements, map, tap } from 'rxjs/operators';
+import { ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
@@ -37,12 +37,6 @@ export const errorMessageOnLoginFailedEpic: Epic = (action$: Observable<RootActi
   ignoreElements(),
 );
 
-export const getCurrentUserOnTokenSetEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
-  ofType(ActionTypes.SET_ACCESS_TOKEN),
-  filter(action => !!action.payload),
-  map(() => Actions.getCurrentUser()),
-);
-
 export const loginFailedEpic: Epic = transferActionEpicFactory(
   AuthRequestActionTypes.loginActionTypes.ACTION_FAILED,
   Actions.loginFailed,
@@ -65,16 +59,6 @@ export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootAction
   map(() => authService.removeToken()),
   tap(() => redirectToLoginpage()),
   ignoreElements(),
-);
-
-export const getCurrentUserEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
-  ofType(ActionTypes.GET_CURRENT_USER),
-  map(() => AuthRequestActions.getMe.action()),
-);
-
-export const getCurrentUserSucceededEpic: Epic = transferActionEpicFactory(
-  AuthRequestActionTypes.getMeActionTypes.ACTION_SUCCEEDED,
-  Actions.getCurrentUserSucceded,
 );
 
 export const registrationEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
@@ -106,13 +90,10 @@ export const epics = [
   loginSucceededEpic,
   redirectOnLoginSuccessEpic,
   errorMessageOnLoginFailedEpic,
-  getCurrentUserOnTokenSetEpic,
   loginFailedEpic,
   logoutEpic,
   logoutSucceededEpic,
   redirectOnLogoutSuccessEpic,
-  getCurrentUserEpic,
-  getCurrentUserSucceededEpic,
   registrationEpic,
   registrationSucceededEpic,
   redirectOnRegistrationSuccessEpic,
