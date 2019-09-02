@@ -14,12 +14,12 @@ import {
   reducer as logoutReducer,
 } from './nested-states/logout';
 
-import {
-  Actions as getConfig,
-  ActionTypes as getConfigActionTypes,
-  epic as getConfigEpic,
-  reducer as getConfigReducer,
-} from './nested-states/getConfig';
+// import {
+//   Actions as getConfig,
+//   ActionTypes as getConfigActionTypes,
+//   epic as getConfigEpic,
+//   reducer as getConfigReducer,
+// } from './nested-states/getConfig';
 
 import { ActionType } from 'typesafe-actions';
 import {
@@ -33,21 +33,21 @@ export const Actions = {
   login,
   logout,
   registration,
-  getConfig,
+  // getConfig,
 };
 
 export const ActionTypes = {
   loginActionTypes,
   logoutActionTypes,
   registrationActionTypes,
-  getConfigActionTypes,
+  // getConfigActionTypes,
 };
 
 export const reducer = combineReducers({
   loginRequest: loginReducer,
   logoutRequest: logoutReducer,
   registrationRequest: registrationReducer,
-  getConfigRequest: getConfigReducer,
+  // getConfigRequest: getConfigReducer,
 });
 
 export type ActionTypeUnion = ActionType<typeof reducer>;
@@ -56,5 +56,5 @@ export const epics = [
   loginEpic,
   logoutEpic,
   registrationEpic,
-  getConfigEpic,
+  // getConfigEpic,
 ];

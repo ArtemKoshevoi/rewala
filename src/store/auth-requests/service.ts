@@ -60,22 +60,22 @@ class AuthRequestsService {
     .pipe(responseInterceptor('registration'));
   }
 
-  getConfig() {
-    const GET_CONFIG = {
-      query: gql`
-        query getConfig {
-          config{
-            countries{
-              name,
-              code
-            }
-          }
-        }
-      `,
-    };
-
-    return from(execute(link, GET_CONFIG) as unknown as Subscribable<GraphQLResponse<{ config: Countries }>>);
-  }
+  // getConfig() {
+  //   const GET_CONFIG = {
+  //     query: gql`
+  //       query getConfig {
+  //         config{
+  //           countries{
+  //             name,
+  //             code
+  //           }
+  //         }
+  //       }
+  //     `,
+  //   };
+  //
+  //   return from(execute(link, GET_CONFIG) as unknown as Subscribable<GraphQLResponse<{ config: Countries }>>);
+  // }
 }
 
 export const authRequestsService = new AuthRequestsService();

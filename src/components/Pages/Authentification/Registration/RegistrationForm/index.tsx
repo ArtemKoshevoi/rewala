@@ -42,9 +42,9 @@ const validate = (values: any) => {
 };
 
 const mapStateToProps = (state: RootState) => {
-  const {getConfigRequest} = getState(state);
+  // const {getConfigRequest} = getState(state);
   return {
-    getConfigRequestState: getConfigRequest.data,
+    getConfigRequestState: 1,
   };
 };
 
@@ -56,18 +56,18 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
   const [countryList, setList] = useState(null);
   const {handleSubmit, pristine, submitting, getConfigRequestState} = props;
 
-  useEffect(() => {
-    const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
-    let list = null;
-    if (countriesCode) {
-      list = countriesCode.map((item: Item) => {
-        return (
-          <MenuItem key={Math.random()} value={item.code}>{item.name} {item.code}</MenuItem>
-        );
-      });
-    }
-    setList(list);
-  }, [getConfigRequestState]);
+  // useEffect(() => {
+  //   const countriesCode = getConfigRequestState && getConfigRequestState.data.config.countries;
+  //   let list = null;
+  //   if (countriesCode) {
+  //     list = countriesCode.map((item: Item) => {
+  //       return (
+  //         <MenuItem key={Math.random()} value={item.code}>{item.name} {item.code}</MenuItem>
+  //       );
+  //     });
+  //   }
+  //   setList(list);
+  // }, [getConfigRequestState]);
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>

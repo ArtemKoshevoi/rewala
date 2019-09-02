@@ -1,20 +1,20 @@
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
-import { Countries } from '../../../shared/interfaces/services';
+import { CountriesConfigValues } from '../../../shared/interfaces/countriesConfigValues';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
-import { authRequestsService } from '../service';
+import { countriesConfigRequestService } from '../service';
 
 const {
   effect,
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<undefined, Countries, Error>('GET_CONFIG_REQUEST');
+} = asyncActionHandlerFactory<undefined, CountriesConfigValues, Error>('GET_CONFIG_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,
-  () => authRequestsService.getConfig(),
+  () => countriesConfigRequestService.getConfig(),
 );
 
 export { epic, reducer, Actions, ActionTypes };

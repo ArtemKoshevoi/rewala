@@ -12,16 +12,28 @@ import { ActionTypeUnion as UsersActionTypeUnion } from './users/actions';
 import { epics as usersEpics } from './users/epics';
 import { reducer as usersReducer } from './users/reducer';
 
+import { ActionTypeUnion as CountriesConfigActionTypeUnion } from './config/actions';
+import { epics as countriesConfigEpics } from './config/epics';
+import { reducer as countriesConfigReducer } from './config/reducer';
+
 import {
   ActionTypeUnion as AuthRequestActionTypeUnion,
   epics as authRequestEpics,
   reducer as authRequestReducer,
 } from './auth-requests';
 
+import {
+  ActionTypeUnion as CountriesConfigRequestActionTypeUnion,
+  epics as countriesConfigRequestEpics,
+  reducer as countriesConfigRequestReducer,
+} from './config-request';
+
 const rootEpic = combineEpics(
   ...authRequestEpics,
+  ...countriesConfigRequestEpics,
   ...authEpics,
   ...usersEpics,
+  ...countriesConfigEpics,
 );
 
 const rootReducer = combineReducers({
@@ -29,6 +41,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   authRequest: authRequestReducer,
   users: usersReducer,
+  config: countriesConfigReducer,
+  configRequest: countriesConfigRequestReducer,
 });
 
 export type RootState = StateType<typeof rootReducer>;
@@ -37,6 +51,8 @@ export type RootActions = ActionType<
   | AuthActionTypeUnion
   | AuthRequestActionTypeUnion
   | UsersActionTypeUnion
+  | CountriesConfigActionTypeUnion
+  | CountriesConfigRequestActionTypeUnion
   >;
 
 const epicMiddleware = createEpicMiddleware();

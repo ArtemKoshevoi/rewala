@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { UserInput } from '../../../../shared/interfaces/userInput';
-import { Actions } from '../../../../store/auth/actions';
+import { Actions as authActions } from '../../../../store/auth/actions';
+import { Actions as configActions } from '../../../../store/config/actions';
 import SingUpForm from './RegistrationForm';
 import { useStyles } from './style';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  registration: (registrationFormValues: UserInput) => dispatch(Actions.registration(registrationFormValues)),
-  getConfig: () => dispatch(Actions.getConfig()),
+  registration: (registrationFormValues: UserInput) => dispatch(authActions.registration(registrationFormValues)),
+  getConfig: () => dispatch(configActions.getConfig()),
 });
 
 type Props =
