@@ -33,7 +33,6 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
 
 export const errorMessageOnLoginFailedEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_FAILED),
-  tap(res => console.log(res)),
   ignoreElements(),
 );
 

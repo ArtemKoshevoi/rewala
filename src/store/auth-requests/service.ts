@@ -48,14 +48,17 @@ class AuthRequestsService {
       query: gql`
         mutation Registration($userInput: UserInput) {
           registration(input: $userInput) {
+            _id
             authToken
+            email
+            status
           }
         }
       `,
       variables: {userInput},
     };
 
-    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: AuthToken }>>)
+    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: UserValues }>>)
     .pipe(responseInterceptor('registration'));
   }
 }
