@@ -1,4 +1,4 @@
-export const required = (values: any) => !values;
+export const required = (values: any) => !values ? 'Required' : undefined;
 // {
 //   const errors: any = {};
 //   const requiredFields = [

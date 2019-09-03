@@ -3,27 +3,8 @@ import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
 import { LoginFormValues } from '../../../../../shared/interfaces/loginFormValues';
+import { email } from '../../../../../shared/validators/email';
 import { required } from '../../../../../shared/validators/required';
-
-// const validate = (values: any) => {
-//   const errors: any = {};
-//   const requiredFields = [
-//     'email',
-//     'password',
-//   ];
-//   requiredFields.forEach(field => {
-//     if (!values[field]) {
-//       errors[field] = 'Required';
-//     }
-//   });
-//   if (
-//     values.email &&
-//     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-//   ) {
-//     errors.email = 'Invalid email address';
-//   }
-//   return errors;
-// };
 
 const Index = (props: InjectedFormProps<LoginFormValues>) => {
   const {handleSubmit, pristine, submitting} = props;
@@ -35,7 +16,7 @@ const Index = (props: InjectedFormProps<LoginFormValues>) => {
             name='email'
             component={renderTextField}
             label='Email'
-            validate={[required]}
+            validate={[required, email]}
           />
         </div>
         <div>
@@ -65,5 +46,4 @@ const Index = (props: InjectedFormProps<LoginFormValues>) => {
 
 export default reduxForm<any>({
   form: 'Login',
-  // validate,
 })(Index);

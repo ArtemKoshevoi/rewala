@@ -8,6 +8,8 @@ import { renderCheckbox } from '../../../../../shared/formComponents/renderCheck
 import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
 import { UserInput } from '../../../../../shared/interfaces/userInput';
+import { email } from '../../../../../shared/validators/email';
+import { required } from '../../../../../shared/validators/required';
 import { RootState } from '../../../../../store';
 import { Actions as configActions } from '../../../../../store/config/actions';
 import { getCountries } from '../../../../../store/config/selectors';
@@ -58,6 +60,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='fullName'
             component={renderTextField}
             label='FullName'
+            validate={[required]}
           />
         </div>
         <div>
@@ -79,17 +82,20 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='email'
             component={renderTextField}
             label='Email'
+            validate={[required, email]}
           />
           <Field
             name='password'
             component={renderTextField}
             label='Password'
+            validate={[required]}
             // type='password'
           />
           <Field
             name='confirmPassword'
             component={renderTextField}
             label='Confirm Password'
+            validate={[required]}
             // type='password'
           />
         </div>
@@ -113,6 +119,6 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm<{}, any>({
     form: 'registration',
-    validate,
+    // validate,
   })(SingUpForm),
 );
