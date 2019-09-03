@@ -1,16 +1,16 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
 import { Router, Switch } from 'react-router-dom';
-import Login from '../../components/Pages/Authentification/Login';
-import Index from '../../components/Pages/Authentification/Registration';
-import HomePage from '../../components/Pages/Home/Home';
-import NotFound from '../../components/Pages/NotFound';
-import Notifications from '../../components/Pages/Notifications/Notifications';
-import Profile from '../../components/Pages/Profile/Profile';
-import Search from '../../components/Pages/Search/Search';
-import history from '../../history';
-import PrivateRoute from '../privatRoute';
-import PublicRoute from '../publicRoute';
+import { history } from '../../shared/services/nav.service';
+import Login from '../Pages/Authentification/Login';
+import Index from '../Pages/Authentification/Registration';
+import HomePage from '../Pages/Home/Home';
+import NotFound from '../Pages/NotFound';
+import Notifications from '../Pages/Notifications/Notifications';
+import Profile from '../Pages/Profile/Profile';
+import Search from '../Pages/Search/Search';
+import PrivateRoute from './nestedRouters/privatRoute';
+import PublicRoute from './nestedRouters/publicRoute';
 
 const appRouter: React.FC = () => {
   return (

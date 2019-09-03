@@ -22,11 +22,11 @@ const Registration: React.FC<Props> = ({registration}) => {
     const payload = {
       email: values.email,
       password: values.password,
-      isAgreeWithPrivacyPolicyAndTermOfUse: values.policy || false,
+      isAgreeWithPrivacyPolicyAndTermOfUse: values.policy,
       profileInput: {
-        fullName: values.fullName || null,
-        phone: values.phone || null,
-        countryCode: values.countryCode || null,
+        fullName: values.fullName,
+        phone: values.phone,
+        countryCode: values.countryCode,
         notifications: true,
       },
     };

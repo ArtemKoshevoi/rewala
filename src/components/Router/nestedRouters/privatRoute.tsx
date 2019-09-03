@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, RouteComponentProps, RouteProps } from 'react-router-dom';
-import { isLoggedIn } from '../store/utils/auth';
+import { isLoggedIn } from '../../../store/utils/auth';
 
 const PrivateRoute: React.FC<RouteProps> = ({component: Component, ...rest}) => {
   if (!Component) return null;

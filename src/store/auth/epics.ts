@@ -56,8 +56,10 @@ export const logoutSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT_SUCCEDED),
-  map(() => authService.removeToken()),
-  tap(() => redirectToLoginpage()),
+  tap(() => {
+    authService.removeToken();
+    redirectToLoginpage();
+  }),
   ignoreElements(),
 );
 

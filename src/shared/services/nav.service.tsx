@@ -1,4 +1,6 @@
-import history from '../../history';
+import { createBrowserHistory } from 'history';
+
+export const history =  createBrowserHistory();
 
 export const redirectToHomepage = () => {
   return history.push('/');
