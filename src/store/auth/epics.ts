@@ -80,8 +80,6 @@ export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<Root
   tap(() => redirectToHomepage()),
 );
 
-
-
 export const epics = [
   loginEpic,
   loginSucceededEpic,

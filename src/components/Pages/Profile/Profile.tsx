@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import { Button, Container, Grid } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -35,25 +35,7 @@ const Profile: React.FC<Props> = ({logout, user}) => {
     <Container>
       <Header/>
       <Grid container={true} spacing={3}>
-        <Grid item={true} xs={6}>
-          {/*<div>*/}
-            {/*<Typography variant='h5' gutterBottom={true}>Name:*/}
-              {/*{}*/}
-            {/*</Typography>*/}
-            {/*<Typography variant='h6' gutterBottom={true}>Email:*/}
-              {/*{}*/}
-            {/*</Typography>*/}
-            {/*<Typography variant='h6' gutterBottom={true}>Country Code:*/}
-              {/*{}*/}
-            {/*</Typography>*/}
-            {/*<Typography variant='h6' gutterBottom={true}>Phone:*/}
-              {/*{}*/}
-            {/*</Typography>*/}
-          {/*</div>*/}
-        </Grid>
-        <Grid item={true} xs={6}>
           <Button variant='contained' color='primary' onClick={log}>log out</Button>
-        </Grid>
       </Grid>
     </Container>
   );

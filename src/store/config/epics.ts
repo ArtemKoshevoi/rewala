@@ -1,5 +1,5 @@
 import { Epic, ofType } from 'redux-observable';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { CountriesConfigValues } from '../../shared/interfaces/countriesConfigValues';
 
