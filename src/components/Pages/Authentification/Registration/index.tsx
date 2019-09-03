@@ -1,27 +1,22 @@
 import { Container, Grid } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { UserInput } from '../../../../shared/interfaces/userInput';
 import { Actions as authActions } from '../../../../store/auth/actions';
-import { Actions as configActions } from '../../../../store/config/actions';
 import SingUpForm from './RegistrationForm';
 import { useStyles } from './style';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   registration: (registrationFormValues: UserInput) => dispatch(authActions.registration(registrationFormValues)),
-  getConfig: () => dispatch(configActions.getConfig()),
 });
 
 type Props =
   & ReturnType<typeof mapDispatchToProps>;
 
-const Registration: React.FC<Props> = ({registration, getConfig}) => {
+const Registration: React.FC<Props> = ({registration}) => {
   const classes = useStyles();
-  useEffect(() => {
-    getConfig();
-  }, [getConfig]);
 
   const Submit = (values: any) => {
     const payload = {

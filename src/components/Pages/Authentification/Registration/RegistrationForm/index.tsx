@@ -1,13 +1,15 @@
 import { Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderCheckbox } from '../../../../../shared/formComponents/renderCheckbox';
 import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
 import { UserInput } from '../../../../../shared/interfaces/userInput';
 import { RootState } from '../../../../../store';
+import { Actions as configActions } from '../../../../../store/config/actions';
 import { getCountries } from '../../../../../store/config/selectors';
 import validate from './registrationValidate';
 import { useStyle } from './style';
@@ -19,17 +21,26 @@ interface Item {
   shortName: string;
 }
 
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  getConfig: () => dispatch(configActions.getConfig()),
+});
+
 const mapStateToProps = (state: RootState) => ({
   countries: getCountries(state),
 });
 
 type StateProps =
-  & ReturnType<typeof mapStateToProps>;
+  & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>;
 
 const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
+  const {handleSubmit, pristine, submitting, countries, getConfig} = props;
   const classes = useStyle();
 
-  const {handleSubmit, pristine, submitting, countries} = props;
+  useEffect(() => {
+    getConfig();
+  }, [getConfig]);
+
   let countryList = null;
   if (countries) {
     countryList = countries.map((item: Item) => {
@@ -99,7 +110,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
   );
 };
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm<{}, any>({
     form: 'registration',
     validate,
