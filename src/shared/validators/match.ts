@@ -1,4 +1,4 @@
-export const match = (matchName: string) => (value, allValues, props) =>
-  value !== allValues[matchName]
-    ? 'This field must match with ${matchName} field'
+export const matchPassword = (value: string, allValues: any) =>
+  value !== allValues.password
+    ? `This field must match with your password field`
     : undefined;

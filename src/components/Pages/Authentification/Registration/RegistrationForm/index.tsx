@@ -9,11 +9,12 @@ import { renderSelectField } from '../../../../../shared/formComponents/renderSe
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
 import { UserInput } from '../../../../../shared/interfaces/userInput';
 import { email } from '../../../../../shared/validators/email';
+import { matchPassword } from '../../../../../shared/validators/match';
+import { phoneNumber } from '../../../../../shared/validators/phoneNumber';
 import { required } from '../../../../../shared/validators/required';
 import { RootState } from '../../../../../store';
 import { Actions as configActions } from '../../../../../store/config/actions';
 import { getCountries } from '../../../../../store/config/selectors';
-import validate from './registrationValidate';
 import { useStyle } from './style';
 
 interface Item {
@@ -77,6 +78,8 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='phone'
             component={renderTextField}
             label='Phone (optional)'
+            validate={[phoneNumber]}
+            type='number'
           />
           <Field
             name='email'
@@ -95,7 +98,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
             name='confirmPassword'
             component={renderTextField}
             label='Confirm Password'
-            validate={[required]}
+            validate={[required, matchPassword]}
             // type='password'
           />
         </div>
