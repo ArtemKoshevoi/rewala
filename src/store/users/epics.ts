@@ -1,9 +1,12 @@
 import { Epic, ofType } from 'redux-observable';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { User } from '../../shared/interfaces/user';
 import { ActionTypes as AuthActionTypes } from '../auth/actions';
+import { RootActions, RootState } from '../index';
 import { Actions } from './actions';
+import { getCurrentUserId } from './selectors';
 
 export const setUserEpic: Epic = (actions$) =>
   actions$.pipe(
@@ -19,11 +22,20 @@ export const setCurrentUserIdEpic: Epic = (actions$) =>
     map((payload) => Actions.setCurrentUsers(payload._id)),
   );
 
-export const removeUserEpic: Epic = (actions$) =>
-  actions$.pipe(
-    ofType(AuthActionTypes.LOGOUT_SUCCEDED),
-    map(() => Actions.removeUser()),
-  );
+export const removeUserEpic: Epic = (action$: Observable<RootActions>, state$: Observable<RootState>) =>
+  action$.pipe(
+  ofType(AuthActionTypes.LOGOUT_SUCCEDED),
+  switchMap(() =>
+    state$.pipe(
+      map((state) => getCurrentUserId(state)),
+      map((userId) => ({
+        currentUserId: userId,
+      })),
+      take(1),
+    ),
+  ),
+  map((currentUserId) => Actions.removeUser(currentUserId)),
+);
 
 export const epics = [
   setUserEpic,

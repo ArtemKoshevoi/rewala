@@ -2,7 +2,6 @@ import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { ignoreElements, map, switchMap, take, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
-import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
 import { authService } from '../../shared/services/auth.service';

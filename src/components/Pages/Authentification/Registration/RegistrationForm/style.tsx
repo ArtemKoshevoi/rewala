@@ -15,5 +15,5 @@ export const useStyle = makeStyles({
   },
   btn: {
     paddingTop: '15px',
-  }
+  },
 });

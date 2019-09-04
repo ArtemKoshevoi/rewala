@@ -15,7 +15,7 @@ export function reducer(state = initialState, action: ActionTypeUnion): UsersSta
 
       const entities = users.reduce((acc, user) => ({
         ...acc,
-        [ user._id ]: user,
+        [user._id]: user,
       }), state.entities);
 
       const ids = Object.keys(entities);
@@ -37,7 +37,21 @@ export function reducer(state = initialState, action: ActionTypeUnion): UsersSta
     }
 
     case ActionTypes.REMOVE_USER: {
-      return initialState;
+      let {currentUserId} = action.payload;
+
+      const entities = {
+        ...state.entities,
+      };
+      delete entities[currentUserId];
+
+      const ids = state.ids.filter((id) => id !== currentUserId);
+      currentUserId = null;
+      return {
+        ...state,
+        entities,
+        ids,
+        currentUserId,
+      };
     }
 
     default:

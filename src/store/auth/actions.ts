@@ -1,5 +1,4 @@
 import { action, ActionType } from 'typesafe-actions';
-import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
 

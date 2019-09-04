@@ -8,3 +8,8 @@ export const getUser = createSelector(
   getUsersState,
   (state: UsersState) => state.entities,
 );
+
+export const getCurrentUserId = createSelector(
+  getUsersState,
+  (state: UsersState) => state.currentUserId,
+);

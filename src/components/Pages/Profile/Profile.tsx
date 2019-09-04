@@ -20,7 +20,7 @@ type Props =
   & ReturnType<typeof mapDispatchToProps>;
 
 const Profile: React.FC<Props> = ({logout, user}) => {
-  console.log(user);
+  // console.log(user);
 
   const log = () => logout();
 
