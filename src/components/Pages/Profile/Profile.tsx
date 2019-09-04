@@ -3,8 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import Header from '../../../shared/components/header/header';
-import { AuthToken } from '../../../shared/interfaces/authToken';
-import { authService } from '../../../shared/services/auth.service';
 import { RootState } from '../../../store';
 import { Actions } from '../../../store/auth/actions';
 import { getUser } from '../../../store/users/selectors';
@@ -14,7 +12,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  logout: (logoutValue: AuthToken) => dispatch((Actions.logout(logoutValue))),
+  logout: () => dispatch((Actions.logout())),
 });
 
 type Props =
@@ -22,14 +20,9 @@ type Props =
   & ReturnType<typeof mapDispatchToProps>;
 
 const Profile: React.FC<Props> = ({logout, user}) => {
-  const logOut = () => {
-    const auth = authService.getToken().subscribe(FCMToken => logout({FCMToken}));
-    auth.unsubscribe();
-  };
-
   console.log(user);
 
-  const log = () => logOut();
+  const log = () => logout();
 
   return (
     <Container>

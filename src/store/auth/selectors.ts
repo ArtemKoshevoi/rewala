@@ -7,3 +7,8 @@ export const getIsAuthorized = createSelector(
   getState,
   (authState) => authState.isAuthorized,
 );
+
+export const getToken = createSelector(
+  getState,
+  (authState) => authState.token,
+);
