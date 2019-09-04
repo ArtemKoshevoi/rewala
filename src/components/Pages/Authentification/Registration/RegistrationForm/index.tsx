@@ -32,12 +32,12 @@ const mapStateToProps = (state: RootState) => ({
   countries: getCountries(state),
 });
 
-type StateProps =
+type Props =
+  & InjectedFormProps<RegistrationFormValues>
   & ReturnType<typeof mapStateToProps>
   & ReturnType<typeof mapDispatchToProps>;
 
-const SingUpForm = (props: InjectedFormProps<RegistrationFormValues> & StateProps) => {
-  const {handleSubmit, pristine, submitting, countries, getConfig} = props;
+const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: Props) => {
   const classes = useStyle();
 
   useEffect(() => {
@@ -79,7 +79,6 @@ const SingUpForm = (props: InjectedFormProps<RegistrationFormValues> & StateProp
             component={renderTextField}
             label='Phone (optional)'
             validate={[phoneNumber]}
-            type='number'
           />
           <Field
             name='email'

@@ -52,7 +52,7 @@ export const logoutEpic: Epic = (action$: Observable<RootActions>, state$: Obser
   ofType(ActionTypes.LOGOUT),
   switchMap(() =>
     state$.pipe(
-      map((state) => getToken(state)),
+      map(getToken),
       map((token) => ({
         FCMToken: token,
       })),

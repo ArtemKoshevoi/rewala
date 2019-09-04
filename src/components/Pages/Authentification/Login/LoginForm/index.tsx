@@ -44,6 +44,6 @@ const Index = (props: InjectedFormProps<LoginFormValues>) => {
   );
 };
 
-export default reduxForm<any>({
+export default reduxForm<LoginFormValues>({
   form: 'Login',
 })(Index);
