@@ -6,7 +6,7 @@ interface Item {
   name: string;
 }
 
-export interface FieldsProps extends WrappedFieldProps {
+export interface FormsFieldsProps extends WrappedFieldProps {
   label: string;
   defaultValue: number;
   children: ReactNode;

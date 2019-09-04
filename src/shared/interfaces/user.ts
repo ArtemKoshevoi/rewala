@@ -4,9 +4,15 @@ export enum UserStatus {
   ACTIVE = 'ACTIVE',
 }
 
-export interface UserValues {
+interface Roles{
+  admin: boolean;
+  regular: boolean;
+}
+
+export interface User {
   _id: string;
   email: string;
   FCMToken: string | null;
-  status: UserStatus;
+  status?: UserStatus;
+  roles?: Roles;
 }

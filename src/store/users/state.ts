@@ -1,6 +1,6 @@
-import { UserValues } from '../../shared/interfaces/userValues';
+import { User } from '../../shared/interfaces/user';
 
 export interface UsersState {
-  entities: { [key: string]: UserValues };
+  entities: { [key: string]: User };
   ids: string[];
 }

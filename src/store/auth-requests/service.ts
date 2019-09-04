@@ -4,7 +4,7 @@ import { from, Subscribable } from 'rxjs';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
-import { UserValues } from '../../shared/interfaces/userValues';
+import { User } from '../../shared/interfaces/user';
 import link from '../../shared/link';
 import { GraphQLResponse } from '../../shared/types/graphql';
 import { responseInterceptor } from '../utils/response-interceptor';
@@ -25,7 +25,7 @@ class AuthRequestsService {
       variables: {userLogin},
     };
 
-    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: UserValues}>>)
+    return from(execute(link, LOG_IN) as unknown as Subscribable<GraphQLResponse<{ login: User}>>)
         .pipe(responseInterceptor('login'));
     }
 
@@ -58,7 +58,7 @@ class AuthRequestsService {
       variables: {userInput},
     };
 
-    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: UserValues }>>)
+    return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: User }>>)
     .pipe(responseInterceptor('registration'));
   }
 }

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
-import { InputValue } from '../../../shared/interfaces/services';
+import { User } from '../../../shared/interfaces/user';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 
 import { Epic } from 'redux-observable';
@@ -11,7 +11,7 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<{ email: string, password: string }, InputValue, Error>('LOGIN_REQUEST');
+} = asyncActionHandlerFactory<{ email: string, password: string }, User, Error>('LOGIN_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,

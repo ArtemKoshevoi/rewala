@@ -1,14 +1,14 @@
 import { Epic, ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
-import { UserValues } from '../../shared/interfaces/userValues';
+import { User } from '../../shared/interfaces/user';
 import { ActionTypes as AuthActionTypes } from '../auth/actions';
 import { Actions } from './actions';
 
 export const setCurrentUserEpic: Epic = (actions$) =>
   actions$.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCEDED, AuthActionTypes.REGISTRATION_SUCCEDED),
-    map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, UserValues>) => action.payload),
+    map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, User>) => action.payload),
     map((user) => Actions.setUsers([user])),
   );
 

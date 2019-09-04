@@ -1,5 +1,5 @@
 import { action, ActionType } from 'typesafe-actions';
-import { UserValues } from '../../shared/interfaces/userValues';
+import { User } from '../../shared/interfaces/user';
 
 export enum ActionTypes {
   SET_USER = 'SET_USER',
@@ -7,7 +7,7 @@ export enum ActionTypes {
 }
 
 export const Actions = {
-  setUsers: (users: UserValues[]) => action(ActionTypes.SET_USER, users),
+  setUsers: (users: User[]) => action(ActionTypes.SET_USER, users),
   removeUser: () => action(ActionTypes.REMOVE_USER),
 };
 
