@@ -4,6 +4,7 @@ import { UsersState } from './state';
 const initialState: UsersState = {
   entities: {},
   ids: [],
+  currentUserId: null,
 };
 
 export function reducer(state = initialState, action: ActionTypeUnion): UsersState {
@@ -23,6 +24,15 @@ export function reducer(state = initialState, action: ActionTypeUnion): UsersSta
         ...state,
         entities,
         ids,
+      };
+    }
+
+    case ActionTypes.SET_CURRENT_USER_ID: {
+      const currentUserId = action.payload;
+
+      return {
+        ...state,
+        currentUserId,
       };
     }
 

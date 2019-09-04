@@ -5,20 +5,28 @@ import { User } from '../../shared/interfaces/user';
 import { ActionTypes as AuthActionTypes } from '../auth/actions';
 import { Actions } from './actions';
 
-export const setCurrentUserEpic: Epic = (actions$) =>
+export const setUserEpic: Epic = (actions$) =>
   actions$.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCEDED, AuthActionTypes.REGISTRATION_SUCCEDED),
     map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, User>) => action.payload),
     map((user) => Actions.setUsers([user])),
   );
 
-export const removeCurrentUserEpic: Epic = (actions$) =>
+export const setCurrentUserIdEpic: Epic = (actions$) =>
+  actions$.pipe(
+    ofType(AuthActionTypes.LOGIN_SUCCEDED),
+    map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, User>) => action.payload),
+    map((payload) => Actions.setCurrentUsers(payload._id)),
+  );
+
+export const removeUserEpic: Epic = (actions$) =>
   actions$.pipe(
     ofType(AuthActionTypes.LOGOUT_SUCCEDED),
     map(() => Actions.removeUser()),
   );
 
 export const epics = [
-  setCurrentUserEpic,
-  removeCurrentUserEpic,
+  setUserEpic,
+  setCurrentUserIdEpic,
+  removeUserEpic,
 ];
