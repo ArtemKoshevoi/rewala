@@ -7,7 +7,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderCheckbox } from '../../../../../shared/formComponents/renderCheckbox';
 import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
 import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
-import { UserInput } from '../../../../../shared/interfaces/userInput';
+import { RegistrationFormValues } from '../../../../../shared/interfaces/registrationFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { matchPassword } from '../../../../../shared/validators/match';
 import { phoneNumber } from '../../../../../shared/validators/phoneNumber';
@@ -36,7 +36,7 @@ type StateProps =
   & ReturnType<typeof mapStateToProps>
   & ReturnType<typeof mapDispatchToProps>;
 
-const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
+const SingUpForm = (props: InjectedFormProps<RegistrationFormValues> & StateProps) => {
   const {handleSubmit, pristine, submitting, countries, getConfig} = props;
   const classes = useStyle();
 
@@ -58,7 +58,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
       <div>
         <div>
           <Field
-            name='fullName'
+            name='profileInput.fullName'
             component={renderTextField}
             label='FullName'
             validate={[required]}
@@ -67,7 +67,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
         <div>
           <Field
             className={classes.select}
-            name='countryCode'
+            name='profileInput.countryCode'
             component={renderSelectField}
             label='Country Code'
           >
@@ -75,7 +75,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
           </Field>
           <Field
             className={classes.phone}
-            name='phone'
+            name='profileInput.phone'
             component={renderTextField}
             label='Phone (optional)'
             validate={[phoneNumber]}
@@ -105,7 +105,7 @@ const SingUpForm = (props: InjectedFormProps<UserInput> & StateProps) => {
       </div>
       <div>
         <Field
-          name='policy'
+          name='isAgreeWithPrivacyPolicyAndTermOfUse'
           component={renderCheckbox}
           label='I have read and agree with Privacy Policy and Terms of Use'
         />

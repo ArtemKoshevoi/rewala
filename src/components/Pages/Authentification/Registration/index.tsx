@@ -3,13 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { UserInput } from '../../../../shared/interfaces/userInput';
+import { RegistrationFormValues } from '../../../../shared/interfaces/registrationFormValues';
 import { Actions as authActions } from '../../../../store/auth/actions';
 import SingUpForm from './RegistrationForm';
 import { useStyles } from './style';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  registration: (registrationFormValues: UserInput) => dispatch(authActions.registration(registrationFormValues)),
+  registration: (registrationFormValues: RegistrationFormValues) => dispatch(authActions.registration(registrationFormValues)),
 });
 
 type Props =
@@ -18,17 +18,12 @@ type Props =
 const Registration: React.FC<Props> = ({registration}) => {
   const classes = useStyles();
 
-  const Submit = (values: any) => {
+  const Submit = (values: RegistrationFormValues) => {
     const payload = {
       email: values.email,
       password: values.password,
-      isAgreeWithPrivacyPolicyAndTermOfUse: values.policy,
-      profileInput: {
-        fullName: values.fullName,
-        phone: values.phone,
-        countryCode: values.countryCode,
-        notifications: true,
-      },
+      isAgreeWithPrivacyPolicyAndTermOfUse: values.isAgreeWithPrivacyPolicyAndTermOfUse,
+      profileInput: values.profileInput,
     };
     registration(payload);
   };

@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { from, Subscribable } from 'rxjs';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
-import { UserInput } from '../../shared/interfaces/userInput';
+import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
 import { UserValues } from '../../shared/interfaces/userValues';
 import link from '../../shared/link';
 import { GraphQLResponse } from '../../shared/types/graphql';
@@ -43,7 +43,7 @@ class AuthRequestsService {
     .pipe(responseInterceptor('logout'));
   }
 
-  registration(userInput: UserInput) {
+  registration(userInput: RegistrationFormValues) {
     const REGISTRATION = {
       query: gql`
         mutation Registration($userInput: UserInput) {

@@ -5,7 +5,7 @@ export interface ProfileInput {
   notifications: boolean;
 }
 
-export interface UserInput {
+export interface RegistrationFormValues {
   email: string;
   password: string;
   isAgreeWithPrivacyPolicyAndTermOfUse: boolean;

@@ -4,7 +4,7 @@ import { ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
-import { UserInput } from '../../shared/interfaces/userInput';
+import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
@@ -71,7 +71,7 @@ export const redirectOnLogoutSuccessEpic: Epic = (action$: Observable<RootAction
 
 export const registrationEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION),
-  map(({payload, type}: PayloadAction<ActionTypes.REGISTRATION, UserInput>) =>
+  map(({payload, type}: PayloadAction<ActionTypes.REGISTRATION, RegistrationFormValues>) =>
     AuthRequestActions.registration.action(payload, type),
   ),
 );
