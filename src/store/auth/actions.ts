@@ -20,7 +20,7 @@ export const Actions = {
   loginSucceded: (token?: string) => action(ActionTypes.LOGIN_SUCCEDED, token),
   loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
   logout: () => action(ActionTypes.LOGOUT),
-  logoutSucceded: (token?: string) => action(ActionTypes.LOGOUT_SUCCEDED, token),
+  logoutSucceded: () => action(ActionTypes.LOGOUT_SUCCEDED),
   registration: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
 

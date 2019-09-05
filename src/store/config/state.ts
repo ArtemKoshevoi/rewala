@@ -1,5 +1,5 @@
-import { CountriesConfigValues } from '../../shared/interfaces/countriesConfigValues';
+import { Countries } from '../../shared/interfaces/countries';
 
 export interface CountriesConfig {
-  countries: CountriesConfigValues[];
+  countries: Countries[];
 }

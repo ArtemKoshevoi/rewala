@@ -8,6 +8,7 @@ import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { RootActions, RootState } from '../index';
+import { getCurrentUserId } from '../users/selectors';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
 import { getToken } from './selectors';
@@ -50,16 +51,7 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
 
 export const logoutEpic: Epic = (action$: Observable<RootActions>, state$: Observable<RootState>) => action$.pipe(
   ofType(ActionTypes.LOGOUT),
-  switchMap(() =>
-    state$.pipe(
-      map(getToken),
-      map((token) => ({
-        FCMToken: token,
-      })),
-      take(1),
-    ),
-  ),
-  map((FCMToken) => AuthRequestActions.logout.action(FCMToken)),
+  map(() => AuthRequestActions.logout.action()),
 );
 
 export const logoutSucceededEpic: Epic = transferActionEpicFactory(

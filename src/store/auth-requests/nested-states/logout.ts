@@ -10,11 +10,11 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<{ FCMToken: string }, AuthToken, Error>('LOGOUT_REQUEST');
+} = asyncActionHandlerFactory<any, AuthToken, Error>('LOGOUT_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,
-  (payload) => authRequestsService.logout(payload),
+  () => authRequestsService.logout(),
 );
 
 export { epic, reducer, Actions, ActionTypes };

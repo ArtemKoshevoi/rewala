@@ -29,14 +29,13 @@ class AuthRequestsService {
         .pipe(responseInterceptor('login'));
     }
 
-  logout(token: AuthToken) {
+  logout() {
     const LOG_OUT = {
       query: gql`
-        mutation logOut($token: LogOutInput){
-          logout(input: $token)
+        mutation {
+          logout(input: {FCMToken: ""})
         }
       `,
-      variables: {token},
     };
 
     return from(execute(link, LOG_OUT) as unknown as Subscribable<GraphQLResponse<{ logout: AuthToken }>>)

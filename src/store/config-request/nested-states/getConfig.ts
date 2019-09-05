@@ -1,7 +1,7 @@
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { Action } from 'typesafe-actions';
-import { CountriesConfigValues } from '../../../shared/interfaces/countriesConfigValues';
+import { Countries } from '../../../shared/interfaces/countries';
 import { asyncActionHandlerFactory } from '../../utils/async-action-helper';
 import { countriesConfigRequestService } from '../service';
 
@@ -10,7 +10,7 @@ const {
   reducer,
   ActionTypes,
   Actions,
-} = asyncActionHandlerFactory<undefined, CountriesConfigValues, Error>('GET_CONFIG_REQUEST');
+} = asyncActionHandlerFactory<undefined, Countries, Error>('GET_CONFIG_REQUEST');
 
 const epic: Epic = (actions$: Observable<Action>) => effect(
   actions$,

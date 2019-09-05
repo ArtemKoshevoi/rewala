@@ -1,15 +1,23 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { textFieldComponent } from '../../../../../shared/formComponents/textField';
 import { LoginFormValues } from '../../../../../shared/interfaces/loginFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { required } from '../../../../../shared/validators/required';
+import { RootState } from '../../../../../store';
+import { getLoginRequestState } from '../../../../../store/auth-requests/selectors';
+
+const mapStateToProps = (state: RootState) => ({
+  requestState: getLoginRequestState(state),
+});
 
 type Props =
-  & InjectedFormProps<LoginFormValues>;
+  & InjectedFormProps<LoginFormValues>
+  & ReturnType<typeof mapStateToProps>;
 
-const Index = ({handleSubmit, pristine, submitting}: Props) => {
+const Index = ({handleSubmit, pristine, submitting, requestState}: Props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -37,7 +45,7 @@ const Index = ({handleSubmit, pristine, submitting}: Props) => {
           type='submit'
           variant='contained'
           color='primary'
-          disabled={pristine || submitting}
+          disabled={pristine || submitting && requestState.loading}
         >
           Sing In
         </Button>
@@ -46,6 +54,8 @@ const Index = ({handleSubmit, pristine, submitting}: Props) => {
   );
 };
 
-export default reduxForm<LoginFormValues>({
-  form: 'Login',
-})(Index);
+export default connect(mapStateToProps)(
+  reduxForm<{}, any>({
+    form: 'Login',
+  })(Index),
+);

@@ -1,7 +1,7 @@
 import { execute } from 'apollo-link';
 import gql from 'graphql-tag';
 import { from, Subscribable } from 'rxjs';
-import { CountriesConfigValues } from '../../shared/interfaces/countriesConfigValues';
+import { Countries } from '../../shared/interfaces/countries';
 import link from '../../shared/link';
 import { GraphQLResponse } from '../../shared/types/graphql';
 import { responseInterceptor } from '../utils/response-interceptor';
@@ -23,7 +23,7 @@ class CountriesConfigRequestService {
       `,
     };
 
-    return from(execute(link, GET_CONFIG) as unknown as Subscribable<GraphQLResponse<{ config: CountriesConfigValues }>>)
+    return from(execute(link, GET_CONFIG) as unknown as Subscribable<GraphQLResponse<{ config: Countries }>>)
     .pipe(responseInterceptor('config'));
   }
 }
