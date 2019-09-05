@@ -1,20 +1,22 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
+import { textFieldComponent } from '../../../../../shared/formComponents/textField';
 import { LoginFormValues } from '../../../../../shared/interfaces/loginFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { required } from '../../../../../shared/validators/required';
 
-const Index = (props: InjectedFormProps<LoginFormValues>) => {
-  const {handleSubmit, pristine, submitting} = props;
+type Props =
+  & InjectedFormProps<LoginFormValues>;
+
+const Index = ({handleSubmit, pristine, submitting}: Props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <div>
           <Field
             name='email'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Email'
             validate={[required, email]}
           />
@@ -22,7 +24,7 @@ const Index = (props: InjectedFormProps<LoginFormValues>) => {
         <div>
           <Field
             name='password'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Password'
             validate={[required]}
             // type='password'

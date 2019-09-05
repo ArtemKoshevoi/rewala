@@ -4,9 +4,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { renderCheckbox } from '../../../../../shared/formComponents/renderCheckbox';
-import { renderSelectField } from '../../../../../shared/formComponents/renderSelectField';
-import { renderTextField } from '../../../../../shared/formComponents/renderTextField';
+import { checkboxComponent } from '../../../../../shared/formComponents/checkbox';
+import { selectFieldComponent } from '../../../../../shared/formComponents/selectField';
+import { textFieldComponent } from '../../../../../shared/formComponents/textField';
 import { RegistrationFormValues } from '../../../../../shared/interfaces/registrationFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { matchPassword } from '../../../../../shared/validators/match';
@@ -59,7 +59,7 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
         <div>
           <Field
             name='profileInput.fullName'
-            component={renderTextField}
+            component={textFieldComponent}
             label='FullName'
             validate={[required]}
           />
@@ -68,7 +68,7 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
           <Field
             className={classes.select}
             name='profileInput.countryCode'
-            component={renderSelectField}
+            component={selectFieldComponent}
             label='Country Code'
           >
             {countryList}
@@ -76,26 +76,26 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
           <Field
             className={classes.phone}
             name='profileInput.phone'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Phone (optional)'
             validate={[phoneNumber]}
           />
           <Field
             name='email'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Email'
             validate={[required, email]}
           />
           <Field
             name='password'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Password'
             validate={[required]}
             // type='password'
           />
           <Field
             name='confirmPassword'
-            component={renderTextField}
+            component={textFieldComponent}
             label='Confirm Password'
             validate={[required, matchPassword]}
             // type='password'
@@ -105,7 +105,7 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
       <div>
         <Field
           name='isAgreeWithPrivacyPolicyAndTermOfUse'
-          component={renderCheckbox}
+          component={checkboxComponent}
           label='I have read and agree with Privacy Policy and Terms of Use'
         />
       </div>
