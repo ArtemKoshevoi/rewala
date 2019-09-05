@@ -45,7 +45,7 @@ const Index = ({handleSubmit, pristine, submitting, requestState}: Props) => {
           type='submit'
           variant='contained'
           color='primary'
-          disabled={pristine || submitting && requestState.loading}
+          disabled={pristine || requestState.loading}
         >
           Sing In
         </Button>
