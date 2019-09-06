@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map, switchMap, take, tap } from 'rxjs/operators';
+import { ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
@@ -8,10 +8,8 @@ import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
 import { RootActions, RootState } from '../index';
-import { getCurrentUserId } from '../users/selectors';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
-import { getToken } from './selectors';
 
 export const loginEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN),
@@ -49,7 +47,7 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
   ignoreElements(),
 );
 
-export const logoutEpic: Epic = (action$: Observable<RootActions>, state$: Observable<RootState>) => action$.pipe(
+export const logoutEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT),
   map(() => AuthRequestActions.logout.action()),
 );

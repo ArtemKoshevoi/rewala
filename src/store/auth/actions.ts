@@ -24,7 +24,7 @@ export const Actions = {
   registration: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
 
-  setAccessToken: (token?: string) => action(ActionTypes.SET_ACCESS_TOKEN, token),
+  setAccessToken: (token: string | null) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;
