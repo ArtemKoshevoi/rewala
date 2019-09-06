@@ -1,6 +1,6 @@
 import { execute } from 'apollo-link';
 import gql from 'graphql-tag';
-import { from, Subscribable } from 'rxjs';
+import { from, Observable, Subscribable } from 'rxjs';
 import { AuthToken } from '../../shared/interfaces/authToken';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
@@ -60,6 +60,24 @@ class AuthRequestsService {
     return from(execute(link, REGISTRATION) as unknown as Subscribable<GraphQLResponse<{ registration: User }>>)
     .pipe(responseInterceptor('registration'));
   }
+
+    getMe(): Observable<User> {
+      const operation = {
+        query: gql`
+          query getMe {
+            me {
+              _id
+              authToken
+              email
+              status
+            }
+          }
+        `,
+      };
+
+      return from(execute(link, operation) as unknown as Subscribable<GraphQLResponse<{ me: User }>>)
+      .pipe(responseInterceptor('me'));
+    }
 }
 
 export const authRequestsService = new AuthRequestsService();

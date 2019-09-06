@@ -1,18 +1,18 @@
 import { of } from 'rxjs';
+import { authToken } from '../variables/authToken';
 
 class AuthService {
-  token = 'auth-token';
 
   setToken(token: string) {
-    return localStorage.setItem(this.token, token);
+    return localStorage.setItem(authToken, token);
   }
 
   getToken() {
-    return of(localStorage.getItem(this.token));
+    return of(localStorage.getItem(authToken));
   }
 
   removeToken() {
-    return of(localStorage.removeItem(this.token));
+    return of(localStorage.removeItem(authToken));
   }
 }
 

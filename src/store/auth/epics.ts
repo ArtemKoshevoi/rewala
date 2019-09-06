@@ -47,6 +47,16 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
   ignoreElements(),
 );
 
+export const getCurrentUserEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
+  ofType(ActionTypes.GET_CURRENT_USER),
+  map(() => AuthRequestActions.getMe.action()),
+);
+
+export const getCurrentUserSucceededEpic: Epic = transferActionEpicFactory(
+  AuthRequestActionTypes.getMeActionTypes.ACTION_SUCCEEDED,
+  Actions.getCurrentUserSucceded,
+);
+
 export const logoutEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGOUT),
   map(() => AuthRequestActions.logout.action()),
@@ -96,4 +106,6 @@ export const epics = [
   registrationEpic,
   registrationSucceededEpic,
   redirectOnRegistrationSuccessEpic,
+  getCurrentUserEpic,
+  getCurrentUserSucceededEpic,
 ];

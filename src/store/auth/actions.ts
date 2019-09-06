@@ -1,6 +1,7 @@
 import { action, ActionType } from 'typesafe-actions';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
+import { User } from '../../shared/interfaces/user';
 
 export enum ActionTypes {
   LOGIN = 'LOGIN',
@@ -12,6 +13,8 @@ export enum ActionTypes {
   REGISTRATION_SUCCEDED = 'REGISTRATION_SUCCEDED',
   RREGISTRATION_FAILED = 'REGISTRATION_FAILED',
   SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN',
+  GET_CURRENT_USER = 'GET_CURRENT_USER',
+  GET_CURRENT_USER_SUCCEDED = 'GET_CURRENT_USER_SUCCEDED',
 
 }
 
@@ -23,7 +26,8 @@ export const Actions = {
   logoutSucceded: () => action(ActionTypes.LOGOUT_SUCCEDED),
   registration: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION, payload),
   registrationSucceded: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
-
+  getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
+  getCurrentUserSucceded: (payload: User) => action(ActionTypes.GET_CURRENT_USER_SUCCEDED, payload),
   setAccessToken: (token: string | null) => action(ActionTypes.SET_ACCESS_TOKEN, token),
 };
 

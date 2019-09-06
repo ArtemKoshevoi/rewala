@@ -10,14 +10,14 @@ import { getCurrentUserId } from './selectors';
 
 export const setUserEpic: Epic = (actions$) =>
   actions$.pipe(
-    ofType(AuthActionTypes.LOGIN_SUCCEDED, AuthActionTypes.REGISTRATION_SUCCEDED),
+    ofType(AuthActionTypes.LOGIN_SUCCEDED, AuthActionTypes.REGISTRATION_SUCCEDED, AuthActionTypes.GET_CURRENT_USER_SUCCEDED),
     map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, User>) => action.payload),
     map((user) => Actions.setUsers([user])),
   );
 
 export const setCurrentUserIdEpic: Epic = (actions$) =>
   actions$.pipe(
-    ofType(AuthActionTypes.LOGIN_SUCCEDED),
+    ofType(AuthActionTypes.LOGIN_SUCCEDED, AuthActionTypes.REGISTRATION_SUCCEDED, AuthActionTypes.GET_CURRENT_USER_SUCCEDED),
     map((action: PayloadAction<AuthActionTypes.LOGIN_SUCCEDED, User>) => action.payload),
     map((payload) => Actions.setCurrentUsers(payload._id)),
   );
