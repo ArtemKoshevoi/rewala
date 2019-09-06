@@ -18,7 +18,6 @@ const authMiddleware = setContext(() => {
   ).toPromise();
 });
 
-
 const httpLink = createHttpLink({
   uri: Config.apiEndpoint,
 });

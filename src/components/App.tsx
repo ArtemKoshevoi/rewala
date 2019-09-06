@@ -12,8 +12,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
       if (localStorage.getItem(authToken)) {
-        store.dispatch(Actions.setAccessToken(localStorage.getItem(authToken)));
-        store.dispatch(Actions.getCurrentUser());
+        store.dispatch(Actions.setAccessToken(localStorage.getItem(authToken), 'reload'));
       }
     },
   );

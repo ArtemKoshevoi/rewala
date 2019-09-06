@@ -20,15 +20,15 @@ export enum ActionTypes {
 
 export const Actions = {
   login: (payload: LoginFormValues) => action(ActionTypes.LOGIN, payload),
-  loginSucceded: (token?: string) => action(ActionTypes.LOGIN_SUCCEDED, token),
+  loginSucceded: (token?: string, meta?: string) => action(ActionTypes.LOGIN_SUCCEDED, token, meta = 'login'),
   loginFailed: (payload?: any) => action(ActionTypes.LOGIN_FAILED, payload),
   logout: () => action(ActionTypes.LOGOUT),
   logoutSucceded: () => action(ActionTypes.LOGOUT_SUCCEDED),
   registration: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION, payload),
-  registrationSucceded: (payload: RegistrationFormValues) => action(ActionTypes.REGISTRATION_SUCCEDED, payload),
+  registrationSucceded: (payload: RegistrationFormValues, meta?: string) => action(ActionTypes.REGISTRATION_SUCCEDED, payload, meta = 'registration'),
   getCurrentUser: () => action(ActionTypes.GET_CURRENT_USER),
   getCurrentUserSucceded: (payload: User) => action(ActionTypes.GET_CURRENT_USER_SUCCEDED, payload),
-  setAccessToken: (token: string | null) => action(ActionTypes.SET_ACCESS_TOKEN, token),
+  setAccessToken: (token: string | null, meta: string) => action(ActionTypes.SET_ACCESS_TOKEN, token, meta),
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;

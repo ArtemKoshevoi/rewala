@@ -1,13 +1,13 @@
 import { Epic, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ignoreElements, map, tap } from 'rxjs/operators';
+import { filter, ignoreElements, map, tap } from 'rxjs/operators';
 import { PayloadAction } from 'typesafe-actions';
 import { LoginFormValues } from '../../shared/interfaces/loginFormValues';
 import { RegistrationFormValues } from '../../shared/interfaces/registrationFormValues';
 import { authService } from '../../shared/services/auth.service';
 import { redirectToHomepage, redirectToLoginpage } from '../../shared/services/nav.service';
 import { Actions as AuthRequestActions, ActionTypes as AuthRequestActionTypes } from '../auth-requests';
-import { RootActions, RootState } from '../index';
+import { RootActions } from '../index';
 import { transferActionEpicFactory } from '../utils/transfer-action';
 import { Actions, ActionTypes } from './actions';
 
@@ -25,7 +25,7 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 
 export const setAccessTokenEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
-  map(({payload}) => Actions.setAccessToken(payload.authToken)),
+  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, meta)),
 );
 
 export const errorMessageOnLoginFailedEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
@@ -44,7 +44,8 @@ export const redirectOnLoginSuccessEpic: Epic = (action$: Observable<RootActions
     authService.setToken(action.payload);
     redirectToHomepage();
   }),
-  ignoreElements(),
+  filter(({meta}) => meta === 'reload'),
+  map(() =>  Actions.getCurrentUser()),
 );
 
 export const getCurrentUserEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
@@ -90,7 +91,7 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
-  map(({payload}) => Actions.setAccessToken(payload.authToken)),
+  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, meta)),
 );
 
 export const epics = [
