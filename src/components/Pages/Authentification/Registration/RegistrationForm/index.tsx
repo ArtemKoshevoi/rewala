@@ -121,6 +121,5 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm<{}, any>({
     form: 'registration',
-    // validate,
   })(SingUpForm),
 );
