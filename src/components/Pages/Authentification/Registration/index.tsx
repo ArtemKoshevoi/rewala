@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { RegistrationFormValues } from '../../../../shared/interfaces/registrationFormValues';
 import { Actions as authActions } from '../../../../store/auth/actions';
-import SingUpForm from './RegistrationForm';
+import { SingUpForm } from './RegistrationForm';
 import { useStyles } from './style';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -18,7 +18,7 @@ type Props =
 const Registration: React.FC<Props> = ({registration}) => {
   const classes = useStyles();
 
-  const Submit = (values: RegistrationFormValues) => {
+  const submit = (values: RegistrationFormValues) => {
     const payload = {
       email: values.email,
       password: values.password,
@@ -29,7 +29,7 @@ const Registration: React.FC<Props> = ({registration}) => {
   };
   return (
     <Container maxWidth={'xs'}>
-      <SingUpForm onSubmit={Submit}/>
+      <SingUpForm onSubmit={submit} />
       <Grid container={true}>
         <Grid item={true} xs={12} className={classes.grid}>
           <Link to='/login'>

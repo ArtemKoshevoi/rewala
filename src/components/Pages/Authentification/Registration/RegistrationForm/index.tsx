@@ -2,17 +2,18 @@ import { Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { compose, Dispatch } from 'redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { checkboxComponent } from '../../../../../shared/formComponents/checkbox';
-import { selectFieldComponent } from '../../../../../shared/formComponents/selectField';
-import { textFieldComponent } from '../../../../../shared/formComponents/textField';
+import { CommonCheckbox } from '../../../../../shared/formComponents/CommonCheckbox';
+import { CommonSelectField } from '../../../../../shared/formComponents/CommonSelectField';
+import { CommonTextField } from '../../../../../shared/formComponents/CommonTextField';
 import { RegistrationFormValues } from '../../../../../shared/interfaces/registrationFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { matchPassword } from '../../../../../shared/validators/match';
 import { phoneNumber } from '../../../../../shared/validators/phoneNumber';
 import { required } from '../../../../../shared/validators/required';
 import { RootState } from '../../../../../store';
+import { getRegistrationRequestState } from '../../../../../store/auth-requests/selectors';
 import { Actions as configActions } from '../../../../../store/config/actions';
 import { getCountries } from '../../../../../store/config/selectors';
 import { useStyle } from './style';
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const mapStateToProps = (state: RootState) => ({
   countries: getCountries(state),
+  requestState: getRegistrationRequestState(state),
 });
 
 type Props =
@@ -37,7 +39,7 @@ type Props =
   & ReturnType<typeof mapStateToProps>
   & ReturnType<typeof mapDispatchToProps>;
 
-const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: Props) => {
+const Component: React.FC<Props> = ({handleSubmit, pristine, submitting, countries, requestState, getConfig}: Props) => {
   const classes = useStyle();
 
   useEffect(() => {
@@ -59,7 +61,7 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
         <div>
           <Field
             name='profileInput.fullName'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='FullName'
             validate={[required]}
           />
@@ -68,7 +70,7 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
           <Field
             className={classes.select}
             name='profileInput.countryCode'
-            component={selectFieldComponent}
+            component={CommonSelectField}
             label='Country Code'
           >
             {countryList}
@@ -76,26 +78,26 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
           <Field
             className={classes.phone}
             name='profileInput.phone'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Phone (optional)'
             validate={[phoneNumber]}
           />
           <Field
             name='email'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Email'
             validate={[required, email]}
           />
           <Field
             name='password'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Password'
             validate={[required]}
             // type='password'
           />
           <Field
             name='confirmPassword'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Confirm Password'
             validate={[required, matchPassword]}
             // type='password'
@@ -105,12 +107,18 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
       <div>
         <Field
           name='isAgreeWithPrivacyPolicyAndTermOfUse'
-          component={checkboxComponent}
+          component={CommonCheckbox}
           label='I have read and agree with Privacy Policy and Terms of Use'
         />
       </div>
       <div className={classes.btn}>
-        <Button fullWidth={true} type='submit' variant='contained' color='primary' disabled={pristine || submitting}>
+        <Button
+          fullWidth={true}
+          type='submit'
+          variant='contained'
+          color='primary'
+          disabled={pristine || requestState.loading}
+        >
           Sing Up
         </Button>
       </div>
@@ -118,8 +126,8 @@ const SingUpForm = ({handleSubmit, pristine, submitting, countries, getConfig}: 
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm<{}, any>({
+export const SingUpForm =
+  connect(mapStateToProps, mapDispatchToProps)(
+  reduxForm<RegistrationFormValues, any>({
     form: 'registration',
-  })(SingUpForm),
-);
+  })(Component));

@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
-import { textFieldComponent } from '../../../../../shared/formComponents/textField';
+import { CommonTextField } from '../../../../../shared/formComponents/CommonTextField';
 import { LoginFormValues } from '../../../../../shared/interfaces/loginFormValues';
 import { email } from '../../../../../shared/validators/email';
 import { required } from '../../../../../shared/validators/required';
@@ -24,7 +24,7 @@ const Index = ({handleSubmit, pristine, submitting, requestState}: Props) => {
         <div>
           <Field
             name='email'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Email'
             validate={[required, email]}
           />
@@ -32,7 +32,7 @@ const Index = ({handleSubmit, pristine, submitting, requestState}: Props) => {
         <div>
           <Field
             name='password'
-            component={textFieldComponent}
+            component={CommonTextField}
             label='Password'
             validate={[required]}
             // type='password'
@@ -55,7 +55,7 @@ const Index = ({handleSubmit, pristine, submitting, requestState}: Props) => {
 };
 
 export default connect(mapStateToProps)(
-  reduxForm<{}, any>({
+  reduxForm<LoginFormValues, any>({
     form: 'Login',
   })(Index),
 );

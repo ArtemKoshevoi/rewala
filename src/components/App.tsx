@@ -9,7 +9,7 @@ import AppRouter from './Router/appRouter';
 const theme = createMuiTheme();
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setAccessToken: (token: string | null) => dispatch(Actions.setAccessToken(token || undefined, 'reload')),
+  setAccessToken: (token: string | null) => dispatch(Actions.setAccessToken(token || undefined, '')),
 });
 
 type Props = ReturnType<typeof mapDispatchToProps>;

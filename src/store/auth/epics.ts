@@ -25,7 +25,7 @@ export const loginSucceededEpic: Epic = transferActionEpicFactory(
 
 export const setAccessTokenEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.LOGIN_SUCCEDED),
-  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, meta)),
+  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, ActionTypes.LOGIN_SUCCEDED)),
 );
 
 export const errorMessageOnLoginFailedEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
@@ -91,7 +91,7 @@ export const registrationSucceededEpic: Epic = transferActionEpicFactory(
 
 export const redirectOnRegistrationSuccessEpic: Epic = (action$: Observable<RootActions>) => action$.pipe(
   ofType(ActionTypes.REGISTRATION_SUCCEDED),
-  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, meta)),
+  map(({payload, meta}) => Actions.setAccessToken(payload.authToken, ActionTypes.REGISTRATION_SUCCEDED)),
 );
 
 export const epics = [

@@ -8,7 +8,7 @@ interface Props extends WrappedFieldProps {
   floatinglabeltext: string;
 }
 
-export const textFieldComponent: React.FC<Props> = (
+export const CommonTextField: React.FC<Props> = (
   {input, label, meta: {touched, invalid, error}, ...custom},
 ) => (
   <TextField
